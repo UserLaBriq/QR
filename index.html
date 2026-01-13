@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quentin Rapaud - Avocat au Barreau de Paris</title>
+
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Feather: keep ONLY one -->
+  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+  <!-- Load components BEFORE layout is painted -->
+  <script defer src="components/header.js"></script>
+  <script defer src="components/footer.js"></script>
+  <script defer src="script.js"></script>
+
+  <!-- Optional: DeepSite badge -->
+  <script defer src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
+</head>
+
+<body class="font-sans bg-gray-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <custom-header class="block"></custom-header>
+
+  <!-- Main grows to push footer down -->
+  <main class="container mx-auto px-4 py-12 flex-1">
+    <!-- Hero Section -->
+    <section class="flex flex-col md:flex-row items-center gap-12 mb-20">
+      <div class="md:w-1/2">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+          Quentin Rapaud<br />
+          <span class="text-blue-800">Avocat au Barreau de Paris</span>
+        </h1>
+        <p class="text-lg text-gray-600 mb-8">
+          Conseil et représentation en droit des affaires, droit immobilier et droit public.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="contact.html"
+             class="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg text-center transition duration-300">
+            Prendre rendez-vous
+          </a>
+          <a href="expertise.html"
+             class="border border-blue-800 text-blue-800 hover:bg-blue-50 px-6 py-3 rounded-lg text-center transition duration-300">
+            Nos domaines d'expertise
+          </a>
+        </div>
+      </div>
+
+      <div class="md:w-1/2">
+        <img src="http://static.photos/legal/1200x630/5"
+             alt="Maître Quentin Rapaud"
+             class="rounded-lg shadow-xl w-full h-auto object-cover" />
+      </div>
+    </section>
+
+    <!-- Expertise Summary -->
+    <section class="mb-20">
+      <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Domaines d'expertise</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+            <i data-feather="briefcase" class="text-blue-800 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit des affaires</h3>
+          <p class="text-gray-600">Conseil aux entreprises, contrats commerciaux, contentieux, fusions et acquisitions.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+            <i data-feather="home" class="text-blue-800 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit immobilier</h3>
+          <p class="text-gray-600">Transactions immobilières, bail commercial, contentieux locatif, urbanisme.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+            <i data-feather="shield" class="text-blue-800 w-8 h-8"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit public</h3>
+          <p class="text-gray-600">Contentieux administratif, marchés publics, droit de la fonction publique.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="flex flex-col md:flex-row items-center gap-12 mb-20 bg-white p-8 rounded-lg shadow-md">
+      <div class="md:w-1/3">
+        <img src="http://static.photos/legal/640x360/10"
+             alt="Maître Quentin Rapaud"
+             class="rounded-lg w-full h-auto object-cover" />
+      </div>
+      <div class="md:w-2/3">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Maître Quentin Rapaud</h2>
+        <p class="text-gray-600 mb-4">
+          Diplômé de l'Université Paris II Panthéon-Assas et titulaire d'un Master 2 en droit des affaires,
+          je vous accompagne avec rigueur et professionnalisme dans vos projets juridiques.
+        </p>
+        <p class="text-gray-600 mb-6">
+          Mon approche personnalisée et mon expertise dans plusieurs domaines du droit me permettent
+          d'offrir à mes clients des solutions juridiques adaptées à leurs besoins spécifiques.
+        </p>
+        <a href="about.html" class="text-blue-800 hover:text-blue-900 font-medium inline-flex items-center gap-2">
+          En savoir plus
+          <i data-feather="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <custom-footer class="block mt-auto"></custom-footer>
+
+  <script>
+    // ensure icons after everything is in DOM (header/footer injected)
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.feather) feather.replace();
+    });
+  </script>
+</body>
+</html>

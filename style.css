@@ -1,0 +1,63 @@
+/* Base styles */
+body {
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Section spacing */
+section {
+    padding: 4rem 0;
+}
+
+/* Custom button styles */
+.btn {
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Responsive typography */
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+}
+
+/* Prevent horizontal weirdness */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make sure custom elements behave like blocks even before upgrade */
+custom-header, custom-footer {
+  display: block;
+}
+
+/* If your header is fixed/sticky, ensure it doesn't overlap */
+:root {
+  --header-height: 72px; /* adjust if your header is taller */
+}
+
+/* OPTIONAL: only if your header uses position: fixed or sticky */
+body.has-fixed-header main {
+  padding-top: var(--header-height);
+}

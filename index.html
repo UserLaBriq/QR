@@ -8,118 +8,327 @@
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Feather: keep ONLY one -->
   <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-  <!-- Load components BEFORE layout is painted -->
   <script defer src="components/header.js"></script>
   <script defer src="components/footer.js"></script>
   <script defer src="script.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: "0 10px 30px rgba(2, 6, 23, 0.08)"
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body class="font-sans bg-gray-50 min-h-screen flex flex-col">
-  <!-- Header -->
-   <!--
-  Site créé et publié par Julien / UserLaBriq
-  Repository officiel : https://github.com/UserLaBriq/QR
-  Année: 2026
+  <!--
+    Site créé et publié par Julien / UserLaBriq
+    Repository officiel : https://github.com/UserLaBriq/QR
+    Année: 2026
   -->
   <custom-header class="block"></custom-header>
 
-  <!-- Main grows to push footer down -->
-  <main class="container mx-auto px-4 py-12 flex-1">
-    <!-- Hero Section -->
-    <section class="flex flex-col md:flex-row items-center gap-12 mb-20">
-      <div class="md:w-1/2">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-          Quentin Rapaud<br />
-          <span class="text-blue-800">Avocat au Barreau de Paris</span>
-        </h1>
-        <p class="text-lg text-gray-600 mb-8">
-          Conseil et représentation en droit des affaires, droit immobilier et droit public.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="contact.html"
-             class="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg text-center transition duration-300">
-            Prendre rendez-vous
+  <main class="flex-1">
+    <!-- HERO -->
+    <section class="relative overflow-hidden min-h-[72vh] md:min-h-[82vh]">
+
+      <!-- Background image -->
+      <div class="absolute inset-0">
+        <img
+          src="https://userlabriq.github.io/QR/qp_banner.png"
+          alt="Cabinet Quentin Rapaud"
+          class="w-full h-full object-cover"
+          style="object-position: left top;"
+        />
+        <!-- Overlay (plus sombre à droite pour lisibilité du texte) -->
+        <div class="absolute inset-0 bg-gradient-to-l from-slate-950/85 via-slate-950/55 to-slate-950/10"></div>
+      </div>
+
+      <div class="relative container mx-auto px-4 pt-16 pb-14 md:pt-24 md:pb-20">
+        <!-- Texte à droite -->
+        <div class="max-w-3xl md:ml-auto md:text-right">
+          <p class="inline-flex items-center gap-2 text-sm text-white/80 mb-4 md:justify-end">
+            <span class="h-2 w-2 rounded-full bg-amber-300"></span>
+            Avocat au Barreau de Paris
+          </p>
+
+          <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+            Quentin Rapaud
+          </h1>
+
+          <p class="mt-5 text-lg md:text-xl text-white/85 md:ml-auto md:max-w-2xl">
+            Rigueur. Stratégie. Engagement.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 md:justify-end">
+            <a href="contact.html"
+              class="bg-amber-300 hover:bg-amber-200 text-slate-900 px-6 py-3 rounded-xl font-semibold text-center transition">
+              Prendre rendez-vous
+            </a>
+            <a href="expertise.html"
+              class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
+              Voir les expertises
+            </a>
+          </div>
+
+          <!-- Trust pills (align à droite sur desktop) -->
+          <div class="mt-8 flex flex-wrap gap-3 justify-center md:justify-end max-w-xl md:ml-auto">
+            
+            <div class="px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur text-center min-w-[110px]">
+              <p class="text-[11px] uppercase tracking-wide text-white/60">Expérience</p>
+              <p class="text-sm font-semibold text-white">8+ ans</p>
+            </div>
+
+            <div class="px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur text-center min-w-[110px]">
+              <p class="text-[11px] uppercase tracking-wide text-white/60">Langues</p>
+              <p class="text-sm font-semibold text-white">FR / EN</p>
+            </div>
+
+            <div class="px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur text-center min-w-[110px]">
+              <p class="text-[11px] uppercase tracking-wide text-white/60">Localisation</p>
+              <p class="text-sm font-semibold text-white">Paris 9e</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTENT -->
+    <div class="container mx-auto px-4 py-14 md:py-18">
+      <!-- Section intro -->
+      <section class="mb-14">
+        <div class="grid md:grid-cols-12 gap-8 items-start">
+          <div class="md:col-span-7">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+              Une défense claire. Une stratégie précise. Un cabinet accessible.
+            </h2>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Chaque dossier est différent : l’objectif est de construire une défense solide, compréhensible,
+              et orientée résultat, avec une communication simple et un suivi régulier.
+            </p>
+          </div>
+          <div class="md:col-span-5">
+            <div class="rounded-2xl bg-white shadow-soft border border-slate-100 p-6">
+              <div class="flex items-start gap-4">
+                <div class="h-11 w-11 rounded-xl bg-blue-900/10 flex items-center justify-center">
+                  <i data-feather="shield" class="w-5 h-5 text-blue-900"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900">Premier échange orienté action</p>
+                  <p class="text-sm text-slate-600 mt-1">
+                    Vous obtenez rapidement une première lecture de votre situation et les prochaines étapes.
+                  </p>
+                </div>
+              </div>
+              <a href="contact.html"
+                 class="mt-5 inline-flex items-center gap-2 text-blue-900 font-semibold hover:opacity-80">
+                Contacter le cabinet
+                <i data-feather="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expertise cards -->
+      <section class="mb-14">
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-3xl font-bold text-slate-900">Domaines d’expertise</h2>
+            <p class="text-slate-600 mt-2">Une présentation claire et structurée des principaux champs d’intervention.</p>
+          </div>
+          <a href="expertise.html" class="hidden md:inline-flex items-center gap-2 text-blue-900 font-semibold hover:opacity-80">
+            Tout voir <i data-feather="chevron-right" class="w-4 h-4"></i>
           </a>
-          <a href="expertise.html"
-             class="border border-blue-800 text-blue-800 hover:bg-blue-50 px-6 py-3 rounded-lg text-center transition duration-300">
-            Nos domaines d'expertise
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- card -->
+          <a href="expertise.html" class="group bg-white rounded-2xl border border-slate-100 shadow-soft p-7 hover:-translate-y-0.5 hover:shadow-lg transition">
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-2xl bg-blue-900/10 flex items-center justify-center">
+                <i data-feather="briefcase" class="w-6 h-6 text-blue-900"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">Droit des affaires</h3>
+            </div>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Conseil aux entreprises, contrats, contentieux et accompagnement stratégique.
+            </p>
+            <p class="mt-5 text-blue-900 font-semibold inline-flex items-center gap-2">
+              En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </p>
+          </a>
+
+          <a href="expertise.html" class="group bg-white rounded-2xl border border-slate-100 shadow-soft p-7 hover:-translate-y-0.5 hover:shadow-lg transition">
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-2xl bg-blue-900/10 flex items-center justify-center">
+                <i data-feather="home" class="w-6 h-6 text-blue-900"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">Droit immobilier</h3>
+            </div>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Baux, litiges locatifs, transactions et questions d’urbanisme.
+            </p>
+            <p class="mt-5 text-blue-900 font-semibold inline-flex items-center gap-2">
+              En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </p>
+          </a>
+
+          <a href="expertise.html" class="group bg-white rounded-2xl border border-slate-100 shadow-soft p-7 hover:-translate-y-0.5 hover:shadow-lg transition">
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-2xl bg-blue-900/10 flex items-center justify-center">
+                <i data-feather="file-text" class="w-6 h-6 text-blue-900"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900">Droit public</h3>
+            </div>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Contentieux administratif, marchés publics, fonction publique.
+            </p>
+            <p class="mt-5 text-blue-900 font-semibold inline-flex items-center gap-2">
+              En savoir plus <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </p>
           </a>
         </div>
-      </div>
+      </section>
 
-      <div class="md:w-1/2">
-        <img src="http://static.photos/legal/1200x630/5"
-             alt="Maître Quentin Rapaud"
-             class="rounded-lg shadow-xl w-full h-auto object-cover" />
-      </div>
-    </section>
+      <!-- Method / Process -->
+      <section class="mb-14">
+        <div class="rounded-3xl bg-white border border-slate-100 shadow-soft p-8 md:p-10">
+          <h2 class="text-3xl font-bold text-slate-900">Une méthode simple</h2>
+          <p class="text-slate-600 mt-2">Clarté, stratégie, suivi — pour avancer sereinement.</p>
 
-    <!-- Expertise Summary -->
-    <section class="mb-20">
-      <h2 class="text-3xl font-bold text-gray-800 mb-12 text-center">Domaines d'expertise</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-            <i data-feather="briefcase" class="text-blue-800 w-8 h-8"></i>
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <p class="text-sm text-slate-500">Étape 1</p>
+              <p class="font-bold text-slate-900 mt-1">Analyse du dossier</p>
+              <p class="text-slate-600 mt-2">Comprendre les faits, identifier les risques et les objectifs.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <p class="text-sm text-slate-500">Étape 2</p>
+              <p class="font-bold text-slate-900 mt-1">Stratégie & actions</p>
+              <p class="text-slate-600 mt-2">Construire un plan clair et une défense cohérente.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
+              <p class="text-sm text-slate-500">Étape 3</p>
+              <p class="font-bold text-slate-900 mt-1">Suivi & représentation</p>
+              <p class="text-slate-600 mt-2">Vous accompagner à chaque étape, avec transparence.</p>
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit des affaires</h3>
-          <p class="text-gray-600">Conseil aux entreprises, contrats commerciaux, contentieux, fusions et acquisitions.</p>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="mb-14">
+        <div class="grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-5">
+            <div class="rounded-3xl overflow-hidden shadow-soft border border-slate-100 bg-white">
+              <img src="http://static.photos/legal/640x360/10"
+                   alt="Maître Quentin Rapaud"
+                   class="w-full h-72 md:h-80 object-cover" />
+            </div>
+          </div>
+          <div class="md:col-span-7">
+            <h2 class="text-3xl font-bold text-slate-900">Maître Quentin Rapaud</h2>
+            <p class="mt-4 text-slate-600 leading-relaxed">
+              Diplômé de l’Université Paris II Panthéon-Assas, j’accompagne particuliers et professionnels
+              avec rigueur et exigence, en privilégiant une relation directe et un discours clair.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
+                <i data-feather="award" class="w-4 h-4"></i> Exigence & précision
+              </span>
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
+                <i data-feather="zap" class="w-4 h-4"></i> Réactivité
+              </span>
+              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
+                <i data-feather="message-circle" class="w-4 h-4"></i> Communication claire
+              </span>
+            </div>
+            <a href="about.html" class="mt-8 inline-flex items-center gap-2 text-blue-900 font-semibold hover:opacity-80">
+              Découvrir le parcours <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="mb-14">
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-3xl font-bold text-slate-900">Ils nous ont fait confiance</h2>
+            <p class="text-slate-600 mt-2">À remplacer par de vrais avis (Google / Justifit / etc.).</p>
+          </div>
         </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-            <i data-feather="home" class="text-blue-800 w-8 h-8"></i>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <div class="flex items-center gap-2 text-amber-400">
+              <i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Conseils très pertinents et accompagnement sérieux. Dossier suivi avec efficacité.”
+            </p>
+            <p class="mt-4 text-sm text-slate-500">— Client</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit immobilier</h3>
-          <p class="text-gray-600">Transactions immobilières, bail commercial, contentieux locatif, urbanisme.</p>
-        </div>
 
-        <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-          <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
-            <i data-feather="shield" class="text-blue-800 w-8 h-8"></i>
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <div class="flex items-center gap-2 text-amber-400">
+              <i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Très à l’écoute, réactif et professionnel. Je recommande.”
+            </p>
+            <p class="mt-4 text-sm text-slate-500">— Client</p>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-3">Droit public</h3>
-          <p class="text-gray-600">Contentieux administratif, marchés publics, droit de la fonction publique.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="flex flex-col md:flex-row items-center gap-12 mb-20 bg-white p-8 rounded-lg shadow-md">
-      <div class="md:w-1/3">
-        <img src="http://static.photos/legal/640x360/10"
-             alt="Maître Quentin Rapaud"
-             class="rounded-lg w-full h-auto object-cover" />
-      </div>
-      <div class="md:w-2/3">
-        <h2 class="text-3xl font-bold text-gray-800 mb-6">Maître Quentin Rapaud</h2>
-        <p class="text-gray-600 mb-4">
-          Diplômé de l'Université Paris II Panthéon-Assas et titulaire d'un Master 2 en droit des affaires,
-          je vous accompagne avec rigueur et professionnalisme dans vos projets juridiques.
-        </p>
-        <p class="text-gray-600 mb-6">
-          Mon approche personnalisée et mon expertise dans plusieurs domaines du droit me permettent
-          d'offrir à mes clients des solutions juridiques adaptées à leurs besoins spécifiques.
-        </p>
-        <a href="about.html" class="text-blue-800 hover:text-blue-900 font-medium inline-flex items-center gap-2">
-          En savoir plus
-          <i data-feather="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </section>
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <div class="flex items-center gap-2 text-amber-400">
+              <i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i><i data-feather="star" class="w-4 h-4"></i>
+            </div>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Stratégie claire et communication simple. Très bon accompagnement.”
+            </p>
+            <p class="mt-4 text-sm text-slate-500">— Client</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA bottom -->
+      <section class="mb-6">
+        <div class="rounded-3xl overflow-hidden relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900"></div>
+          <div class="relative p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-white">Besoin d’un premier avis ?</h2>
+              <p class="text-white/80 mt-2">Expliquez brièvement votre situation, le cabinet revient vers vous rapidement.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <a href="contact.html" class="bg-amber-300 hover:bg-amber-200 text-slate-900 px-6 py-3 rounded-xl font-semibold text-center transition">
+                Contacter
+              </a>
+              <a href="tel:+33681669806" class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
+                Appeler
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- Footer -->
   <custom-footer class="block mt-auto"></custom-footer>
 
   <script>
-    // ensure icons after everything is in DOM (header/footer injected)
     window.addEventListener("DOMContentLoaded", () => {
       if (window.feather) feather.replace();
     });

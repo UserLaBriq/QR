@@ -8,6 +8,8 @@
   <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
   <link rel="stylesheet" href="style.css" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -68,14 +70,18 @@
             Rigueur. Stratégie. Engagement.
           </p>
 
-          <div class="mt-8 flex flex-col sm:flex-row gap-3 md:justify-end">
+          <div class="mt-8 flex flex-col sm:flex-row gap-3 md:flex-row md:flex-wrap md:justify-end">
             <a href="contact.html"
-              class="bg-amber-300 hover:bg-amber-200 text-slate-900 px-6 py-3 rounded-xl font-semibold text-center transition">
-              Prendre rendez-vous
+              class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-full font-semibold text-center transition bg-white/5 hover:bg-white/10">
+              Défense pénale
             </a>
             <a href="expertise.html"
-              class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
-              Voir les expertises
+              class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-full font-semibold text-center transition bg-white/5 hover:bg-white/10">
+              Famille · International 
+            </a>
+            <a href="expertise.html"
+              class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-full font-semibold text-center transition bg-white/5 hover:bg-white/10">
+              Corporel · Médical
             </a>
           </div>
 
@@ -84,7 +90,7 @@
             
             <div class="px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur text-center min-w-[110px]">
               <p class="text-[11px] uppercase tracking-wide text-white/60">Expérience</p>
-              <p class="text-sm font-semibold text-white">8+ ans</p>
+              <p class="text-sm font-semibold text-white">7+ ans</p>
             </div>
 
             <div class="px-4 py-2 rounded-lg border border-white/20 bg-white/10 backdrop-blur text-center min-w-[110px]">
@@ -140,8 +146,146 @@
         </div>
       </section>
 
+
+      <section class="bg-[#525254] shadow-lg py-16 px-6 md:px-10 my-10 md:my-14 rounded-3xl">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 max-w-5xl mx-auto items-start">
+
+          <div style="font-family:'Barlow Condensed',sans-serif;" class="font-black text-5xl lg:text-6xl uppercase leading-none tracking-tight text-white md:sticky md:top-16">
+            Nous<br>Intervenons
+          </div>
+
+          <div class="flex flex-col">
+            <!-- Gare à vue et enquête -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Garde à vue et enquête
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Nous assistons nos clients dès la garde-à-vue dans les commissariats de police ou à la gendarmerie lorsqu’une
+                  personne est mise en cause dans le cadre d’une enquête préliminaire ou d’une enquête de flagrance sous le
+                  contrôle du Procureur de la République. Nous suivons attentivement la procédure afin de préparer le
+                  déferrement au Tribunal ou les suites données par le parquet.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!-- Mise en examen & Détention Provisoire -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Mise en examen & Détention Provisoire
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Lorsque le procureur décide de l'ouverture d'une information judiciaire, nous assistons nos clients lors de
+                  l'interrogatoire de première comparution devant le Juge d’instruction aux fins de mise en examen. L’enquête
+                  va se poursuivre pour une durée de 12 mois minimum en matière correctionnelle, durée qui peut s’étendre sur
+                  plusieurs années en matière criminelle. L’instruction permet aux enquêteurs de disposer de pouvoirs étendus.</p>
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">L’enjeu est donc de déterminer si l’individu sera libre le temps de l’instruction ou en détention provisoire. Le
+                  Cabinet se charge au cours de l’instruction tant du contentieux de la détention provisoire que celui des nullités
+                  de procédure Il propose une stratégie de défense proactive en rédigeant des demandes d’actes pour influencer
+                  les investigations mais également des demandes de mise en liberté.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!-- Cour d’assises et Tribunal Correctionnel -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Cour d’assises et Tribunal Correctionnel
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Arène où l’individu est accusé des crimes que la société considère comme les plus graves, parfois même les
+                  plus abjectes, un procès est empreint d’émotions fortes et s’avère souvent violent. Il s’agit d’une véritable
+                  bataille tant juridique que physique et psychologique qu’il convient de mener accompagné d’un avocat
+                  pugnace et combatif. Nous intervenons régulièrement devant les Cours d’assises sur l’ensemble du territoire
+                  et nous nous distinguons à la fois par les stratégies que nous mettons en place que par notre efficacité au
+                  regard des résultats obtenus.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!-- Violences Conjugales & Ordonnance de Protection -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Violences Conjugales & Ordonnance de Protection
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Nous intervenons dans les procédures d’urgence dans le cadre de violences physiques, psychologiques ou
+                  sexuelles qui permettent d’obtenir rapidement l’expulsion d’un partenaire violent ou une mesure
+                  d’éloignement pour assurer la sécurité de la famille. Il est également statué lors de l’audience sur la jouissance
+                  du domicile conjugal, la résidence des enfants, l’autorité parentale et la pension alimentaire.</p>
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">En raison des conséquences graves qui peuvent en résulter– expulsion du domicile conjugal, autorité parentale
+                  exclusive, interdiction de voir les enfants – nous intervenons également en défense lorsque cette procédure est
+                  instrumentalisée à des fins déloyales.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!-- Victimes & Commission d’Indemnisatione -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Victimes & Commission d’Indemnisation
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Nous assistons également les victimes d’infraction dans leur combat judiciaire lors de la plainte ou de la
+                  constitution de partie civile et jusqu’au terme de la procédure d’indemnisation par la Commission
+                  d’indemnisation des victimes d’infraction (CIVI).</p>
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Nous assistons aussi les victimes d’erreur médicale tout au long de la procédure judiciaire du référé pour
+                  obtenir la désignation d’un expert - puis à la phase d’expertise - jusqu’à la dernière phase au cours de laquelle
+                  l’indemnisation intégrale des préjudices est sollicitée.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!-- Procédures Internationales -->
+            <div class="accordion-item border-t border-white/20 overflow-hidden last:border-b last:border-white/20">
+              <button onclick="toggleAccordion(this)" class="w-full bg-transparent border-none text-white text-left flex items-center justify-between py-7 gap-5 uppercase tracking-widest hover:text-amber-300 transition-colors duration-200" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.1rem;">
+                Procédures Internationales
+                <span class="relative flex-shrink-0 w-5 h-5">
+                  <span class="absolute inset-y-0 left-1/2 -translate-x-1/2 my-auto w-full h-0.5 bg-current"></span>
+                  <span class="acc-icon-v absolute inset-x-0 top-1/2 -translate-y-1/2 mx-auto h-full w-0.5 bg-current transition-all duration-300"></span>
+                </span>
+              </button>
+              <div class="acc-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease;">
+                <div class="overflow-hidden">
+                  <p class="pb-8 text-white/60 leading-relaxed max-w-lg">Nous intervenons devant les juridictions françaises dans les procédures qui présentent un caractère
+                  international que ce soit en matière pénale – extradition, mandat d’arrêt européen ou international – ou en
+                  matière familiale avec les divorces internationaux ou encore les enlèvements internationaux d’enfants qui
+                  nécessitent la mise en œuvre d’instruments juridiques complexes.</p>
+                </div>
+              </div>
+            </div>
+            <!---->
+          </div>
+        </div>
+      </section>
+
       <!-- Expertise cards -->
-      <section class="mb-10 md:mb-14">
+      <!-- <section class="mb-10 md:mb-14">
         <div class="flex items-end justify-between gap-4 mb-8">
           <div>
             <h2 class="text-3xl font-bold text-slate-900">Domaines d’expertise</h2>
@@ -153,7 +297,7 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
-          <!-- card -->
+           card 
           <a href="expertise.html" class="group bg-white rounded-2xl border border-slate-100 shadow-soft p-7 hover:-translate-y-0.5 hover:shadow-lg transition">
             <div class="flex items-center gap-3">
               <div class="h-12 w-12 rounded-2xl bg-blue-900/10 flex items-center justify-center">
@@ -199,64 +343,34 @@
             </p>
           </a>
         </div>
-      </section>
+      </section> -->
 
-      <!-- Method / Process -->
+      <!-- Actualités -->
       <section class="mb-10 md:mb-14">
-        <div class="rounded-3xl bg-white border border-slate-100 shadow-soft p-8 md:p-10">
-          <h2 class="text-3xl font-bold text-slate-900">Une méthode simple</h2>
-          <p class="text-slate-600 mt-2">Clarté, stratégie, suivi — pour avancer sereinement.</p>
-
-          <div class="grid md:grid-cols-3 gap-6 mt-8">
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
-              <p class="text-sm text-slate-500">Étape 1</p>
-              <p class="font-bold text-slate-900 mt-1">Analyse du dossier</p>
-              <p class="text-slate-600 mt-2">Comprendre les faits, identifier les risques et les objectifs.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
-              <p class="text-sm text-slate-500">Étape 2</p>
-              <p class="font-bold text-slate-900 mt-1">Stratégie & actions</p>
-              <p class="text-slate-600 mt-2">Construire un plan clair et une défense cohérente.</p>
-            </div>
-            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100">
-              <p class="text-sm text-slate-500">Étape 3</p>
-              <p class="font-bold text-slate-900 mt-1">Suivi & représentation</p>
-              <p class="text-slate-600 mt-2">Vous accompagner à chaque étape, avec transparence.</p>
-            </div>
+        <div class="flex items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-3xl font-bold text-slate-900">Actualités</h2>
           </div>
         </div>
-      </section>
 
-      <!-- About -->
-      <section class="mb-10 md:mb-14">
-        <div class="grid md:grid-cols-12 gap-8 items-center">
-          <div class="md:col-span-5">
-            <div class="rounded-3xl overflow-hidden shadow-soft border border-slate-100 bg-white">
-              <img src="http://static.photos/legal/640x360/10"
-                   alt="Maître Quentin Rapaud"
-                   class="w-full h-72 md:h-80 object-cover" />
-            </div>
-          </div>
-          <div class="md:col-span-7">
-            <h2 class="text-3xl font-bold text-slate-900">Maître Quentin Rapaud</h2>
-            <p class="mt-4 text-slate-600 leading-relaxed">
-              Diplômé de l’Université Paris II Panthéon-Assas, j’accompagne particuliers et professionnels
-              avec rigueur et exigence, en privilégiant une relation directe et un discours clair.
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <p class="mt-4 text-sm text-slate-500">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</p>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix saevientis adsidua, humani cruoris avida nihil mitius quam maritus;"
             </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
-                <i data-feather="award" class="w-4 h-4"></i> Exigence & précision
-              </span>
-              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
-                <i data-feather="zap" class="w-4 h-4"></i> Réactivité
-              </span>
-              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-blue-900/5 text-blue-900 font-semibold text-sm">
-                <i data-feather="message-circle" class="w-4 h-4"></i> Communication claire
-              </span>
-            </div>
-            <a href="about.html" class="mt-8 inline-flex items-center gap-2 text-blue-900 font-semibold hover:opacity-80">
-              Découvrir le parcours <i data-feather="arrow-right" class="w-4 h-4"></i>
-            </a>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <p class="mt-4 text-sm text-slate-500">Contrôle mortel à Paris</p>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Enim eis appellentur Assyria praesens Graecis in opibus amittunt hominum construxit firmas et quae veteres conditoris hominum quae amittunt multis multis diutius Assyria habitaculis ex licet enim Assyria construxit tranquillis."
+            </p>
+          </div>
+          <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7">
+            <p class="mt-4 text-sm text-slate-500">Refus d'optempérer à Paris</p>
+            <p class="mt-4 text-slate-700 leading-relaxed">
+              “Acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis, inflammatrix saevientis adsidua."
+            </p>
           </div>
         </div>
       </section>
@@ -333,6 +447,23 @@
     window.addEventListener("DOMContentLoaded", () => {
       if (window.feather) feather.replace();
     });
+
+    function toggleAccordion(btn) {
+      const item = btn.closest('.accordion-item');
+      const isOpen = item.classList.contains('acc-open');
+      document.querySelectorAll('.accordion-item.acc-open').forEach(el => {
+        el.classList.remove('acc-open');
+        el.querySelector('.acc-body').style.gridTemplateRows = '0fr';
+        el.querySelector('.acc-icon-v').style.opacity = '1';
+        el.querySelector('.acc-icon-v').style.transform = 'translateX(-50%)';
+      });
+      if (!isOpen) {
+        item.classList.add('acc-open');
+        item.querySelector('.acc-body').style.gridTemplateRows = '1fr';
+        item.querySelector('.acc-icon-v').style.opacity = '0';
+        item.querySelector('.acc-icon-v').style.transform = 'translateX(-50%) rotate(90deg)';
+      }
+    }
   </script>
 </body>
 </html>

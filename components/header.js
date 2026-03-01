@@ -9,10 +9,9 @@ class CustomHeader extends HTMLElement {
             </a>
 
             <nav class="hidden md:flex items-center gap-8" id="desktop-nav">
-              <a href="index.html" class="nav-link text-slate-700 hover:text-blue-900">Accueil</a>
-              <a href="expertise.html" class="nav-link text-slate-700 hover:text-blue-900">Expertises</a>
-              <a href="about.html" class="nav-link text-slate-700 hover:text-blue-900">À propos</a>
-              <a href="contact.html" class="nav-link text-slate-700 hover:text-blue-900">Contact</a>
+              <a href="index.html" class="nav-link text-slate-700 hover:text-blue-900">Cabinet</a>
+              <a href="expertise.html" class="nav-link text-slate-700 hover:text-blue-900">Expertise</a>
+              <a href="about.html" class="nav-link text-slate-700 hover:text-blue-900">Actualités</a>
 
               <a href="tel:+33681669806" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
@@ -22,7 +21,7 @@ class CustomHeader extends HTMLElement {
               <a href="contact.html"
                  class="inline-flex items-center gap-2 bg-blue-900 text-white px-4 py-2 rounded-xl font-semibold hover:bg-blue-950 transition">
                 <i data-feather="calendar" class="w-4 h-4"></i>
-                RDV
+                Contact
               </a>
             </nav>
 
@@ -33,10 +32,9 @@ class CustomHeader extends HTMLElement {
 
           <div id="mobile-menu" class="md:hidden hidden pb-4">
             <div class="flex flex-col space-y-3 pt-2">
-              <a href="index.html" class="text-slate-700 hover:text-blue-900">Accueil</a>
-              <a href="expertise.html" class="text-slate-700 hover:text-blue-900">Expertises</a>
-              <a href="about.html" class="text-slate-700 hover:text-blue-900">À propos</a>
-              <a href="contact.html" class="text-slate-700 hover:text-blue-900">Contact</a>
+              <a href="index.html" class="text-slate-700 hover:text-blue-900">Cabinet</a>
+              <a href="expertise.html" class="text-slate-700 hover:text-blue-900">Expertise</a>
+              <a href="about.html" class="text-slate-700 hover:text-blue-900">Actualités</a>
               <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
                 06 81 66 98 06

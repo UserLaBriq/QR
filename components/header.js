@@ -31,9 +31,16 @@ class CustomHeader extends HTMLElement {
               </a>
             </nav>
 
-            <button class="md:hidden p-2 rounded-xl hover:bg-slate-100" id="mobile-menu-button" aria-label="Menu">
-              <i data-feather="menu" class="w-6 h-6 text-slate-900"></i>
-            </button>
+            <div class="md:hidden flex items-center gap-4">
+              <a href="tel:+33681669806"
+                class="inline-flex items-center gap-10 text-blue-900 font-semibold py-2 ml-auto lg:hidden">
+                <i data-feather="phone" class="w-5 h-5"></i>
+              </a>
+
+              <button class="p-2 rounded-xl hover:bg-slate-100" id="mobile-menu-button" aria-label="Menu">
+                <i data-feather="menu" class="w-6 h-6 text-slate-900"></i>
+              </button>
+            </div>
           </div>
 
           <!-- MENU MOBILE -->
@@ -56,26 +63,36 @@ class CustomHeader extends HTMLElement {
                         <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense pénale
                       </a>
                       <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Mise en examen & instruction
+                        <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
                       </a>
                       <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Cour d'assises & correctionnel
+                        <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel
                       </a>
                       <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & violences conjugales
+                        <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
                       </a>
+
                       <a href="expertise.html#victimes" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="heart" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Victimes & indemnisation
+                        <i data-feather="heart" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue 
                       </a>
                       <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Procédures internationales
+                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
                       </a>
+                      <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
+                      </a>
+                      <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
+                      </a>
+                      
+
                       <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5 mt-1">
                         <i data-feather="calendar" class="w-3.5 h-3.5 flex-shrink-0"></i>Prendre RDV
                       </a>
                       <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5">
                         <i data-feather="message-square" class="w-3.5 h-3.5 flex-shrink-0"></i>Exposer ma situation
                       </a>
+                      
                     </div>
                   </div>
                 </div>
@@ -95,13 +112,12 @@ class CustomHeader extends HTMLElement {
 
         <!-- MEGA MENU DESKTOP -->
         <div id="mega-menu" class="absolute left-0 right-0 z-40 hidden" style="top:100%;">
-
           <div id="mega-backdrop"
             style="position:fixed; inset:0; background:rgba(15,23,42,0.45); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:-1; opacity:0; transition:opacity .3s ease; pointer-events:none;">
           </div>
 
           <div id="mega-panel" style="
-            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(15,23,42,0.98) 100%);
+            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(28, 43, 79, 0.98) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -109,39 +125,55 @@ class CustomHeader extends HTMLElement {
             opacity: 0;
             transition: transform .35s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;">
             <div class="container mx-auto px-4 py-10">
-              <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 max-w-5xl">
+              <div class="grid grid-cols-1 md:grid-cols-[2fr_2fr_2fr] gap-10 ">
 
-                <div>
+                <div class="flex flex-col gap-4">
                   <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
                     style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
                     Domaines d'intervention
                   </p>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-1">
-                    <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="shield" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
                       <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense pénale</span>
                     </a>
-                    <a href="expertise.html#instruction" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="file-text" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Mise en examen & instruction</span>
+                    <a href="expertise.html#famille&international" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Familles & International</span>
                     </a>
-                    <a href="expertise.html#assises" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="briefcase" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Cour d'assises & correctionnel</span>
+                    
+                    <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel</span>
                     </a>
-                    <a href="expertise.html#famille" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="users" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Famille & violences conjugales</span>
+                    <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité médicale</span>
                     </a>
-                    <a href="expertise.html#victimes" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="heart" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Victimes & indemnisation</span>
-                    </a>
-                    <a href="expertise.html#international" class="group flex items-center gap-3 py-3 border-b border-white/10 hover:border-amber-300/50 transition-colors">
-                      <i data-feather="globe" class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Procédures internationales</span>
-                    </a>
-                  </div>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                  <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
+                    style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
+                    Urgences
+                  </p>
+                  <a href="expertise.html#gardeavue" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à vue</span>
+                  </a>
+                  <a href="expertise.html#comparution" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution immédiate</span>
+                  </a>
+
+                  <a href="expertise.html#audiences" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences pénales</span>
+                  </a>
+
+                  <a href="expertise.html#violencesconjugales" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences conjugales</span>
+                  </a>
                 </div>
 
                 <div class="flex flex-col gap-4">
@@ -150,37 +182,25 @@ class CustomHeader extends HTMLElement {
                     Contact
                   </p>
                   <a href="contact.html"
-                    style="background:linear-gradient(135deg,rgba(251,191,36,0.15),rgba(251,191,36,0.05)); border:1px solid rgba(251,191,36,0.3);"
                     class="group flex items-center gap-4 p-4 rounded-2xl hover:border-amber-300/60 transition-colors">
-                    <div class="w-10 h-10 rounded-xl bg-amber-300/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-300/30 transition-colors">
-                      <i data-feather="calendar" class="w-5 h-5 text-amber-300"></i>
+                    <div class="w-9 h-9 rounded-xl bg-amber-300/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-300/30 transition-colors">
+                      <i data-feather="calendar" class="w-5 h-5 text-amber-200"></i>
                     </div>
-                    <div>
-                      <p class="text-white font-semibold text-sm">Prendre RDV</p>
-                      <p class="text-white/50 text-xs mt-0.5">Consultation au cabinet</p>
-                    </div>
+                    <p class="text-white/70 text-sm">Rendez-vous</p>
                   </a>
                   <a href="contact.html"
-                    style="background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.1);"
                     class="group flex items-center gap-4 p-4 rounded-2xl hover:border-white/20 transition-colors">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
+                    <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
                       <i data-feather="message-square" class="w-5 h-5 text-white/70"></i>
                     </div>
-                    <div>
-                      <p class="text-white font-semibold text-sm">Exposer ma situation</p>
-                      <p class="text-white/50 text-xs mt-0.5">Première analyse rapide</p>
-                    </div>
+                    <p class="text-white/70 text-sm">Exposer ma situation</p>
                   </a>
                   <a href="about.html"
-                    style="background:linear-gradient(135deg,rgba(255,255,255,0.07),rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.1);"
                     class="group flex items-center gap-4 p-4 rounded-2xl hover:border-white/20 transition-colors">
-                    <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
+                    <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
                       <i data-feather="rss" class="w-5 h-5 text-white/70"></i>
                     </div>
-                    <div>
-                      <p class="text-white font-semibold text-sm">Actualités</p>
-                      <p class="text-white/50 text-xs mt-0.5">Dernières affaires & presse</p>
-                    </div>
+                    <p class="text-white/70 text-sm">Actualités</p>
                   </a>
                 </div>
 

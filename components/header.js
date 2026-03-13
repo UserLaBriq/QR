@@ -14,7 +14,7 @@ class CustomHeader extends HTMLElement {
               <button id="expertise-trigger"
                 class="nav-link flex items-center gap-1 text-slate-700 hover:text-blue-900 bg-transparent border-none cursor-pointer text-base">
                 Expertise
-                <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-300" id="expertise-chevron"></i>
+                <i data-feather="chevron-down" class="w-4 h-4" id="expertise-chevron" style="transition: transform 0.3s ease;"></i>
               </button>
 
               <a href="about.html" class="nav-link text-slate-700 hover:text-blue-900">Actualités</a>
@@ -44,68 +44,71 @@ class CustomHeader extends HTMLElement {
           </div>
 
           <!-- MENU MOBILE -->
-          <div id="mobile-menu" class="md:hidden hidden pb-4">
-            <div class="flex flex-col space-y-1 pt-2">
-              <a href="index.html" class="text-slate-700 hover:text-blue-900 py-2">Cabinet</a>
+          <div id="mobile-menu" class="md:hidden hidden overflow-hidden"
+            style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s cubic-bezier(0.22,1,0.36,1);">
+            <div class="overflow-hidden">
+              <div class="flex flex-col space-y-1 pt-2 pb-4">
+                <a href="index.html" class="text-slate-700 hover:text-blue-900 py-2">Cabinet</a>
 
-              <!-- Expertise accordion mobile -->
-              <div>
-                <button id="mobile-expertise-trigger"
-                  class="w-full flex items-center justify-between text-slate-700 hover:text-blue-900 py-2 bg-transparent border-none cursor-pointer text-base">
-                  Expertise
-                  <i data-feather="chevron-down" class="w-4 h-4 transition-transform duration-300" id="mobile-expertise-chevron"></i>
-                </button>
-                <div id="mobile-expertise-panel"
-                  style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;">
-                  <div class="overflow-hidden">
-                    <div class="pl-3 border-l-2 border-blue-900/20 ml-1 mb-2 flex flex-col gap-1 mt-1">
-                      <a href="expertise.html#penal" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense pénale
-                      </a>
-                      <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
-                      </a>
-                      <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel
-                      </a>
-                      <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
-                      </a>
+                <!-- Expertise accordion mobile -->
+                <div>
+                  <button id="mobile-expertise-trigger"
+                    class="w-full flex items-center justify-between text-slate-700 hover:text-blue-900 py-2 bg-transparent border-none cursor-pointer text-base">
+                    Expertise
+                    <i data-feather="chevron-down" class="w-4 h-4" id="mobile-expertise-chevron" style="transition: transform 0.3s ease;"></i>
+                  </button>
+                  <div id="mobile-expertise-panel"
+                    style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;">
+                    <div class="overflow-hidden">
+                      <div class="pl-3 border-l-2 border-blue-900/20 ml-1 mb-2 flex flex-col gap-1 mt-1">
+                        <a href="expertise.html#penal" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense pénale
+                        </a>
+                        <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
+                        </a>
+                        <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel
+                        </a>
+                        <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
+                        </a>
 
-                      <a href="expertise.html#victimes" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="heart" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue 
-                      </a>
-                      <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
-                      </a>
-                      <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
-                      </a>
-                      <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                        <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
-                      </a>
-                      
+                        <a href="expertise.html#victimes" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="heart" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue 
+                        </a>
+                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
+                        </a>
+                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
+                        </a>
+                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
+                        </a>
+                        
 
-                      <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5 mt-1">
-                        <i data-feather="calendar" class="w-3.5 h-3.5 flex-shrink-0"></i>Prendre RDV
-                      </a>
-                      <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5">
-                        <i data-feather="message-square" class="w-3.5 h-3.5 flex-shrink-0"></i>Exposer ma situation
-                      </a>
-                      
+                        <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5 mt-1">
+                          <i data-feather="calendar" class="w-3.5 h-3.5 flex-shrink-0"></i>Prendre RDV
+                        </a>
+                        <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5">
+                          <i data-feather="message-square" class="w-3.5 h-3.5 flex-shrink-0"></i>Exposer ma situation
+                        </a>
+                        
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <a href="about.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
-              <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
-                <i data-feather="phone" class="w-4 h-4"></i>
-                06 81 66 98 06
-              </a>
-              <a href="contact.html" class="bg-blue-900 text-white px-4 py-2 rounded-xl font-semibold text-center hover:bg-blue-950 transition mt-1">
-                Prendre rendez-vous
-              </a>
+                <a href="about.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
+                <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
+                  <i data-feather="phone" class="w-4 h-4"></i>
+                  06 81 66 98 06
+                </a>
+                <a href="contact.html" class="bg-blue-900 text-white px-4 py-2 rounded-xl font-semibold text-center hover:bg-blue-950 transition mt-1">
+                  Prendre rendez-vous
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -128,25 +131,25 @@ class CustomHeader extends HTMLElement {
               <div class="grid grid-cols-1 md:grid-cols-[2fr_2fr_2fr] gap-10 ">
 
                 <div class="flex flex-col gap-4">
-                  <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
-                    style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
-                    Domaines d'intervention
-                  </p>
+                    <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
+                      style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
+                      Domaines d'intervention
+                    </p>
                     <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                       <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense pénale</span>
                     </a>
                     <a href="expertise.html#famille&international" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                       <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Familles & International</span>
                     </a>
                     
                     <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                       <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel</span>
                     </a>
                     <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                       <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité médicale</span>
                     </a>
                 </div>
@@ -157,27 +160,25 @@ class CustomHeader extends HTMLElement {
                     Urgences
                   </p>
                   <a href="expertise.html#gardeavue" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à vue</span>
                   </a>
                   <a href="expertise.html#comparution" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution immédiate</span>
                   </a>
-
                   <a href="expertise.html#audiences" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences pénales</span>
                   </a>
-
                   <a href="expertise.html#violencesconjugales" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                    <i class="w-4 h-4 text-amber-300/70 group-hover:text-amber-300 flex-shrink-0"></i>
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences conjugales</span>
                   </a>
                 </div>
 
                 <div class="flex flex-col gap-4">
-                  <p class="text-xs uppercase tracking-widest text-white/40 mb-1"
+                  <p class="text-xs uppercase tracking-widest text-white/40 mb-1 pl-4"
                     style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
                     Contact
                   </p>
@@ -221,33 +222,34 @@ class CustomHeader extends HTMLElement {
     // ── Mobile menu burger ──
     const btn  = this.querySelector("#mobile-menu-button");
     const mobileMenu = this.querySelector("#mobile-menu");
+    let menuOpen = false;
+
     btn.addEventListener("click", () => {
-      const isOpen = !mobileMenu.classList.contains("hidden");
-      mobileMenu.classList.toggle("hidden");
-      btn.innerHTML = isOpen
-        ? `<i data-feather="menu" class="w-6 h-6 text-slate-900"></i>`
-        : `<i data-feather="x" class="w-6 h-6 text-slate-900"></i>`;
+      menuOpen = !menuOpen;
+      mobileMenu.style.gridTemplateRows = menuOpen ? "1fr" : "0fr";
+      btn.innerHTML = menuOpen
+        ? `<i data-feather="x" class="w-6 h-6 text-slate-900"></i>`
+        : `<i data-feather="menu" class="w-6 h-6 text-slate-900"></i>`;
       if (window.feather) feather.replace();
     });
 
     // ── Mobile expertise accordion ──
     const mobileTrigger = this.querySelector("#mobile-expertise-trigger");
     const mobilePanel   = this.querySelector("#mobile-expertise-panel");
-    const mobileChevron = this.querySelector("#mobile-expertise-chevron");
     let mobileOpen = false;
     mobileTrigger.addEventListener("click", () => {
       mobileOpen = !mobileOpen;
       mobilePanel.style.gridTemplateRows = mobileOpen ? "1fr" : "0fr";
-      mobileChevron.style.transform = mobileOpen ? "rotate(180deg)" : "rotate(0deg)";
-      if (window.feather) feather.replace();
+      if (mobileChevronEl) mobileChevronEl.style.transform = mobileOpen ? "rotate(180deg)" : "rotate(0deg)";
     });
 
     // ── Desktop mega menu ──
     const trigger  = this.querySelector("#expertise-trigger");
     const megaMenu = this.querySelector("#mega-menu");
     const panel    = this.querySelector("#mega-panel");
-    const chevron  = this.querySelector("#expertise-chevron");
     let isOpen = false;
+
+    let chevronEl = null;
 
     let backdrop = document.getElementById("mega-backdrop-global");
     if (!backdrop) {
@@ -270,13 +272,12 @@ class CustomHeader extends HTMLElement {
     function openMega() {
       isOpen = true;
       megaMenu.classList.remove("hidden");
-      megaMenu.offsetHeight; // force reflow
+      megaMenu.offsetHeight;
       panel.style.transform        = "translateY(0)";
       panel.style.opacity          = "1";
       backdrop.style.opacity       = "1";
       backdrop.style.pointerEvents = "auto";
-      chevron.style.transform      = "rotate(180deg)";
-      if (window.feather) feather.replace();
+      if (chevronEl) chevronEl.style.transform = "rotate(180deg)";
     }
 
     function closeMega() {
@@ -285,7 +286,7 @@ class CustomHeader extends HTMLElement {
       panel.style.opacity          = "0";
       backdrop.style.opacity       = "0";
       backdrop.style.pointerEvents = "none";
-      chevron.style.transform      = "rotate(0deg)";
+      if (chevronEl) chevronEl.style.transform = "rotate(0deg)";
       setTimeout(() => { if (!isOpen) megaMenu.classList.add("hidden"); }, 350);
     }
 
@@ -293,7 +294,14 @@ class CustomHeader extends HTMLElement {
     backdrop.addEventListener("click", closeMega);
     document.addEventListener("keydown", e => { if (e.key === "Escape" && isOpen) closeMega(); });
 
+    // feather.replace() EN DERNIER — et on sélectionne les chevrons APRÈS
     if (window.feather) feather.replace();
+    chevronEl = this.querySelector("#expertise-chevron");
+    if (chevronEl) chevronEl.style.transition = "transform 0.3s ease";
+
+    // Idem pour mobile
+    const mobileChevronEl = this.querySelector("#mobile-expertise-chevron");
+    if (mobileChevronEl) mobileChevronEl.style.transition = "transform 0.3s ease";
   }
 }
 customElements.define("custom-header", CustomHeader);

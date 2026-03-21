@@ -1,178 +1,299 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expertises - Quentin Rapaud Avocat</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expertises - Quentin Rapaud Avocat</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script defer src="components/header.js"></script>
+  <script defer src="components/footer.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    #page-wrapper {
+      transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .45s ease, border-radius .45s ease, filter .45s ease;
+      transform-origin: center top;
+    }
+  </style>
 </head>
-<body class="font-sans bg-gray-50">
+<body class="font-sans bg-white overflow-x-hidden">
+
+  <div id="page-wrapper" class="bg-gray-50 min-h-screen">
     <custom-header></custom-header>
 
     <main class="container mx-auto px-4 py-12">
-        <!-- Page Header -->
-        <div class="mb-12">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Domaines d'expertise</h1>
-            <div class="w-20 h-1 bg-blue-800"></div>
+
+      <!-- Page Header -->
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Domaines d'expertise</h1>
+        <div class="w-20 h-1 bg-blue-800"></div>
+      </div>
+
+      <!-- Expertise Grid -->
+      <section class="mb-20">
+        <div class="grid md:grid-cols-2 gap-8 items-start">
+
+          <!-- Défense pénale -->
+          <div class="expertise-card bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i data-feather="shield" class="text-blue-900 w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900">Défense pénale</h2>
+            </div>
+            <p class="text-justify leading-relaxed mb-6">
+              Cabinet indépendant dédié à la défense de personnes morales ou physiques françaises et étrangères, il intervient essentiellement devant les Cours d'assises et tribunaux correctionnels sur l'ensemble du territoire.
+            </p>
+            <ul class="flex flex-col gap-1">
+              <li><button onclick="openModal('penal','gardeavue')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Garde à vue & Enquête</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','miseeexamen')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Examen & Détention Provisoire</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','assises')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Tribunal correctionnel & Cour d'assises</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','casier')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Effacement casier judiciaire & antécédents judiciaires</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','cyber')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Cyber harcèlement & E-réputation</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','amenagement')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Aménagement de peine</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','extradition')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Extradition & Mandat d'arrêt européen ou international</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+            </ul>
+          </div>
+
+          <!-- Victimes infractions pénales -->
+          <div class="expertise-card bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i data-feather="heart" class="text-blue-900 w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900">Victimes infractions pénales</h2>
+            </div>
+            <p class="text-justify text-slate-600 leading-relaxed mb-6">
+              Le cabinet assiste les victimes d'infraction dans leur combat judiciaire lors de la plainte ou de la constitution de partie civile et jusqu'au terme de la procédure d'indemnisation par la CIVI.
+            </p>
+            <ul class="flex flex-col gap-1">
+              <li><button onclick="openModal('victimes','plainte')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Dépôt de plainte</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Victime violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','civi')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">CIVI & SARVI</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+            </ul>
+          </div>
+
+          <!-- Famille & International -->
+          <div class="expertise-card bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i data-feather="users" class="text-blue-900 w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900">Famille & International</h2>
+            </div>
+            <p class="text-justifytext-slate-600 leading-relaxed mb-6">
+              Le Cabinet Quentin Rapaud intervient dans les dossiers internationaux de divorce et d'enlèvements d'enfant. Il apporte un soutien juridique solide et surtout une stratégie adaptée pour défendre les intérêts de la famille.
+            </p>
+            <ul class="flex flex-col gap-1">
+              <li><button onclick="openModal('famille','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','divorce')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorces – Divorces internationaux</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mutuel')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorce par consentement mutuel</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','separation')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Séparation hors mariage</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Droit des mineurs – Assistance éducative</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+            </ul>
+          </div>
+
+          <!-- Victime erreur médicale -->
+          <div class="expertise-card bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
+            <div class="flex items-center mb-6">
+              <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                <i data-feather="activity" class="text-blue-900 w-6 h-6"></i>
+              </div>
+              <h2 class="text-2xl font-bold text-slate-900">Victime erreur médicale</h2>
+            </div>
+            <p class="text-justifytext-slate-600 leading-relaxed mb-6">
+              Le Cabinet Quentin Rapaud assiste les victimes d'erreurs médicales tout au long de la procédure judiciaire du référé pour obtenir la désignation d'un expert, puis à la phase d'expertise, jusqu'à l'indemnisation intégrale des préjudices.
+            </p>
+            <ul class="flex flex-col gap-1">
+              <li><button onclick="openModal('medical','medecin')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en contact médecin conseil</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','refere')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Référé expertise médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','faute')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Erreur – Faute médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','accident')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Accident médical</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','infections')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Infections iatrogènes et nosocomiales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+            </ul>
+          </div>
+
         </div>
+      </section>
 
-        <!-- Expertise Grid -->
-        <section class="mb-20">
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Business Law -->
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                            <i data-feather="briefcase" class="text-blue-800 w-6 h-6"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Droit des affaires</h2>
-                    </div>
-                    <div class="prose text-gray-600 max-w-none">
-                        <p class="mb-4">
-                            Conseil et représentation des entreprises dans tous les aspects du droit commercial et des sociétés.
-                        </p>
-                        <ul class="list-disc pl-5 space-y-2 mb-6">
-                            <li>Création et structuration d'entreprises</li>
-                            <li>Contrats commerciaux et négociations</li>
-                            <li>Contentieux commercial et prud'homal</li>
-                            <li>Fusions et acquisitions</li>
-                            <li>Droit de la concurrence</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="text-blue-800 hover:text-blue-900 font-medium flex items-center gap-2">
-                        En savoir plus
-                        <i data-feather="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-
-                <!-- Real Estate Law -->
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                            <i data-feather="home" class="text-blue-800 w-6 h-6"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Droit immobilier</h2>
-                    </div>
-                    <div class="prose text-gray-600 max-w-none">
-                        <p class="mb-4">
-                            Expertise complète en droit immobilier pour les particuliers et les professionnels.
-                        </p>
-                        <ul class="list-disc pl-5 space-y-2 mb-6">
-                            <li>Transactions immobilières</li>
-                            <li>Baux commerciaux et contentieux locatif</li>
-                            <li>Copropriété et mitoyenneté</li>
-                            <li>Urbanisme et permis de construire</li>
-                            <li>Promotion immobilière</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="text-blue-800 hover:text-blue-900 font-medium flex items-center gap-2">
-                        En savoir plus
-                        <i data-feather="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-
-                <!-- Public Law -->
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                            <i data-feather="shield" class="text-blue-800 w-6 h-6"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Droit public</h2>
-                    </div>
-                    <div class="prose text-gray-600 max-w-none">
-                        <p class="mb-4">
-                            Conseil et contentieux en droit administratif et droit public économique.
-                        </p>
-                        <ul class="list-disc pl-5 space-y-2 mb-6">
-                            <li>Contentieux administratif</li>
-                            <li>Marchés publics et délégations de service public</li>
-                            <li>Droit de la fonction publique</li>
-                            <li>Expropriation et dommages de travaux publics</li>
-                            <li>Droit de l'environnement</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="text-blue-800 hover:text-blue-900 font-medium flex items-center gap-2">
-                        En savoir plus
-                        <i data-feather="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-
-                <!-- Additional Services -->
-                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                    <div class="flex items-center mb-6">
-                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
-                            <i data-feather="users" class="text-blue-800 w-6 h-6"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-gray-800">Services complémentaires</h2>
-                    </div>
-                    <div class="prose text-gray-600 max-w-none">
-                        <p class="mb-4">
-                            Autres domaines d'intervention et services proposés.
-                        </p>
-                        <ul class="list-disc pl-5 space-y-2 mb-6">
-                            <li>Droit des contrats</li>
-                            <li>Droit de la responsabilité civile</li>
-                            <li>Droit pénal des affaires</li>
-                            <li>Droit de la propriété intellectuelle</li>
-                            <li>Médiation et arbitrage</li>
-                        </ul>
-                    </div>
-                    <a href="contact.html" class="text-blue-800 hover:text-blue-900 font-medium flex items-center gap-2">
-                        En savoir plus
-                        <i data-feather="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
+      <!-- Approach Section -->
+      <section class="bg-blue-900 text-white p-12 rounded-3xl mb-20">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl font-bold mb-6">Notre approche</h2>
+          <p class="text-xl mb-8 opacity-90">
+            Nous proposons une approche sur mesure, adaptée aux besoins spécifiques de chaque client,
+            avec une attention particulière portée à la qualité du conseil et à la réactivité.
+          </p>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div>
+              <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <i data-feather="clock" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Réactivité</h3>
+              <p class="opacity-80">Réponses rapides et solutions efficaces</p>
             </div>
-        </section>
-
-        <!-- Approach Section -->
-        <section class="bg-blue-800 text-white p-12 rounded-lg mb-20">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-6">Notre approche</h2>
-                <p class="text-xl mb-8 opacity-90">
-                    Nous proposons une approche sur mesure, adaptée aux besoins spécifiques de chaque client, 
-                    avec une attention particulière portée à la qualité du conseil et à la réactivité.
-                </p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div>
-                        <div class="bg-white bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                            <i data-feather="clock" class="w-8 h-8"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Réactivité</h3>
-                        <p class="opacity-80">Réponses rapides et solutions efficaces</p>
-                    </div>
-                    <div>
-                        <div class="bg-white bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                            <i data-feather="dollar-sign" class="w-8 h-8"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Transparence</h3>
-                        <p class="opacity-80">Honoraires clairs et prévisibles</p>
-                    </div>
-                    <div>
-                        <div class="bg-white bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
-                            <i data-feather="star" class="w-8 h-8"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Excellence</h3>
-                        <p class="opacity-80">Expertise pointue et rigueur professionnelle</p>
-                    </div>
-                </div>
+            <div>
+              <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <i data-feather="dollar-sign" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Transparence</h3>
+              <p class="opacity-80">Honoraires clairs et prévisibles</p>
             </div>
-        </section>
+            <div>
+              <div class="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <i data-feather="star" class="w-8 h-8"></i>
+              </div>
+              <h3 class="text-xl font-bold mb-2">Excellence</h3>
+              <p class="opacity-80">Expertise pointue et rigueur professionnelle</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <custom-footer></custom-footer>
+  </div>
 
-    <script src="components/header.js"></script>
-    <script src="components/footer.js"></script>
-    <script src="script.js"></script>
-    <script>feather.replace();</script>
+  <!-- BOTTOM SHEET MODAL -->
+  <div id="modal-overlay" class="hidden fixed inset-0 z-50"
+    style="background:rgba(15,23,42,0.6); opacity:0; transition: opacity .3s ease;"
+    onclick="if(event.target===this) closeModal()">
+
+    <div id="modal-panel" class="fixed inset-4 md:inset-10 bg-white rounded-3xl overflow-y-auto"
+        style="transform: scale(0.3); opacity: 0; transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease; scrollbar-width:none;">
+      
+        <div class="flex justify-center pt-4 pb-2">
+        <div class="w-10 h-1 rounded-full bg-slate-200"></div>
+      </div>
+
+      <div class="p-6 pb-10">
+        <div class="flex items-start justify-between mb-6">
+          <div class="flex items-center gap-4">
+            <div id="modal-icon" class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"></div>
+            <h2 id="modal-title" class="text-xl font-bold text-slate-900"></h2>
+          </div>
+          <button onclick="closeModal()" class="p-2 rounded-xl hover:bg-slate-100 transition text-slate-400 hover:text-slate-700 flex-shrink-0">
+            <i data-feather="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div id="modal-detail" class="text-justify text-slate-600 leading-relaxed text-sm mb-8"></div>
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white px-6 py-3 rounded-xl font-semibold transition">
+          Prendre contact
+          <i data-feather="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (window.feather) feather.replace();
+    });
+
+    const modalData = {
+      penal: {
+        gardeavue: {
+          icon: 'shield',
+          title: 'Garde à vue & Enquête',
+          detail: `<strong>CONVOCATION AU COMMISSARIAT ?</strong><br><br>
+          L'Audition libre est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
+          La présence d'un avocat est nécessaire pour éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
+          <strong>UN PROCHE EN GARDE A VUE ?</strong><br><br>
+          La Garde à Vue est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
+          Grâce au procès-verbal de placement en GAV et de notifications des droits, l'avocat peut déterminer l'épaisseur du dossier des enquêteurs à l'encontre du gardé à vue. Cela permet de conseiller au mieux la personne lors de l'entretien confidentiel préalable à l'audition et surtout de lui recommander ou non de faire usage de son droit au silence.<br><br>
+          L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure.`
+        },
+        miseeexamen: { icon: 'shield', title: 'Mise en Examen & Détention Provisoire', detail: `À compléter.` },
+        assises:     { icon: 'shield', title: 'Tribunal correctionnel & Cour d\'assises', detail: `À compléter.` },
+        violences:   { icon: 'shield', title: 'Violences conjugales', detail: `À compléter.` },
+        casier:      { icon: 'shield', title: 'Effacement casier judiciaire & antécédents judiciaires', detail: `À compléter.` },
+        cyber:       { icon: 'shield', title: 'Cyber harcèlement & E-réputation', detail: `À compléter.` },
+        amenagement: { icon: 'shield', title: 'Aménagement de peine', detail: `À compléter.` },
+        extradition: { icon: 'shield', title: 'Extradition & Mandat d\'arrêt européen ou international', detail: `À compléter.` }
+      },
+      victimes: {
+        plainte:   { icon: 'heart', title: 'Dépôt de plainte', detail: `À compléter.` },
+        violences: { icon: 'heart', title: 'Victime violences conjugales', detail: `À compléter.` },
+        civi:      { icon: 'heart', title: 'CIVI & SARVI', detail: `À compléter.` }
+      },
+      famille: {
+        violences:  { icon: 'users', title: 'Violences conjugales', detail: `À compléter.` },
+        divorce:    { icon: 'users', title: 'Divorces – Divorces internationaux', detail: `À compléter.` },
+        mutuel:     { icon: 'users', title: 'Divorce par consentement mutuel', detail: `À compléter.` },
+        separation: { icon: 'users', title: 'Séparation hors mariage', detail: `À compléter.` },
+        mineurs:    { icon: 'users', title: 'Droit des mineurs – Assistance éducative', detail: `À compléter.` }
+      },
+      medical: {
+        medecin:    { icon: 'activity', title: 'Mise en contact médecin conseil', detail: `À compléter.` },
+        refere:     { icon: 'activity', title: 'Référé expertise médicale', detail: `À compléter.` },
+        faute:      { icon: 'activity', title: 'Erreur – Faute médicale', detail: `À compléter.` },
+        accident:   { icon: 'activity', title: 'Accident médical', detail: `À compléter.` },
+        infections: { icon: 'activity', title: 'Infections iatrogènes et nosocomiales', detail: `À compléter.` }
+      }
+    };
+
+    const pageWrapper = document.getElementById('page-wrapper');
+
+    function openModal(cardKey, itemKey) {
+      const data = modalData[cardKey]?.[itemKey];
+      if (!data) return;
+
+      document.getElementById('modal-title').textContent = data.title;
+      document.getElementById('modal-icon').innerHTML = `<i data-feather="${data.icon}" class="text-blue-900 w-6 h-6"></i>`;
+      document.getElementById('modal-detail').innerHTML = data.detail;
+
+      const overlay = document.getElementById('modal-overlay');
+      const panel   = document.getElementById('modal-panel');
+
+      panel.style.transition = 'none';
+      panel.style.transform  = 'scale(0.3)';
+      panel.style.opacity    = '0';
+
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            overlay.style.opacity      = '1';
+            panel.style.transition     = 'transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease';
+            panel.style.transform      = 'scale(1)';
+            panel.style.opacity        = '1';
+            pageWrapper.style.transform    = 'scale(0.92) translateY(-16px)';
+            pageWrapper.style.opacity      = '0.45';
+            pageWrapper.style.borderRadius = '16px';
+            pageWrapper.style.filter       = 'blur(2px)';
+        });
+        });
+
+      if (window.feather) feather.replace();
+    }
+
+    function closeModal() {
+      const overlay = document.getElementById('modal-overlay');
+      const panel   = document.getElementById('modal-panel');
+
+      overlay.style.opacity          = '0';
+      panel.style.transform          = 'scale(0.3)';
+      pageWrapper.style.transform    = 'scale(1) translateY(0)';
+      pageWrapper.style.opacity      = '1';
+      pageWrapper.style.borderRadius = '0';
+      pageWrapper.style.filter       = 'blur(0px)';
+      document.body.style.overflow   = '';
+
+      setTimeout(() => overlay.classList.add('hidden'), 450);
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+
 </body>
 </html>
-                                                                                                                                                                                                                                                                        <!--
-                                                                                                                                                                                                                                                                        Site créé et publié par Julien / UserLaBriq
-                                                                                                                                                                                                                                                                        Repository officiel : https://github.com/UserLaBriq/QR
-                                                                                                                                                                                                                                                                        Année: 2026
-                                                                                                                                                                                                                                                                        -->
+<!--
+Site créé et publié par Julien / UserLaBriq
+Repository officiel : https://github.com/UserLaBriq/QR
+Année: 2026
+-->

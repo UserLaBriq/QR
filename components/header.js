@@ -68,7 +68,7 @@ class CustomHeader extends HTMLElement {
                           <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
                         </a>
                         <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel
+                          <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel & Victimes
                         </a>
                         <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
@@ -146,7 +146,7 @@ class CustomHeader extends HTMLElement {
                     
                     <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                       <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel</span>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel & Victimes</span>
                     </a>
                     <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                       <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>

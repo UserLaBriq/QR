@@ -20,6 +20,14 @@
 </head>
 <body class="font-sans bg-white overflow-x-hidden">
 
+  <!-- LOADER -->
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-monogram">QR</div>
+    <div class="loader-name">Quentin Rapaud</div>
+    <div class="loader-subtitle">Avocat au Barreau de Paris</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
   <div id="page-wrapper" class="bg-gray-50 min-h-screen">
     <custom-header></custom-header>
 
@@ -199,21 +207,98 @@
         gardeavue: {
           icon: 'shield',
           title: 'Garde à vue & Enquête',
-          detail: `<strong>CONVOCATION AU COMMISSARIAT ?</strong><br><br>
-          L'Audition libre est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
-          La présence d'un avocat est nécessaire pour éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
-          <strong>UN PROCHE EN GARDE A VUE ?</strong><br><br>
-          La Garde à Vue est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
-          Grâce au procès-verbal de placement en GAV et de notifications des droits, l'avocat peut déterminer l'épaisseur du dossier des enquêteurs à l'encontre du gardé à vue. Cela permet de conseiller au mieux la personne lors de l'entretien confidentiel préalable à l'audition et surtout de lui recommander ou non de faire usage de son droit au silence.<br><br>
-          L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure.`
+          detail: `
+            <strong>CONVOCATION AU COMMISSARIAT ?</strong><br><br>
+            L'Audition libre est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
+            La présence d'un avocat est nécessaire pour éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
+            <strong>UN PROCHE EN GARDE A VUE ?</strong><br><br>
+            La Garde à Vue est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
+            Grâce au procès-verbal de placement en GAV et de notifications des droits, l'avocat peut déterminer l'épaisseur du dossier des enquêteurs à l'encontre du gardé à vue (flagrance, préliminaire, commission rogatoire). Cela permet de conseiller au mieux la personne lors de l'entretien confidentiel préalable à l'audition et surtout de lui recommander ou non de faire usage de son droit au silence.<br><br>
+            L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure.
+          `
         },
-        miseeexamen: { icon: 'shield', title: 'Mise en Examen & Détention Provisoire', detail: `À compléter.` },
-        assises:     { icon: 'shield', title: 'Tribunal correctionnel & Cour d\'assises', detail: `À compléter.` },
-        violences:   { icon: 'shield', title: 'Violences conjugales', detail: `À compléter.` },
-        casier:      { icon: 'shield', title: 'Effacement casier judiciaire & antécédents judiciaires', detail: `À compléter.` },
-        cyber:       { icon: 'shield', title: 'Cyber harcèlement & E-réputation', detail: `À compléter.` },
-        amenagement: { icon: 'shield', title: 'Aménagement de peine', detail: `À compléter.` },
-        extradition: { icon: 'shield', title: 'Extradition & Mandat d\'arrêt européen ou international', detail: `À compléter.` }
+        miseeexamen: {
+          icon: 'shield',
+          title: 'Mise en Examen & Détention Provisoire',
+          detail: `
+            L'Interrogatoire de Première Comparution est un interrogatoire devant un juge d'instruction qui décide de placer ou non l'individu en examen. Cela signifie que l'enquête va se poursuivre à son encontre pour une durée de 12 mois minimum en matière correctionnelle, durée qui peut s'étendre sur plusieurs années en matière criminelle. L'instruction permet aux enquêteurs de disposer de pouvoirs étendus.<br><br>
+            L'enjeu est donc de déterminer si l'individu sera libre le temps de l'instruction ou en détention provisoire, le Cabinet se charge au cours de l'instruction tant du contentieux de la détention provisoire que celui des nullités de procédure.<br><br>
+            Durant cette période d'investigation, le Cabinet Quentin Rapaud vous accompagne en adoptant une stratégie proactive afin d'influencer le dossier. Pour ce faire, il effectue de nombreuses demandes d'actes qui permettent d'éclairer des zones d'ombres soit pour prouver l'innocence du mis en examen ou bien pour donner leur juste valeur et proportion aux faits reprochés. Engagé pour la liberté de ses clients, il effectue également des demandes de mise en liberté.
+          `
+        },
+        assises: {
+          icon: 'shield',
+          title: 'Tribunal correctionnel & Cour d\'assises',
+          detail: `
+            <strong>PROCÈS COUR D'ASSISES</strong><br><br>
+            Arène où l'individu est accusé des crimes que la société considère comme les plus graves, parfois même les plus abjectes. Un procès d'assise est empreint d'émotions fortes et s'avère souvent violent. Il s'agit d'une véritable bataille tant juridique que physique qu'il convient de mener accompagné d'un avocat pugnace et combatif habitué des assises.<br><br>
+            Le Cabinet Quentin Rapaud intervient régulièrement devant les Cours d'assises de la région parisienne et sur tout le territoire français. Il se distingue à la fois par les stratégies qu'il met en place que par son efficacité et les résultats obtenus.<br><br>
+            <strong>UN PROCHE DÉFÉRÉ EN COMPARUTION IMMÉDIATE ?</strong><br><br>
+            La comparution immédiate est une procédure rapide par laquelle l'individu est directement jugé à la suite de sa garde à vue. La personne comparaît le jour même devant le tribunal correctionnel. Le prévenu doit accepter d'être jugé immédiatement. Il peut solliciter un renvoi de droit pour préparer sa défense. Cela l'expose cependant à un risque de détention provisoire.<br><br>
+            En 2025, 40% des peines prononcées en comparution immédiate étaient des peines d'emprisonnement ferme. Il s'agit donc d'une procédure d'urgence aux enjeux cruciaux puisque les risques d'incarcération sont importants.<br><br>
+            Si l'un de vos proches est déféré en comparution immédiate, il faut contacter le Cabinet en urgence. Habitué à la pratique des comparutions immédiates, Quentin Rapaud vous assure une défense réactive, efficace et surtout pugnace.<br><br>
+            <strong>CONVOQUÉ DEVANT LE TRIBUNAL CORRECTIONNEL</strong><br><br>
+            La convocation devant le Tribunal correctionnel permet de prendre le temps de connaître en profondeur le dossier et de concevoir une stratégie de défense efficace. L'audience correctionnelle est un endroit d'affrontement et de confrontation. Il est essentiel d'être préparé et assisté par un avocat.<br><br>
+            Au regard des enjeux inhérents à la matière pénale, le Cabinet Quentin Rapaud vous prépare à l'audience correctionnelle lors de rendez-vous au cours desquels des conseils stratégiques sont apportés sur la manière de répondre aux questions et sur le comportement à adopter à la barre.
+          `
+        },
+        violences: {
+          icon: 'shield',
+          title: 'Violences conjugales',
+          detail: `
+            Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir urgemment tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de violences physiques, psychologiques (harcèlement, pressions morales, insultes, propos dégradants) ou sexuelles.<br><br>
+            En raison des conséquences graves qui peuvent résulter des procédures familiales d'ordonnance de protection ou pénales en garde à vue ou devant les chambres correctionnelles du Tribunal — expulsion du domicile conjugal, autorité parentale exclusive, interdiction de contact avec le partenaire et/ou les enfants — le Cabinet Quentin Rapaud intervient également en défense lorsque ces procédures sont instrumentalisées à des fins déloyales.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté tant sur le plan juridique que psychologique pour réunir les pièces nécessaires afin d'assurer une défense rapide et efficace. Grâce à ses compétences en droit pénal comme en droit de la famille, le Cabinet Quentin Rapaud se distingue par les stratégies pluridisciplinaires qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
+          `
+        },
+        casier: {
+          icon: 'shield',
+          title: 'Effacement casier judiciaire & antécédents judiciaires',
+          detail: `
+            <strong>BESOIN D'EFFACER VOTRE CASIER JUDICIAIRE ?</strong><br><br>
+            Le casier judiciaire est un fichier informatisé recensant l'ensemble des condamnations pénales prononcées par les autorités judiciaires. Il se compose de trois bulletins, comptabilisant chacun certaines des condamnations et dont l'accès est plus ou moins large.<br><br>
+            Le <strong>bulletin n°1 (B1)</strong> correspond au relevé intégral des condamnations pénales. Il n'est accessible qu'aux autorités judiciaires.<br><br>
+            Le <strong>bulletin n°2 (B2)</strong> est une version épurée du B1. Il n'est accessible qu'à certaines autorités administratives ou militaires et aux employeurs exerçant une activité auprès des mineurs.<br><br>
+            Le <strong>bulletin n°3 (B3)</strong> présente les condamnations les plus graves prononcées pour crime ou délit. Un extrait peut vous être demandé lors de certaines démarches administratives ou recherches d'emploi.<br><br>
+            La présence d'une mention au casier judiciaire peut mettre à néant l'accès à certaines professions, à la nationalité française ou à un titre de séjour.<br><br>
+            Le Cabinet Quentin Rapaud vous assiste pour analyser votre situation, sécuriser les démarches et initier une procédure d'effacement devant le tribunal compétent.<br><br>
+            <strong>MENTIONS AU FICHIER DES ANTÉCÉDENTS JUDICIAIRES (TAJ)</strong><br><br>
+            Le TAJ est un fichier de police judiciaire qui regroupe toutes les informations concernant les personnes suspectées au cours d'une enquête ainsi que sur les victimes. Les autorités judiciaires et administratives peuvent y accéder pour des enquêtes de police ou des enquêtes administratives avant de délivrer des autorisations d'exercer certaines professions ou d'accorder la nationalité française ou un titre de séjour.<br><br>
+            Il est donc essentiel de vérifier les données personnelles de la fiche TAJ, et au besoin en solliciter la suppression avant de demander un titre de séjour ou la nationalité française.
+          `
+        },
+        cyber: {
+          icon: 'shield',
+          title: 'Cyber harcèlement & E-réputation',
+          detail: `
+            <strong>VICTIME DE CYBER-HARCÈLEMENT ?</strong><br><br>
+            Pour certains, l'anonymat de l'écran encourage des comportements répréhensibles. Le monde numérique devient alors un environnement dangereux avec des conséquences significatives dans la vie quotidienne, surtout pour les plus jeunes. Le harcèlement en ligne s'effectue via internet (forum, chat, jeux vidéos en ligne, blog) ou principalement sur les réseaux sociaux.<br><br>
+            Le Code pénal réprime ce genre de comportement, notamment lorsqu'ils ont été commis par l'utilisation d'un service de communication au public en ligne, ou par le biais d'un support numérique ou électronique.<br><br>
+            Face à ce genre de comportement, il faut agir rapidement pour éviter la disparition des preuves. Le Cabinet Quentin Rapaud a l'habitude de travailler avec des huissiers de justice pour réaliser des constats.<br><br>
+            <strong>CYBERATTAQUES & E-RÉPUTATION</strong><br><br>
+            À l'ère du tout virtuel, les cyberattaques demeurent en pleine recrudescence. De nombreuses attaques ciblent les particuliers mais aussi les entreprises et les administrations. Les attaques visent à obtenir des informations personnelles afin de les exploiter ou de les revendre (données bancaires, identifiants de connexion, etc.).<br><br>
+            Les plus connues demeurent le phishing, le ransomware, l'infection par spyware/malware, le défacement de site ou encore le DDoS. En 2025, 75% des entreprises françaises étaient touchées par une cyberattaque.
+          `
+        },
+        amenagement: {
+          icon: 'shield',
+          title: 'Aménagement de peine',
+          detail: `
+            L'aménagement de peine est un mode alternatif d'exécution d'une peine de prison ferme. Il vise un retour progressif à la liberté en favorisant l'accompagnement de la personne condamnée. L'objectif essentiel est la réinsertion sociale de l'individu afin de prévenir toute récidive.<br><br>
+            <strong>AMÉNAGEMENT AB INITIO</strong><br><br>
+            Une peine d'emprisonnement ferme n'est pas toujours synonyme d'incarcération. Depuis mars 2020, les peines d'emprisonnement ferme inférieures ou égales à 1 an peuvent être aménagées à la barre, directement par la juridiction de jugement, sous la forme d'une détention à domicile sous surveillance électronique, d'une semi-liberté ou du placement à l'extérieur (article 132-25 du Code pénal).<br><br>
+            <strong>AMÉNAGEMENT PEINES COURTES</strong><br><br>
+            Si la juridiction de jugement n'a pas prononcé un mandat de dépôt différé, il est toujours possible de solliciter l'aménagement devant le JAP avec le plafond d'une peine d'emprisonnement ferme d'un maximum de 1 an (article 723-15 du CPP).<br><br>
+            Concernant les personnes déjà incarcérées pour une courte peine (2 ans maximum ou il reste deux ans à exécuter), il est possible de solliciter l'exécution sous le régime de la détention à domicile sous surveillance électronique, de la semi-liberté ou du placement à l'extérieur.<br><br>
+            <strong>AMÉNAGEMENT PEINES LONGUES</strong><br><br>
+            Pour les peines d'emprisonnement ferme au-delà de 2 années, il est possible d'aménager le temps de la peine via la libération conditionnelle (art. 729 du CPP) ou la libération conditionnelle de fin de peine pour les peines de plus de 5 ans (article 730-1 du CPP). Pour les peines inférieures à 5 ans, il est également possible d'aménager sous le régime de la libération sous contrainte (article 720 du CPP).
+          `
+        },
+        extradition: {
+          icon: 'shield',
+          title: 'Extradition & Mandat d\'arrêt européen ou international',
+          detail: `À compléter.`
+        }
       },
       victimes: {
         plainte:   { icon: 'heart', title: 'Dépôt de plainte', detail: `À compléter.` },

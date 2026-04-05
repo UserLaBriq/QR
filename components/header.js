@@ -65,26 +65,26 @@ class CustomHeader extends HTMLElement {
                           <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense pénale
                         </a>
                         <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="file-text" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
+                          <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
                         </a>
                         <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="briefcase" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel & Victimes
+                          <i data-feather="activity" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel & Victimes
                         </a>
                         <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
+                          <i data-feather="plus-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
                         </a>
 
                         <a href="expertise.html#victimes" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="heart" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue 
+                          <i data-feather="lock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue
                         </a>
                         <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
+                          <i data-feather="alert-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
                         </a>
                         <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
+                          <i data-feather="mic" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
                         </a>
                         <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="globe" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
+                          <i data-feather="alert-triangle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
                         </a>
                         
 

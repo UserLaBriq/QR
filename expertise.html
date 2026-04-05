@@ -41,7 +41,7 @@
 
       <!-- Expertise Grid -->
       <section class="mb-20">
-        <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
 
           <!-- Défense pénale -->
           <div class="expertise-card bg-white p-8 rounded-2xl border border-slate-100 shadow-sm">
@@ -49,7 +49,7 @@
               <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <i data-feather="shield" class="text-blue-900 w-6 h-6"></i>
               </div>
-              <h2 class="text-2xl font-bold text-slate-900">Défense pénale</h2>
+              <h2 class="text-2xl font-bold text-slate-900">Défense Pénale</h2>
             </div>
             <p class="text-justify leading-relaxed mb-6">
               Cabinet indépendant dédié à la défense de personnes morales ou physiques françaises et étrangères, il intervient essentiellement devant les Cours d'assises et tribunaux correctionnels sur l'ensemble du territoire.
@@ -166,29 +166,39 @@
     <custom-footer></custom-footer>
   </div>
 
-  <!-- BOTTOM SHEET MODAL -->
-  <div id="modal-overlay" class="hidden fixed inset-0 z-50"
-    style="background:rgba(15,23,42,0.6); opacity:0; transition: opacity .3s ease;"
+  <!-- MODAL -->
+  <div id="modal-overlay" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 md:p-10"
+    style="background:rgba(15,23,42,0.35); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:0; transition: opacity .3s ease;"
     onclick="if(event.target===this) closeModal()">
 
-    <div id="modal-panel" class="fixed inset-4 md:inset-10 bg-white rounded-3xl overflow-y-auto"
-        style="transform: scale(0.3); opacity: 0; transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease; scrollbar-width:none;">
-      
-        <div class="flex justify-center pt-4 pb-2">
-        <div class="w-10 h-1 rounded-full bg-slate-200"></div>
+    <div id="modal-panel" class="w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl"
+      style="
+        transform: scale(0.3);
+        opacity: 0;
+        transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;
+        scrollbar-width: none;
+        background: rgba(255,255,255,0.78);
+        backdrop-filter: blur(28px) saturate(200%);
+        -webkit-backdrop-filter: blur(28px) saturate(200%);
+        border: 1px solid rgba(255,255,255,0.6);
+        box-shadow: 0 12px 40px rgba(15,23,42,0.2), inset 0 1px 0 rgba(255,255,255,0.9);
+      ">
+
+      <div class="flex justify-center pt-4 pb-2">
+        <div class="w-10 h-1 rounded-full bg-slate-300/60"></div>
       </div>
 
       <div class="p-6 pb-10">
         <div class="flex items-start justify-between mb-6">
           <div class="flex items-center gap-4">
-            <div id="modal-icon" class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"></div>
+            <div id="modal-icon" class="bg-blue-900/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"></div>
             <h2 id="modal-title" class="text-xl font-bold text-slate-900"></h2>
           </div>
-          <button onclick="closeModal()" class="p-2 rounded-xl hover:bg-slate-100 transition text-slate-400 hover:text-slate-700 flex-shrink-0">
+          <button onclick="closeModal()" class="p-2 rounded-xl hover:bg-black/5 transition text-slate-400 hover:text-slate-700 flex-shrink-0">
             <i data-feather="x" class="w-5 h-5"></i>
           </button>
         </div>
-        <div id="modal-detail" class="text-justify text-slate-600 leading-relaxed text-sm mb-8"></div>
+        <div id="modal-detail" class="text-justify text-slate-700 leading-relaxed text-sm mb-8"></div>
         <a href="contact.html" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white px-6 py-3 rounded-xl font-semibold transition">
           Prendre contact
           <i data-feather="arrow-right" class="w-4 h-4"></i>
@@ -208,90 +218,96 @@
           icon: 'shield',
           title: 'Garde à vue & Enquête',
           detail: `
-            <strong>CONVOCATION AU COMMISSARIAT ?</strong><br><br>
-            L'Audition libre est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
-            La présence d'un avocat est nécessaire pour éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
-            <strong>UN PROCHE EN GARDE A VUE ?</strong><br><br>
-            La Garde à Vue est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
+            <div style="text-align:center"><strong>CONVOCATION AU COMMISSARIAT ?</strong></div><br>
+            <strong>L'Audition libre</strong> est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
+            La présence d'un avocat est nécessaire pour <strong>éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue</strong>. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
+            <div style="text-align:center"><strong>UN PROCHE EN GARDE A VUE ?</strong></div><br>
+            <strong>La Garde à Vue</strong> est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
             Grâce au procès-verbal de placement en GAV et de notifications des droits, l'avocat peut déterminer l'épaisseur du dossier des enquêteurs à l'encontre du gardé à vue (flagrance, préliminaire, commission rogatoire). Cela permet de conseiller au mieux la personne lors de l'entretien confidentiel préalable à l'audition et surtout de lui recommander ou non de faire usage de son droit au silence.<br><br>
-            L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure.
+            <strong>L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure</strong>.
           `
         },
         miseeexamen: {
           icon: 'shield',
           title: 'Mise en Examen & Détention Provisoire',
           detail: `
-            L'Interrogatoire de Première Comparution est un interrogatoire devant un juge d'instruction qui décide de placer ou non l'individu en examen. Cela signifie que l'enquête va se poursuivre à son encontre pour une durée de 12 mois minimum en matière correctionnelle, durée qui peut s'étendre sur plusieurs années en matière criminelle. L'instruction permet aux enquêteurs de disposer de pouvoirs étendus.<br><br>
-            L'enjeu est donc de déterminer si l'individu sera libre le temps de l'instruction ou en détention provisoire, le Cabinet se charge au cours de l'instruction tant du contentieux de la détention provisoire que celui des nullités de procédure.<br><br>
-            Durant cette période d'investigation, le Cabinet Quentin Rapaud vous accompagne en adoptant une stratégie proactive afin d'influencer le dossier. Pour ce faire, il effectue de nombreuses demandes d'actes qui permettent d'éclairer des zones d'ombres soit pour prouver l'innocence du mis en examen ou bien pour donner leur juste valeur et proportion aux faits reprochés. Engagé pour la liberté de ses clients, il effectue également des demandes de mise en liberté.
+            <strong>L'Interrogatoire de Première Comparution</strong> est un interrogatoire devant un juge d'instruction qui décide de placer ou non l'individu en examen. Cela signifie que <strong>l'enquête va se poursuivre</strong> à son encontre pour une durée de 12 mois minimum en matière correctionnelle, durée qui peut s'étendre sur plusieurs années en matière criminelle. L'instruction permet aux enquêteurs de disposer de pouvoirs étendus.<br><br>
+            L'enjeu est donc de déterminer si l'individu sera libre le temps de l'instruction ou en détention provisoire, le Cabinet se charge au cours de l'instruction tant du contentieux de la <strong>détention provisoire</strong> que celui des <strong>nullités de procédure</strong>.<br><br>
+            Durant cette période d'investigation, le Cabinet Quentin Rapaud vous accompagne en adoptant une <strong>stratégie proactive</strong> afin d'influencer le dossier. Pour ce faire, il effectue de nombreuses <strong>demandes d'actes</strong> qui permettent d'éclairer des zones d'ombres soit pour prouver l'innocence du mis en examen ou bien pour donner leur juste valeur et proportion aux faits reprochés. Engagé pour la liberté de ses clients, il effectue également des <strong>demandes de mise en liberté</strong>.
           `
         },
         assises: {
           icon: 'shield',
           title: 'Tribunal correctionnel & Cour d\'assises',
           detail: `
-            <strong>PROCÈS COUR D'ASSISES</strong><br><br>
-            Arène où l'individu est accusé des crimes que la société considère comme les plus graves, parfois même les plus abjectes. Un procès d'assise est empreint d'émotions fortes et s'avère souvent violent. Il s'agit d'une véritable bataille tant juridique que physique qu'il convient de mener accompagné d'un avocat pugnace et combatif habitué des assises.<br><br>
-            Le Cabinet Quentin Rapaud intervient régulièrement devant les Cours d'assises de la région parisienne et sur tout le territoire français. Il se distingue à la fois par les stratégies qu'il met en place que par son efficacité et les résultats obtenus.<br><br>
-            <strong>UN PROCHE DÉFÉRÉ EN COMPARUTION IMMÉDIATE ?</strong><br><br>
-            La comparution immédiate est une procédure rapide par laquelle l'individu est directement jugé à la suite de sa garde à vue. La personne comparaît le jour même devant le tribunal correctionnel. Le prévenu doit accepter d'être jugé immédiatement. Il peut solliciter un renvoi de droit pour préparer sa défense. Cela l'expose cependant à un risque de détention provisoire.<br><br>
-            En 2025, 40% des peines prononcées en comparution immédiate étaient des peines d'emprisonnement ferme. Il s'agit donc d'une procédure d'urgence aux enjeux cruciaux puisque les risques d'incarcération sont importants.<br><br>
+            <div style="text-align:center"><strong>PROCÈS COUR D'ASSISES</strong></div><br>
+            Arène où l'individu est accusé des crimes que la société considère comme les plus graves, parfois même les plus abjectes. Un procès d'assise est empreint d'émotions fortes et s'avère souvent violent. Il s'agit d'une <strong>véritable bataille tant juridique que physique</strong> qu'il convient de mener accompagné d'un avocat pugnace et combatif habitué des assises.<br><br>
+            Le Cabinet Quentin Rapaud intervient régulièrement devant les Cours d'assises de la région parisienne et sur tout le territoire français. Il se distingue à la fois par les <strong>stratégies</strong> qu'il met en place que par son <strong>efficacité</strong> et les <strong>résultats</strong> obtenus.<br><br>
+            <div style="text-align:center"><strong>UN PROCHE DÉFÉRÉ EN COMPARUTION IMMÉDIATE ?</strong></div><br>
+            <strong>La comparution immédiate</strong> est une procédure rapide par laquelle l'individu est directement jugé à la suite de sa garde à vue. La personne comparaît le jour même devant le tribunal correctionnel. Le prévenu doit accepter d'être jugé immédiatement. Il peut solliciter un renvoi de droit pour préparer sa défense. Cela l'expose cependant à un risque de détention provisoire.<br><br>
+            En 2025, 40% des peines prononcées en comparution immédiate étaient des peines d'emprisonnement ferme. Il s'agit donc d'une <strong>procédure d'urgence aux enjeux cruciaux</strong> puisque les risques d'incarcération sont importants.<br><br>
             Si l'un de vos proches est déféré en comparution immédiate, il faut contacter le Cabinet en urgence. Habitué à la pratique des comparutions immédiates, Quentin Rapaud vous assure une défense réactive, efficace et surtout pugnace.<br><br>
-            <strong>CONVOQUÉ DEVANT LE TRIBUNAL CORRECTIONNEL</strong><br><br>
-            La convocation devant le Tribunal correctionnel permet de prendre le temps de connaître en profondeur le dossier et de concevoir une stratégie de défense efficace. L'audience correctionnelle est un endroit d'affrontement et de confrontation. Il est essentiel d'être préparé et assisté par un avocat.<br><br>
-            Au regard des enjeux inhérents à la matière pénale, le Cabinet Quentin Rapaud vous prépare à l'audience correctionnelle lors de rendez-vous au cours desquels des conseils stratégiques sont apportés sur la manière de répondre aux questions et sur le comportement à adopter à la barre.
+            <div style="text-align:center"><strong>CONVOQUÉ DEVANT LE TRIBUNAL CORRECTIONNEL</strong></div><br>
+            La convocation devant le Tribunal correctionnel permet de prendre le temps de connaître en profondeur le dossier et de concevoir une stratégie de défense efficace. L'audience correctionnelle est <strong>un endroit d'affrontement et de confrontation</strong>. Il est essentiel d'être préparé et assisté par un avocat.<br><br>
+            Au regard des enjeux inhérents à la matière pénale, le Cabinet Quentin Rapaud vous prépare à l'audience correctionnelle lors de rendez-vous au cours desquels des <strong>conseils stratégiques</strong> sont apportés sur la manière de répondre aux questions et sur le comportement à adopter à la barre.
           `
         },
         violences: {
           icon: 'shield',
           title: 'Violences conjugales',
           detail: `
-            Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir urgemment tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de violences physiques, psychologiques (harcèlement, pressions morales, insultes, propos dégradants) ou sexuelles.<br><br>
-            En raison des conséquences graves qui peuvent résulter des procédures familiales d'ordonnance de protection ou pénales en garde à vue ou devant les chambres correctionnelles du Tribunal — expulsion du domicile conjugal, autorité parentale exclusive, interdiction de contact avec le partenaire et/ou les enfants — le Cabinet Quentin Rapaud intervient également en défense lorsque ces procédures sont instrumentalisées à des fins déloyales.<br><br>
-            Dans ce contexte, il est essentiel d'être assisté tant sur le plan juridique que psychologique pour réunir les pièces nécessaires afin d'assurer une défense rapide et efficace. Grâce à ses compétences en droit pénal comme en droit de la famille, le Cabinet Quentin Rapaud se distingue par les stratégies pluridisciplinaires qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
+            Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir <strong>urgemment</strong> tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de <strong>violences physiques</strong>, <strong>psychologiques</strong> (harcèlement, pressions morales, insultes, propos dégradants) ou <strong>sexuelles</strong>.<br><br>
+            En raison des <strong>conséquences graves</strong> qui peuvent résulter des procédures familiales <strong>d'ordonnance de protection</strong> ou pénales <strong>en garde à vue ou devant les chambres correctionnelles du Tribunal</strong> — expulsion du domicile conjugal, autorité parentale exclusive, interdiction de contact avec le partenaire et/ou les enfants — le Cabinet Quentin Rapaud intervient également en <strong>défense</strong> lorsque ces procédures sont instrumentalisées à des fins déloyales.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté tant sur le plan juridique que psychologique pour réunir les pièces nécessaires afin d'assurer une défense rapide et efficace. Grâce à ses compétences en droit pénal comme en droit de la famille, le Cabinet Quentin Rapaud se distingue par les <strong>stratégies pluridisciplinaires</strong> qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
           `
         },
         casier: {
           icon: 'shield',
           title: 'Effacement casier judiciaire & antécédents judiciaires',
           detail: `
-            <strong>BESOIN D'EFFACER VOTRE CASIER JUDICIAIRE ?</strong><br><br>
-            Le casier judiciaire est un fichier informatisé recensant l'ensemble des condamnations pénales prononcées par les autorités judiciaires. Il se compose de trois bulletins, comptabilisant chacun certaines des condamnations et dont l'accès est plus ou moins large.<br><br>
-            Le <strong>bulletin n°1 (B1)</strong> correspond au relevé intégral des condamnations pénales. Il n'est accessible qu'aux autorités judiciaires.<br><br>
-            Le <strong>bulletin n°2 (B2)</strong> est une version épurée du B1. Il n'est accessible qu'à certaines autorités administratives ou militaires et aux employeurs exerçant une activité auprès des mineurs.<br><br>
-            Le <strong>bulletin n°3 (B3)</strong> présente les condamnations les plus graves prononcées pour crime ou délit. Un extrait peut vous être demandé lors de certaines démarches administratives ou recherches d'emploi.<br><br>
-            La présence d'une mention au casier judiciaire peut mettre à néant l'accès à certaines professions, à la nationalité française ou à un titre de séjour.<br><br>
-            Le Cabinet Quentin Rapaud vous assiste pour analyser votre situation, sécuriser les démarches et initier une procédure d'effacement devant le tribunal compétent.<br><br>
-            <strong>MENTIONS AU FICHIER DES ANTÉCÉDENTS JUDICIAIRES (TAJ)</strong><br><br>
-            Le TAJ est un fichier de police judiciaire qui regroupe toutes les informations concernant les personnes suspectées au cours d'une enquête ainsi que sur les victimes. Les autorités judiciaires et administratives peuvent y accéder pour des enquêtes de police ou des enquêtes administratives avant de délivrer des autorisations d'exercer certaines professions ou d'accorder la nationalité française ou un titre de séjour.<br><br>
-            Il est donc essentiel de vérifier les données personnelles de la fiche TAJ, et au besoin en solliciter la suppression avant de demander un titre de séjour ou la nationalité française.
+            <div style="text-align:center"><strong>BESOIN D'EFFACER VOTRE CASIER JUDICIAIRE ?<br>(TRAVAIL – NATIONALITÉ – TITRE DE SÉJOUR)</strong></div><br>
+            Le casier judiciaire est un fichier informatisé comprenant l'identité de la personne recensant l'ensemble des condamnations pénales prononcées par les autorités judiciaires à l'encontre des personnes physiques et des personnes morales. Il se compose de trois bulletins, comptabilisant chacun certaines des condamnations et dont l'accès est plus ou moins large.<br><br>
+            Le <strong>bulletin n°1 du casier judiciaire</strong> (B1) correspond au relevé intégral des condamnations pénales, et aussi certaines décisions extrapénales (interdiction d'exercer, arrêt d'expulsion) ou civiles (déchéance de l'autorité parentale). Il n'est accessible qu'aux autorités judiciaires.<br><br>
+            Le <strong>bulletin n°2 du casier judiciaire</strong> (B2) est une version épurée du B1, contenant la plupart des condamnations et décisions de justice. Il n'est accessible qu'à certaines autorités administratives ou militaires et aux employeurs exerçant une activité auprès des mineurs.<br><br>
+            Le <strong>bulletin n°3 du casier judiciaire</strong> (B3) présente les condamnations les plus graves prononcées pour crime ou délit ainsi que certaines incapacités ou interdictions. Un extrait du B2 peut vous être demandé lors de certaines démarches administratives ou recherches d'emploi.<br><br>
+            <strong>La présence d'une mention au casier judiciaire peut mettre à néant entre autres l'accès à certaines professions, à la nationalité française ou à un titre de séjour</strong>.<br><br>
+            Le Cabinet Quentin Rapaud vous assiste pour :<br>
+            — Comprendre votre situation en analysant les informations inscrites ;<br>
+            — Sécuriser les démarches en effectuant la demande de lecture du casier ;<br>
+            — Protéger vos intérêts en initiant une procédure d'effacement devant le tribunal compétent.<br><br>
+            <div style="text-align:center"><strong>MENTIONS AU FICHIER DES ANTÉCÉDENTS JUDICIAIRES (TAJ)</strong></div><br>
+            Le TAJ est un <strong>fichier de police judiciaire</strong> qui regroupe toutes les informations concernant les personnes suspectées au cours d'une enquête d'un crime, d'un délit ou d'une contravention ainsi que sur les victimes. Les autorités judiciaires et administratives peuvent y accéder pour des enquêtes de police ou bien pour des enquêtes administratives avant de délivrer des autorisations d'exercer certaines professions ou encore d'accorder la nationalité française ou un titre de séjour.<br><br>
+            Il est donc essentiel de vérifier les données personnelles de la fiche TAJ, et au besoin en solliciter la suppression avant de demander un <strong>titre de séjour</strong> ou <strong>la nationalité française</strong>. Dans le même sens, en cas de <strong>refus de délivrance d'une carte professionnelle</strong>.
           `
         },
         cyber: {
           icon: 'shield',
           title: 'Cyber harcèlement & E-réputation',
           detail: `
-            <strong>VICTIME DE CYBER-HARCÈLEMENT ?</strong><br><br>
-            Pour certains, l'anonymat de l'écran encourage des comportements répréhensibles. Le monde numérique devient alors un environnement dangereux avec des conséquences significatives dans la vie quotidienne, surtout pour les plus jeunes. Le harcèlement en ligne s'effectue via internet (forum, chat, jeux vidéos en ligne, blog) ou principalement sur les réseaux sociaux.<br><br>
+            <div style="text-align:center"><strong>VICTIME DE CYBER-HARCÈLEMENT ?</strong></div><br>
+            Pour certains, l'anonymat de l'écran encourage à des comportements répréhensibles. Le monde numérique devient alors un <strong>environnement dangereux avec des conséquences significatives dans la vie quotidienne</strong>, surtout pour les plus jeunes. <strong>Le harcèlement en ligne</strong> est un harcèlement s'effectuant via internet (forum, chat, jeux vidéos en ligne, blog) ou principalement sur les réseaux sociaux.<br><br>
             Le Code pénal réprime ce genre de comportement, notamment lorsqu'ils ont été commis par l'utilisation d'un service de communication au public en ligne, ou par le biais d'un support numérique ou électronique.<br><br>
             Face à ce genre de comportement, il faut agir rapidement pour éviter la disparition des preuves. Le Cabinet Quentin Rapaud a l'habitude de travailler avec des huissiers de justice pour réaliser des constats.<br><br>
-            <strong>CYBERATTAQUES & E-RÉPUTATION</strong><br><br>
-            À l'ère du tout virtuel, les cyberattaques demeurent en pleine recrudescence. De nombreuses attaques ciblent les particuliers mais aussi les entreprises et les administrations. Les attaques visent à obtenir des informations personnelles afin de les exploiter ou de les revendre (données bancaires, identifiants de connexion, etc.).<br><br>
-            Les plus connues demeurent le phishing, le ransomware, l'infection par spyware/malware, le défacement de site ou encore le DDoS. En 2025, 75% des entreprises françaises étaient touchées par une cyberattaque.
+            <div style="text-align:center"><strong>CYBERATTAQUES & E-RÉPUTATION</strong></div><br>
+            À l'ère du tout virtuel, les <strong>cyberattaques</strong> demeurent en pleine recrudescence. De nombreuses attaques ciblent les particuliers mais aussi les entreprises et les administrations. D'où la nécessité de protéger l'image véhiculée par l'entreprise ou une marque sur le web.<br><br>
+            Les attaques visent à obtenir des <strong>informations personnelles</strong> afin de les exploiter ou de les revendre (données bancaires, identifiants de connexion à des sites marchands, etc.). Les plus connues demeurent le phishing (hameçonnage), le ransomware, l'infection par spyware/malware, le défacement de site ou encore le DOS-DDoS.<br><br>
+            En 2025, 75% des entreprises françaises étaient touchées par une cyberattaque.
           `
         },
         amenagement: {
           icon: 'shield',
           title: 'Aménagement de peine',
           detail: `
-            L'aménagement de peine est un mode alternatif d'exécution d'une peine de prison ferme. Il vise un retour progressif à la liberté en favorisant l'accompagnement de la personne condamnée. L'objectif essentiel est la réinsertion sociale de l'individu afin de prévenir toute récidive.<br><br>
-            <strong>AMÉNAGEMENT AB INITIO</strong><br><br>
-            Une peine d'emprisonnement ferme n'est pas toujours synonyme d'incarcération. Depuis mars 2020, les peines d'emprisonnement ferme inférieures ou égales à 1 an peuvent être aménagées à la barre, directement par la juridiction de jugement, sous la forme d'une détention à domicile sous surveillance électronique, d'une semi-liberté ou du placement à l'extérieur (article 132-25 du Code pénal).<br><br>
-            <strong>AMÉNAGEMENT PEINES COURTES</strong><br><br>
-            Si la juridiction de jugement n'a pas prononcé un mandat de dépôt différé, il est toujours possible de solliciter l'aménagement devant le JAP avec le plafond d'une peine d'emprisonnement ferme d'un maximum de 1 an (article 723-15 du CPP).<br><br>
-            Concernant les personnes déjà incarcérées pour une courte peine (2 ans maximum ou il reste deux ans à exécuter), il est possible de solliciter l'exécution sous le régime de la détention à domicile sous surveillance électronique, de la semi-liberté ou du placement à l'extérieur.<br><br>
-            <strong>AMÉNAGEMENT PEINES LONGUES</strong><br><br>
-            Pour les peines d'emprisonnement ferme au-delà de 2 années, il est possible d'aménager le temps de la peine via la libération conditionnelle (art. 729 du CPP) ou la libération conditionnelle de fin de peine pour les peines de plus de 5 ans (article 730-1 du CPP). Pour les peines inférieures à 5 ans, il est également possible d'aménager sous le régime de la libération sous contrainte (article 720 du CPP).
+            L'aménagement de peine est un mode alternatif d'exécution d'une peine de prison ferme. Il vise un retour progressif à la liberté en favorisant l'accompagnement de la personne condamnée. L'objectif essentiel de tout aménagement de peine est la réinsertion sociale de l'individu afin de prévenir toute récidive.<br><br>
+            <div style="text-align:center"><strong>AMÉNAGEMENT AB INITIO</strong></div><br>
+            Une peine d'emprisonnement ferme n'est pas toujours synonyme d'incarcération. En effet, il est possible, sous certaines conditions, d'éviter le passage en prison.<br><br>
+            Depuis mars 2020, les peines d'emprisonnement ferme inférieures ou égales à 1 an peuvent être aménagées à la barre, directement par la juridiction de jugement, sous la forme d'une détention à domicile sous surveillance électronique, d'une semi-liberté ou du placement à l'extérieur (article 132-25 du Code pénal). Cet aménagement ab initio évite la convocation devant le Juge d'application des peines (JAP).<br><br>
+            <div style="text-align:center"><strong>AMÉNAGEMENT PEINES COURTES</strong></div><br>
+            Si la juridiction de jugement n'a pas prononcé un mandat de dépôt différé et qu'elle n'a pas fait droit à l'aménagement de peine à la barre, il est toujours possible de le solliciter lors de la mise à exécution de la peine devant le JAP avec toujours le plafond d'une peine d'emprisonnement ferme d'un maximum de 1 an (article 723-15 du CPP).<br><br>
+            Concernant les personnes déjà incarcérées pour une courte peine (2 ans maximum ou il reste deux ans à exécuter), il est toujours possible de solliciter l'exécution de la peine sous le régime de la détention à domicile sous surveillance électronique, de la semi-liberté ou encore du placement à l'extérieur (art. 723 et s. du CPP).<br><br>
+            <div style="text-align:center"><strong>AMÉNAGEMENT PEINES LONGUES</strong></div><br>
+            Pour les peines d'emprisonnement ferme au-delà de 2 années, il est possible d'aménager le temps de la peine en mettant en œuvre les mécanismes traditionnels de la libération conditionnelle (art. 729 et s. du CPP) ou de la libération conditionnelle de fin de peine pour les peines de plus de 5 ans (article 730-1 du CPP).<br><br>
+            Pour les peines inférieures à 5 ans, il est également possible d'aménager sous le régime de la libération sous contrainte (article 720 du CPP).
           `
         },
         extradition: {
@@ -301,23 +317,151 @@
         }
       },
       victimes: {
-        plainte:   { icon: 'heart', title: 'Dépôt de plainte', detail: `À compléter.` },
-        violences: { icon: 'heart', title: 'Victime violences conjugales', detail: `À compléter.` },
-        civi:      { icon: 'heart', title: 'CIVI & SARVI', detail: `À compléter.` }
+        plainte: {
+          icon: 'heart',
+          title: 'Dépôt de plainte',
+          detail: `
+            Le dépôt de plainte est une démarche qui n'est en réalité ni simple ni naturelle. En effet, pour de nombreuses victimes il est extrêmement difficile de pousser les portes d'un commissariat tant cela est perçu comme une épreuve supplémentaire : difficultés à raconter les faits subis, peur d'être jugée, peur des représailles, emprise de la part de l'agresseur, comportement récalcitrant des policiers…<br><br>
+            À titre d'exemple, chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte.<br><br>
+            Quentin Rapaud vous accompagne dans tous types de situation pour <strong>déposer plainte</strong> au commissariat de votre domicile ou auprès du Procureur de la République.<br><br>
+            Le Cabinet se charge également de vous assister tout au long de la procédure, que ce soit <strong>devant les tribunaux correctionnels et Cours d'assises</strong> de l'ensemble du territoire afin que vous soyez reconnue <strong>victime et solliciter des dommages et intérêts</strong> en réparation des dommages subis.
+          `
+        },
+        violences: {
+          icon: 'heart',
+          title: 'Victime violences conjugales',
+          detail: `
+            Les violences conjugales ne sont ni marginales ni lointaines. Elles traversent toutes les familles et les milieux sociaux y compris ceux que l'on pense protégés. Chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte. En cause : la difficulté de franchir les portes d'un commissariat, souvent vécue comme une épreuve supplémentaire.<br><br>
+            La différence aujourd'hui ne réside pas seulement dans la prise de conscience. C'est également la capacité à agir au bon moment et au bon endroit. Les victimes de violences conjugales ne doivent pas porter seules le poids des démarches.<br><br>
+            Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir <strong>urgemment</strong> tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de <strong>violences physiques</strong>, <strong>psychologiques</strong> (harcèlement, pressions morales, insultes, propos dégradants) ou <strong>sexuelles</strong>.<br><br>
+            Le Cabinet Quentin Rapaud vous accompagne dans ces <strong>situations d'urgence</strong> pour <strong>déposer plainte</strong> au commissariat de votre domicile ou auprès du Procureur de la République. Il met également en œuvre les procédures d'urgence avec <strong>l'ordonnance de protection</strong> qui est <strong>une mesure d'éloignement</strong> du conjoint violent. Le juge statue également sur la jouissance du domicile conjugal, la résidence des enfants, l'autorité parentale et la pension alimentaire.<br><br>
+            Le Cabinet se charge également de vous assister dans les <strong>procédures pénales devant les tribunaux correctionnels et Cours d'assises</strong> de l'ensemble du territoire afin que vous soyez reconnue <strong>victime des violences et solliciter des dommages et intérêts</strong> en réparation des dommages subis.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté tant sur le plan juridique que psychologique pour réunir les pièces nécessaires afin d'assurer votre protection et celle de votre famille. Grâce à ses compétences en droit pénal comme en droit de la famille, le Cabinet Quentin Rapaud se distingue par les <strong>stratégies pluridisciplinaires</strong> qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
+          `
+        },
+        civi: {
+          icon: 'heart',
+          title: 'CIVI & SARVI',
+          detail: `
+            Le Cabinet vous assiste pour vous <strong>constituer partie civile</strong> au procès pénal et obtenir la réparation de vos préjudices. Il est également possible — <strong>sous certains critères</strong> — de s'orienter vers la <strong>Commission d'Indemnisation des Victimes d'Infraction (CIVI)</strong> ou le <strong>Service d'Aide au Recouvrement des Victimes d'Infractions (SARVI)</strong> pour obtenir l'indemnisation des préjudices.<br><br>
+            L'avantage d'une procédure CIVI ou SARVI est la certitude de la solvabilité de l'organisme en charge de l'indemnisation. Là où c'est la personne condamnée — souvent insolvable — qui doit assumer l'indemnisation dans une procédure pénale traditionnelle, l'indemnisation incombe devant la CIVI au <strong>Fonds de Garantie des Victimes de Terrorismes et autres Infractions (FGTI)</strong>.<br><br>
+            La CIVI est une <strong>juridiction indépendante</strong> constituée d'au moins deux magistrats professionnels. Il existe une CIVI dans le ressort de chaque tribunal judiciaire. Elle a le caractère d'une juridiction civile : ce sont donc les règles civiles qui s'appliquent. La décision peut même intervenir avant même que les juridictions pénales aient statué.<br><br>
+            <strong>Le délai pour saisir cette juridiction</strong> est double puisque la victime doit agir soit dans un <strong>délai de 3 ans</strong> à compter de l'infraction, soit dans <strong>un délai d'un an</strong> après la dernière décision de la juridiction pénale lorsque des poursuites pénales ont été exercées.<br><br>
+            Il est possible de solliciter une <strong>expertise médicale</strong> pour apprécier l'étendue des préjudices subis et ainsi s'assurer de remplir les critères de recevabilité devant cette juridiction.<br><br>
+            Dans le même sens, lorsque les critères de recevabilité ne font pas débat, il est possible de solliciter une <strong>provision</strong> sur l'indemnisation intégrale à venir.<br><br>
+            Enfin, comme en matière de responsabilité médicale, il est recommandé de <strong>travailler en équipe avec un médecin conseil</strong> pour s'assurer une juste évaluation des préjudices subis lors de l'expertise.
+          `
+        }
       },
       famille: {
-        violences:  { icon: 'users', title: 'Violences conjugales', detail: `À compléter.` },
-        divorce:    { icon: 'users', title: 'Divorces – Divorces internationaux', detail: `À compléter.` },
-        mutuel:     { icon: 'users', title: 'Divorce par consentement mutuel', detail: `À compléter.` },
-        separation: { icon: 'users', title: 'Séparation hors mariage', detail: `À compléter.` },
-        mineurs:    { icon: 'users', title: 'Droit des mineurs – Assistance éducative', detail: `À compléter.` }
+        violences: {
+          icon: 'users',
+          title: 'Violences conjugales',
+          detail: `
+            Les violences conjugales ne sont ni marginales ni lointaines. Elles traversent toutes les familles et les milieux sociaux y compris ceux que l'on pense protégés. Chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte.<br><br>
+            Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir <strong>urgemment</strong> tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de <strong>violences physiques</strong>, <strong>psychologiques</strong> (harcèlement, pressions morales, insultes, propos dégradants) ou <strong>sexuelles</strong>.<br><br>
+            Le Cabinet Quentin Rapaud vous accompagne dans ces <strong>situations d'urgence</strong> pour <strong>déposer plainte</strong> au commissariat de votre domicile ou auprès du Procureur de la République. Il met également en œuvre les procédures d'urgence avec <strong>l'ordonnance de protection</strong> qui est <strong>une mesure d'éloignement</strong> du conjoint violent. Le juge statue également sur la jouissance du domicile conjugal, la résidence des enfants, l'autorité parentale et la pension alimentaire.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté tant sur le plan juridique que psychologique pour réunir les pièces nécessaires afin d'assurer votre protection et celle de votre famille. Grâce à ses compétences en droit pénal comme en droit de la famille, le Cabinet Quentin Rapaud se distingue par les <strong>stratégies pluridisciplinaires</strong> qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
+          `
+        },
+        divorce: {
+          icon: 'users',
+          title: 'Divorces – Divorces internationaux',
+          detail: `
+            Le Cabinet Quentin Rapaud intervient régulièrement dans des dossiers de <strong>divorces internationaux</strong> d'expatriés étrangers vivant en France ou de français expatriés à l'étranger.<br><br>
+            Ces dossiers complexes nécessitent l'application de <strong>conventions internationales</strong> et impliquent des enjeux humains et financiers très importants. Le Cabinet a pour habitude de s'entourer des meilleurs professionnels (notaires, cabinets d'avocats étrangers, enquêteurs privés, médiateurs, psychologues) pour obtenir la solution la plus appropriée.<br><br>
+            Eu égard à l'importance des enjeux et des réalités humaines qu'ils représentent, les procès en matière familiale sont empreints d'émotions fortes et peuvent s'avérer souvent violents. Il s'agit d'une <strong>véritable bataille tant juridique que physique et psychologique</strong>.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté par un avocat expérimenté tant sur le plan juridique que psychologique pour d'une part réunir les pièces nécessaires aux succès du dossier et d'autre part éviter de cristalliser le dossier sur des points de conflits pour préserver autant que possible la paix des familles.<br><br>
+            En cas de séparation des époux, le Cabinet Quentin Rapaud vous conseille au meilleur de vos intérêts — familiaux et patrimoniaux — dans la stratégie à mener et le type de divorce vers lequel s'orienter.
+          `
+        },
+        mutuel: {
+          icon: 'users',
+          title: 'Divorce par consentement mutuel',
+          detail: `
+            Le <strong>divorce par consentement mutuel</strong> présente l'avantage de la célérité puisque c'est une procédure sans audience devant juge. Il suffit de négocier entre les époux et leur conseil respectif les conséquences du divorce afin de trouver un <strong>accord</strong> qui est retranscrit dans une convention de divorce.<br><br>
+            Il présente également l'avantage <strong>d'une plus grande liberté</strong> dans les modalités d'exercice de l'autorité parentale, la résidence des enfants et les droits de garde de chacun des parents. En effet, l'accord des époux sur ces points autorise une <strong>plus grande souplesse</strong> qu'on ne retrouverait pas nécessairement dans le cadre d'un divorce contentieux.<br><br>
+            Aussi, en présence d'un <strong>bien immobilier</strong> — bien soumis à publication foncière — <strong>l'intervention d'un notaire</strong> est obligatoire. Là encore, les échanges entre les conseils respectifs et le notaire permettent <strong>une meilleure répartition du patrimoine</strong> à l'avantage de chaque partie plutôt que de mener une bataille judiciaire longue qui tend parfois à émietter ce patrimoine.<br><br>
+            En cas de rupture dans la communication des époux, ou de désaccord profond, il faut s'orienter vers un <strong>divorce judiciaire</strong>. Cette procédure est nécessairement plus longue et éprouvante psychologiquement. Le Cabinet Quentin Rapaud vous assure une défense pugnace et efficace tout au long de cette épreuve.
+          `
+        },
+        separation: {
+          icon: 'users',
+          title: 'Séparation hors mariage',
+          detail: `
+            La <strong>séparation d'un couple non marié</strong> suppose principalement de se prononcer sur la résidence des enfants, le droit de visite et d'hébergement et la pension alimentaire après avoir saisi le juge par requête. Cependant, en cas <strong>d'urgence</strong> dûment justifiée, le Cabinet Quentin Rapaud peut initier une <strong>procédure accélérée</strong>.<br><br>
+            Eu égard à l'importance des enjeux et des réalités humaines qu'ils représentent, les procès en matière familiale sont empreints d'émotions fortes et peuvent s'avérer souvent violents. Il s'agit d'une <strong>véritable bataille tant juridique que physique et psychologique</strong>.<br><br>
+            Dans ce contexte, il est essentiel d'être assisté par un avocat expérimenté tant sur le plan juridique que psychologique pour d'une part réunir les pièces nécessaires aux succès du dossier et d'autre part éviter de cristalliser le dossier sur des points de conflits pour préserver autant que possible la paix des familles.<br><br>
+            Grâce à ses compétences variées et son expérience, le Cabinet Quentin Rapaud se distingue par les <strong>stratégies pluridisciplinaires</strong> qu'il met en œuvre dans son accompagnement à tous les stades de la procédure pour constituer votre dossier.
+          `
+        },
+        mineurs: {
+          icon: 'users',
+          title: 'Droit des mineurs – Assistance éducative',
+          detail: `À compléter.`
+        }
       },
       medical: {
-        medecin:    { icon: 'activity', title: 'Mise en contact médecin conseil', detail: `À compléter.` },
-        refere:     { icon: 'activity', title: 'Référé expertise médicale', detail: `À compléter.` },
-        faute:      { icon: 'activity', title: 'Erreur – Faute médicale', detail: `À compléter.` },
-        accident:   { icon: 'activity', title: 'Accident médical', detail: `À compléter.` },
-        infections: { icon: 'activity', title: 'Infections iatrogènes et nosocomiales', detail: `À compléter.` }
+        medecin: {
+          icon: 'activity',
+          title: 'Mise en contact médecin conseil',
+          detail: `
+            Le Cabinet Quentin Rapaud assiste et défend les victimes <strong>d'erreurs médicales</strong> et <strong>d'accidents médicaux</strong> tout au long du processus d'indemnisation. Nous vous conseillons sur la procédure la plus adaptée, vous assistons à toutes les étapes de la <strong>procédure qu'elle soit amiable ou judiciaire</strong>.<br><br>
+            En matière de responsabilité médicale, il est fortement recommandé de travailler avec <strong>des médecins conseils</strong> pour étudier l'ensemble du dossier médical et participer à la caractérisation de la faute.<br><br>
+            Cette pratique permet d'initier une phase de <strong>négociations à l'amiable avec l'assureur</strong> du praticien ou de l'établissement de santé dans <strong>le cadre d'une transaction</strong> afin qu'il prenne en charge le sinistre et indemnise l'intégralité des préjudices subis par la victime.
+          `
+        },
+        refere: {
+          icon: 'activity',
+          title: 'Référé expertise médicale',
+          detail: `
+            À défaut d'accord amiable, il est nécessaire d'effectuer dans un premier temps <strong>un référé médical</strong> pour obtenir la désignation d'un expert qui se prononcera sur l'existence d'une faute médicale. Si ce dernier reconnaît la faute médicale, alors il est possible d'initier une procédure au fond pour solliciter les dommages et intérêts correspondant aux préjudices subis.
+          `
+        },
+        faute: {
+          icon: 'activity',
+          title: 'Erreur – Faute médicale',
+          detail: `
+            <div style="text-align:center"><strong>VICTIME D'UNE ERREUR MÉDICALE ?</strong></div><br>
+            En principe, la <strong>responsabilité médicale</strong> nécessite que la victime <strong>démontre une faute</strong> de la part du praticien ou de l'établissement de santé :<br><br>
+            — Défaut d'information ;<br>
+            — Erreur de diagnostic ;<br>
+            — Erreur de prescription ;<br>
+            — Erreur dans le geste technique ;<br>
+            — Oubli matériel médical.<br><br>
+            D'où le recours en amont à <strong>des médecins conseils</strong> pour étudier l'ensemble du dossier médical et participer à la caractérisation de la faute.<br><br>
+            Cette pratique permet d'initier une phase de <strong>négociations à l'amiable avec l'assureur</strong> du praticien ou de l'établissement de santé dans <strong>le cadre d'une transaction</strong> afin qu'il prenne en charge le sinistre et indemnise l'intégralité des préjudices subis par la victime.
+          `
+        },
+        accident: {
+          icon: 'activity',
+          title: 'Accident médical',
+          detail: `
+            <div style="text-align:center"><strong>L'INDEMNISATION EN L'ABSENCE DE FAUTE MÉDICALE</strong></div><br>
+            En parallèle du régime principal de responsabilité pour faute des professionnels, la loi a prévu des hypothèses dans lesquelles les victimes peuvent être indemnisées en l'absence de faute :<br><br>
+            — <strong>Les infections nosocomiales</strong> : il s'agit d'infections contractées à la suite d'une prise en charge médicale dans un établissement de santé — public ou privé, non présente avant l'hospitalisation. En fonction du pourcentage de trouble fonctionnel, l'indemnisation est prise en charge par l'assureur de l'établissement de santé (inférieur ou égal à 25%), ou par la solidarité nationale à travers l'ONIAM (supérieur à 25% ou décès du patient).<br><br>
+            — <strong>Les affections iatrogènes</strong> : il s'agit d'infections contractées à la suite d'un traitement ou de soins médicaux. Pour être indemnisables, les dommages doivent être supérieurs à un seuil de gravité. L'indemnisation incombe à l'ONIAM.<br><br>
+            — <strong>Les accidents médicaux non fautifs</strong> : il s'agit d'un accident en lien direct avec un acte de prévention, de diagnostic ou de soin ayant eu pour le patient des conséquences anormales sur son état de santé. On parle d'aléa thérapeutique : un risque inhérent aux soins qui se réalise de manière anormale au regard de l'état du patient. L'indemnisation incombe à l'ONIAM.
+          `
+        },
+        infections: {
+          icon: 'activity',
+          title: 'Infections iatrogènes et nosocomiales',
+          detail: `
+            <div style="text-align:center"><strong>LES INFECTIONS NOSOCOMIALES</strong></div><br>
+            Il s'agit d'infections contractées à la suite d'une prise en charge médicale dans un établissement de santé — public ou privé — non présentes avant l'hospitalisation.<br><br>
+            En fonction du pourcentage de trouble fonctionnel, l'indemnisation est prise en charge par l'assureur de l'établissement de santé (inférieur ou égal à 25%), ou par la solidarité nationale à travers l'<strong>ONIAM</strong> (supérieur à 25% ou décès du patient).<br><br>
+            <div style="text-align:center"><strong>LES AFFECTIONS IATROGÈNES</strong></div><br>
+            Il s'agit d'infections contractées à la suite d'un traitement ou de soins médicaux. Ces infections peuvent être dues à divers facteurs, notamment les erreurs médicales, la négligence ou les infections nosocomiales.<br><br>
+            Pour être indemnisables, les dommages liés à une affection iatrogène doivent être supérieurs à un seuil de gravité dont les critères sont les suivants :<br><br>
+            — un taux de déficit fonctionnel permanent supérieur à 24% ;<br>
+            — une durée d'incapacité temporaire de travail supérieure à 6 mois consécutifs ou à 6 mois non consécutifs sur une période d'un an ;<br>
+            — une gêne temporaire partielle de 50% de 6 mois ;<br>
+            — la personne est déclarée inapte définitivement à exercer son activité professionnelle ;<br>
+            — l'accident occasionne des troubles particulièrement graves dans les conditions d'existence.<br><br>
+            L'indemnisation incombe à l'<strong>ONIAM</strong>.
+          `
+        }
       }
     };
 
@@ -325,7 +469,7 @@
 
     function openModal(cardKey, itemKey) {
       const data = modalData[cardKey]?.[itemKey];
-      if (!data) return;
+      if (!data || !data.detail || data.detail.trim() === 'À compléter.') return;
 
       document.getElementById('modal-title').textContent = data.title;
       document.getElementById('modal-icon').innerHTML = `<i data-feather="${data.icon}" class="text-blue-900 w-6 h-6"></i>`;
@@ -341,18 +485,18 @@
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
 
+      requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-            overlay.style.opacity      = '1';
-            panel.style.transition     = 'transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease';
-            panel.style.transform      = 'scale(1)';
-            panel.style.opacity        = '1';
-            pageWrapper.style.transform    = 'scale(0.92) translateY(-16px)';
-            pageWrapper.style.opacity      = '0.45';
-            pageWrapper.style.borderRadius = '16px';
-            pageWrapper.style.filter       = 'blur(2px)';
+          overlay.style.opacity   = '1';
+          panel.style.transition  = 'transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease';
+          panel.style.transform   = 'scale(1)';
+          panel.style.opacity     = '1';
+          pageWrapper.style.transform    = 'scale(0.92) translateY(-16px)';
+          pageWrapper.style.opacity      = '0.45';
+          pageWrapper.style.borderRadius = '16px';
+          pageWrapper.style.filter       = 'blur(1px)';
         });
-        });
+      });
 
       if (window.feather) feather.replace();
     }

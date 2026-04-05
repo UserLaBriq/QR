@@ -17,7 +17,7 @@ class CustomHeader extends HTMLElement {
                 <i data-feather="chevron-down" class="w-4 h-4" id="expertise-chevron" style="transition: transform 0.3s ease;"></i>
               </button>
 
-              <a href="about.html" class="nav-link text-slate-700 hover:text-blue-900">Actualités</a>
+              <a href="actualites.html" class="nav-link text-slate-700 hover:text-blue-900">Actualités</a>
 
               <a href="tel:+33681669806" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
@@ -100,7 +100,7 @@ class CustomHeader extends HTMLElement {
                   </div>
                 </div>
 
-                <a href="about.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
+                <a href="actualites.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
                 <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
                   <i data-feather="phone" class="w-4 h-4"></i>
                   06 81 66 98 06
@@ -196,7 +196,7 @@ class CustomHeader extends HTMLElement {
                     </div>
                     <p class="text-white/70 text-sm">Exposer ma situation</p>
                   </a>
-                  <a href="about.html"
+                  <a href="actualites.html"
                     class="group flex items-center gap-4 p-4 rounded-2xl hover:border-white/20 transition-colors">
                     <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
                       <i data-feather="rss" class="w-5 h-5 text-white/70"></i>

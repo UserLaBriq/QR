@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Actualités - Quentin Rapaud Avocat</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <script defer src="components/header.js"></script>
-  <script defer src="components/footer.js"></script>
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités - Quentin Rapaud Avocat</title>
+      
+    <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script defer src="components/header.js"></script>
+    <script defer src="components/footer.js"></script>
+    <script defer src="script.js"></script>
   <style>
     .timeline-line {
       position: absolute;
@@ -56,6 +61,7 @@
       background: #1e3a8a;
       color: white;
       border-color: #1e3a8a;
+      border-radius: 0.75rem;
     }
   </style>
 </head>
@@ -84,16 +90,16 @@
 
             <!-- Filtres -->
             <div class="flex flex-wrap gap-2 mt-8">
-            <button onclick="filterNews('all')" class="filter-btn active px-4 py-1.5 rounded-full border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
+            <button type="button" onclick="filterNews('all')" class="filter-btn active px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
                 Toutes
             </button>
-            <button onclick="filterNews('presse')" class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
+            <button type="button" onclick="filterNews('presse')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
                 Presse
             </button>
-            <button onclick="filterNews('resultat')" class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
+            <button type="button" onclick="filterNews('resultat')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
                 Résultats
             </button>
-            <button onclick="filterNews('dossier')" class="filter-btn px-4 py-1.5 rounded-full border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
+            <button type="button" onclick="filterNews('dossier')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
                 Dossiers
             </button>
             </div>

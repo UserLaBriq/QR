@@ -62,29 +62,29 @@ class CustomHeader extends HTMLElement {
                     <div class="overflow-hidden">
                       <div class="pl-3 border-l-2 border-blue-900/20 ml-1 mb-2 flex flex-col gap-1 mt-1">
                         <a href="expertise.html#penal" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense pénale
+                          <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense Pénale
                         </a>
                         <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & international
+                          <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & International
                         </a>
                         <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="activity" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel & Victimes
                         </a>
                         <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="plus-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité médicale
+                          <i data-feather="plus-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité Médicale
                         </a>
 
-                        <a href="expertise.html#victimes" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="lock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à vue
+                        <a href="expertise.html?modal=penal&item=gardeavue" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="lock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à Vue
                         </a>
-                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="alert-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution immédiate
+                        <a href="expertise.html?modal=penal&item=assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="alert-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Comparution Immédiate
                         </a>
-                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="mic" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences pénales
+                        <a href="expertise.html?modal=penal&item=assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="mic" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Audiences Pénales
                         </a>
-                        <a href="expertise.html#international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
-                          <i data-feather="alert-triangle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences conjugales
+                        <a href="expertise.html?modal=penal&item=violences" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                          <i data-feather="alert-triangle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences Conjugales
                         </a>
                         
 
@@ -137,7 +137,7 @@ class CustomHeader extends HTMLElement {
                     </p>
                     <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                       <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense pénale</span>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense Pénale</span>
                     </a>
                     <a href="expertise.html#famille&international" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                       <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
@@ -150,7 +150,7 @@ class CustomHeader extends HTMLElement {
                     </a>
                     <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                       <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité médicale</span>
+                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité Médicale</span>
                     </a>
                 </div>
 
@@ -159,21 +159,21 @@ class CustomHeader extends HTMLElement {
                     style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
                     Urgences
                   </p>
-                  <a href="expertise.html#gardeavue" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=gardeavue" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à vue</span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à Vue</span>
                   </a>
-                  <a href="expertise.html#comparution" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution immédiate</span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution Immédiate</span>
                   </a>
-                  <a href="expertise.html#audiences" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences pénales</span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences Pénales</span>
                   </a>
-                  <a href="expertise.html#violencesconjugales" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=violences" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences conjugales</span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences Conjugales</span>
                   </a>
                 </div>
 

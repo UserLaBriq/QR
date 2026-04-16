@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Expertises - Quentin Rapaud Avocat</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-  <script defer src="components/header.js"></script>
-  <script defer src="components/footer.js"></script>
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertises - Quentin Rapaud Avocat</title>
+    
+    <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script defer src="components/header.js"></script>
+    <script defer src="components/footer.js"></script>
+    <script defer src="script.js"></script>
   <style>
+    .modal-content {
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
     #page-wrapper {
       transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .45s ease, border-radius .45s ease, filter .45s ease;
       transform-origin: center top;
@@ -35,8 +44,8 @@
 
       <!-- Page Header -->
       <div class="mb-12">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">Domaines d'expertise</h1>
-        <div class="w-20 h-1 bg-blue-800"></div>
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Domaines d'Expertise</h1>
+        <div class="w-20 h-1 bg-blue-900"></div>
       </div>
 
       <!-- Expertise Grid -->
@@ -57,12 +66,12 @@
             <ul class="flex flex-col gap-1">
               <li><button onclick="openModal('penal','gardeavue')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Garde à vue & Enquête</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
               <li><button onclick="openModal('penal','miseeexamen')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Examen & Détention Provisoire</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','assises')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Tribunal correctionnel & Cour d'assises</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','casier')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Effacement casier judiciaire & antécédents judiciaires</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','cyber')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Cyber harcèlement & E-réputation</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','amenagement')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Aménagement de peine</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','extradition')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Extradition & Mandat d'arrêt européen ou international</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','assises')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Tribunal Correctionnel & Cour d'Assises</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','casier')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Effacement casier Judiciaire & Antécédents Judiciaires</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','cyber')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Cyber Harcèlement & E-réputation</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','amenagement')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Aménagement de Peine</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','extradition')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Extradition & Mandat d'arrêt Européen ou International</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -72,14 +81,14 @@
               <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <i data-feather="heart" class="text-blue-900 w-6 h-6"></i>
               </div>
-              <h2 class="text-2xl font-bold text-slate-900">Victimes infractions pénales</h2>
+              <h2 class="text-2xl font-bold text-slate-900">Victimes Infractions Pénales</h2>
             </div>
             <p class="text-justify text-slate-600 leading-relaxed mb-6">
               Le cabinet assiste les victimes d'infraction dans leur combat judiciaire lors de la plainte ou de la constitution de partie civile et jusqu'au terme de la procédure d'indemnisation par la CIVI.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('victimes','plainte')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Dépôt de plainte</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('victimes','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Victime violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','plainte')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Dépôt de Plainte</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Victime Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
               <li><button onclick="openModal('victimes','civi')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">CIVI & SARVI</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
@@ -96,11 +105,11 @@
               Le Cabinet Quentin Rapaud intervient dans les dossiers internationaux de divorce et d'enlèvements d'enfant. Il apporte un soutien juridique solide et surtout une stratégie adaptée pour défendre les intérêts de la famille.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('famille','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','divorce')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorces – Divorces internationaux</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','mutuel')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorce par consentement mutuel</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','separation')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Séparation hors mariage</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Droit des mineurs – Assistance éducative</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','divorce')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorces – Divorces Internationaux</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mutuel')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorce par Consentement Mutuel</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','separation')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Séparation Hors Mariage</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Droit des Mineurs – Assistance Educative</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -110,17 +119,17 @@
               <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
                 <i data-feather="activity" class="text-blue-900 w-6 h-6"></i>
               </div>
-              <h2 class="text-2xl font-bold text-slate-900">Victime erreur médicale</h2>
+              <h2 class="text-2xl font-bold text-slate-900">Victime Erreur Médicale</h2>
             </div>
             <p class="text-justifytext-slate-600 leading-relaxed mb-6">
               Le Cabinet Quentin Rapaud assiste les victimes d'erreurs médicales tout au long de la procédure judiciaire du référé pour obtenir la désignation d'un expert, puis à la phase d'expertise, jusqu'à l'indemnisation intégrale des préjudices.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('medical','medecin')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en contact médecin conseil</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','refere')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Référé expertise médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','faute')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Erreur – Faute médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','accident')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Accident médical</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','infections')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Infections iatrogènes et nosocomiales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','medecin')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Contact Médecin Conseil</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','refere')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Référé Expertise Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','faute')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Erreur – Faute Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','accident')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Accident Médical</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','infections')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Infections Iatrogènes et Nosocomiales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -171,12 +180,17 @@
     style="background:rgba(15,23,42,0.35); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:0; transition: opacity .3s ease;"
     onclick="if(event.target===this) closeModal()">
 
-    <div id="modal-panel" class="w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl"
+    <div id="modal-panel" class="w-full max-w-2xl rounded-3xl"
       style="
+        max-height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+
         transform: scale(0.3);
         opacity: 0;
         transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;
-        scrollbar-width: none;
+        
         background: rgba(255,255,255,0.78);
         backdrop-filter: blur(28px) saturate(200%);
         -webkit-backdrop-filter: blur(28px) saturate(200%);
@@ -188,7 +202,7 @@
         <div class="w-10 h-1 rounded-full bg-slate-300/60"></div>
       </div>
 
-      <div class="p-6 pb-10">
+      <div class="p-6 pb-10" style="overflow-y: auto; flex: 1; scrollbar-width: thin;">
         <div class="flex items-start justify-between mb-6">
           <div class="flex items-center gap-4">
             <div id="modal-icon" class="bg-blue-900/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"></div>
@@ -199,15 +213,29 @@
           </button>
         </div>
         <div id="modal-detail" class="text-justify text-slate-700 leading-relaxed text-sm mb-8"></div>
-        <a href="contact.html" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white px-6 py-3 rounded-xl font-semibold transition">
-          Prendre contact
-          <i data-feather="arrow-right" class="w-4 h-4"></i>
-        </a>
+          <div class="flex justify-center">
+            <a href="contact.html" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white px-6 py-3 rounded-xl font-semibold transition">
+              Prendre contact
+              <i data-feather="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
       </div>
     </div>
   </div>
 
   <script>
+    document.getElementById('modal-panel').addEventListener('wheel', function(e) {
+      const el = this.querySelector('.p-6');
+      const atTop = el.scrollTop === 0;
+      const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+
+      if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) return;
+      
+      e.stopPropagation();
+      e.preventDefault();
+      el.scrollTop += e.deltaY;
+    }, { passive: false });
+
     window.addEventListener("DOMContentLoaded", () => {
       if (window.feather) feather.replace();
     });
@@ -216,12 +244,12 @@
       penal: {
         gardeavue: {
           icon: 'shield',
-          title: 'Garde à vue & Enquête',
+          title: 'Garde à Vue & Enquête',
           detail: `
-            <div style="text-align:center"><strong>CONVOCATION AU COMMISSARIAT ?</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>CONVOCATION AU COMMISSARIAT ?</strong></div><br>
             <strong>L'Audition libre</strong> est une procédure utilisée pour interroger une personne soupçonnée d'avoir commis une infraction. Contrairement à la garde à vue, la personne est libre de quitter les locaux de police à tout moment. Avant l'audition, le suspect doit se voir notifier un certain nombre de droits.<br><br>
             La présence d'un avocat est nécessaire pour <strong>éviter des déclarations ou des réponses qui seront ultérieurement retenues à charge contre la personne entendue</strong>. Quentin Rapaud vous accompagne dans l'analyse de la situation et vous prépare lors de rendez-vous au Cabinet sur l'élaboration d'une stratégie et le déroulé de l'audition.<br><br>
-            <div style="text-align:center"><strong>UN PROCHE EN GARDE A VUE ?</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>UN PROCHE EN GARDE A VUE ?</strong></div><br>
             <strong>La Garde à Vue</strong> est une mesure de contrainte qui permet aux enquêteurs d'interroger un suspect en le retenant de force contre sa volonté. La durée initiale d'une garde à vue est de 24 heures mais elle est quasi systématiquement renouvelée pour une nouvelle période de 24 heures soit un total de 48h. Elle s'étend jusqu'à 96h ou 144h pour les infractions les plus graves.<br><br>
             Grâce au procès-verbal de placement en GAV et de notifications des droits, l'avocat peut déterminer l'épaisseur du dossier des enquêteurs à l'encontre du gardé à vue (flagrance, préliminaire, commission rogatoire). Cela permet de conseiller au mieux la personne lors de l'entretien confidentiel préalable à l'audition et surtout de lui recommander ou non de faire usage de son droit au silence.<br><br>
             <strong>L'assistance d'un avocat en garde à vue est essentielle tant les premières déclarations ou réponses apportées lors des auditions sont déterminantes dans le reste de la procédure</strong>.
@@ -238,23 +266,23 @@
         },
         assises: {
           icon: 'shield',
-          title: 'Tribunal correctionnel & Cour d\'assises',
+          title: 'Tribunal Correctionnel & Cour d\'Assises',
           detail: `
-            <div style="text-align:center"><strong>PROCÈS COUR D'ASSISES</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>PROCÈS COUR D'ASSISES</strong></div><br>
             Arène où l'individu est accusé des crimes que la société considère comme les plus graves, parfois même les plus abjectes. Un procès d'assise est empreint d'émotions fortes et s'avère souvent violent. Il s'agit d'une <strong>véritable bataille tant juridique que physique</strong> qu'il convient de mener accompagné d'un avocat pugnace et combatif habitué des assises.<br><br>
             Le Cabinet Quentin Rapaud intervient régulièrement devant les Cours d'assises de la région parisienne et sur tout le territoire français. Il se distingue à la fois par les <strong>stratégies</strong> qu'il met en place que par son <strong>efficacité</strong> et les <strong>résultats</strong> obtenus.<br><br>
             <div style="text-align:center"><strong>UN PROCHE DÉFÉRÉ EN COMPARUTION IMMÉDIATE ?</strong></div><br>
             <strong>La comparution immédiate</strong> est une procédure rapide par laquelle l'individu est directement jugé à la suite de sa garde à vue. La personne comparaît le jour même devant le tribunal correctionnel. Le prévenu doit accepter d'être jugé immédiatement. Il peut solliciter un renvoi de droit pour préparer sa défense. Cela l'expose cependant à un risque de détention provisoire.<br><br>
             En 2025, 40% des peines prononcées en comparution immédiate étaient des peines d'emprisonnement ferme. Il s'agit donc d'une <strong>procédure d'urgence aux enjeux cruciaux</strong> puisque les risques d'incarcération sont importants.<br><br>
             Si l'un de vos proches est déféré en comparution immédiate, il faut contacter le Cabinet en urgence. Habitué à la pratique des comparutions immédiates, Quentin Rapaud vous assure une défense réactive, efficace et surtout pugnace.<br><br>
-            <div style="text-align:center"><strong>CONVOQUÉ DEVANT LE TRIBUNAL CORRECTIONNEL</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>CONVOQUÉ DEVANT LE TRIBUNAL CORRECTIONNEL</strong></div><br>
             La convocation devant le Tribunal correctionnel permet de prendre le temps de connaître en profondeur le dossier et de concevoir une stratégie de défense efficace. L'audience correctionnelle est <strong>un endroit d'affrontement et de confrontation</strong>. Il est essentiel d'être préparé et assisté par un avocat.<br><br>
             Au regard des enjeux inhérents à la matière pénale, le Cabinet Quentin Rapaud vous prépare à l'audience correctionnelle lors de rendez-vous au cours desquels des <strong>conseils stratégiques</strong> sont apportés sur la manière de répondre aux questions et sur le comportement à adopter à la barre.
           `
         },
         violences: {
           icon: 'shield',
-          title: 'Violences conjugales',
+          title: 'Violences Conjugales',
           detail: `
             Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir <strong>urgemment</strong> tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de <strong>violences physiques</strong>, <strong>psychologiques</strong> (harcèlement, pressions morales, insultes, propos dégradants) ou <strong>sexuelles</strong>.<br><br>
             En raison des <strong>conséquences graves</strong> qui peuvent résulter des procédures familiales <strong>d'ordonnance de protection</strong> ou pénales <strong>en garde à vue ou devant les chambres correctionnelles du Tribunal</strong> — expulsion du domicile conjugal, autorité parentale exclusive, interdiction de contact avec le partenaire et/ou les enfants — le Cabinet Quentin Rapaud intervient également en <strong>défense</strong> lorsque ces procédures sont instrumentalisées à des fins déloyales.<br><br>
@@ -263,9 +291,9 @@
         },
         casier: {
           icon: 'shield',
-          title: 'Effacement casier judiciaire & antécédents judiciaires',
+          title: 'Effacement Casier Judiciaire & Antécédents Judiciaires',
           detail: `
-            <div style="text-align:center"><strong>BESOIN D'EFFACER VOTRE CASIER JUDICIAIRE ?<br>(TRAVAIL – NATIONALITÉ – TITRE DE SÉJOUR)</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>BESOIN D'EFFACER VOTRE CASIER JUDICIAIRE ?<br>(TRAVAIL – NATIONALITÉ – TITRE DE SÉJOUR)</strong></div><br>
             Le casier judiciaire est un fichier informatisé comprenant l'identité de la personne recensant l'ensemble des condamnations pénales prononcées par les autorités judiciaires à l'encontre des personnes physiques et des personnes morales. Il se compose de trois bulletins, comptabilisant chacun certaines des condamnations et dont l'accès est plus ou moins large.<br><br>
             Le <strong>bulletin n°1 du casier judiciaire</strong> (B1) correspond au relevé intégral des condamnations pénales, et aussi certaines décisions extrapénales (interdiction d'exercer, arrêt d'expulsion) ou civiles (déchéance de l'autorité parentale). Il n'est accessible qu'aux autorités judiciaires.<br><br>
             Le <strong>bulletin n°2 du casier judiciaire</strong> (B2) est une version épurée du B1, contenant la plupart des condamnations et décisions de justice. Il n'est accessible qu'à certaines autorités administratives ou militaires et aux employeurs exerçant une activité auprès des mineurs.<br><br>
@@ -275,20 +303,20 @@
             — Comprendre votre situation en analysant les informations inscrites ;<br>
             — Sécuriser les démarches en effectuant la demande de lecture du casier ;<br>
             — Protéger vos intérêts en initiant une procédure d'effacement devant le tribunal compétent.<br><br>
-            <div style="text-align:center"><strong>MENTIONS AU FICHIER DES ANTÉCÉDENTS JUDICIAIRES (TAJ)</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>MENTIONS AU FICHIER DES ANTÉCÉDENTS JUDICIAIRES (TAJ)</strong></div><br>
             Le TAJ est un <strong>fichier de police judiciaire</strong> qui regroupe toutes les informations concernant les personnes suspectées au cours d'une enquête d'un crime, d'un délit ou d'une contravention ainsi que sur les victimes. Les autorités judiciaires et administratives peuvent y accéder pour des enquêtes de police ou bien pour des enquêtes administratives avant de délivrer des autorisations d'exercer certaines professions ou encore d'accorder la nationalité française ou un titre de séjour.<br><br>
             Il est donc essentiel de vérifier les données personnelles de la fiche TAJ, et au besoin en solliciter la suppression avant de demander un <strong>titre de séjour</strong> ou <strong>la nationalité française</strong>. Dans le même sens, en cas de <strong>refus de délivrance d'une carte professionnelle</strong>.
           `
         },
         cyber: {
           icon: 'shield',
-          title: 'Cyber harcèlement & E-réputation',
+          title: 'Cyber Harcèlement & E-réputation',
           detail: `
-            <div style="text-align:center"><strong>VICTIME DE CYBER-HARCÈLEMENT ?</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>VICTIME DE CYBER-HARCÈLEMENT ?</strong></div><br>
             Pour certains, l'anonymat de l'écran encourage à des comportements répréhensibles. Le monde numérique devient alors un <strong>environnement dangereux avec des conséquences significatives dans la vie quotidienne</strong>, surtout pour les plus jeunes. <strong>Le harcèlement en ligne</strong> est un harcèlement s'effectuant via internet (forum, chat, jeux vidéos en ligne, blog) ou principalement sur les réseaux sociaux.<br><br>
             Le Code pénal réprime ce genre de comportement, notamment lorsqu'ils ont été commis par l'utilisation d'un service de communication au public en ligne, ou par le biais d'un support numérique ou électronique.<br><br>
             Face à ce genre de comportement, il faut agir rapidement pour éviter la disparition des preuves. Le Cabinet Quentin Rapaud a l'habitude de travailler avec des huissiers de justice pour réaliser des constats.<br><br>
-            <div style="text-align:center"><strong>CYBERATTAQUES & E-RÉPUTATION</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>CYBERATTAQUES & E-RÉPUTATION</strong></div><br>
             À l'ère du tout virtuel, les <strong>cyberattaques</strong> demeurent en pleine recrudescence. De nombreuses attaques ciblent les particuliers mais aussi les entreprises et les administrations. D'où la nécessité de protéger l'image véhiculée par l'entreprise ou une marque sur le web.<br><br>
             Les attaques visent à obtenir des <strong>informations personnelles</strong> afin de les exploiter ou de les revendre (données bancaires, identifiants de connexion à des sites marchands, etc.). Les plus connues demeurent le phishing (hameçonnage), le ransomware, l'infection par spyware/malware, le défacement de site ou encore le DOS-DDoS.<br><br>
             En 2025, 75% des entreprises françaises étaient touchées par une cyberattaque.
@@ -296,30 +324,30 @@
         },
         amenagement: {
           icon: 'shield',
-          title: 'Aménagement de peine',
+          title: 'Aménagement de Peine',
           detail: `
             L'aménagement de peine est un mode alternatif d'exécution d'une peine de prison ferme. Il vise un retour progressif à la liberté en favorisant l'accompagnement de la personne condamnée. L'objectif essentiel de tout aménagement de peine est la réinsertion sociale de l'individu afin de prévenir toute récidive.<br><br>
-            <div style="text-align:center"><strong>AMÉNAGEMENT AB INITIO</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>AMÉNAGEMENT AB INITIO</strong></div><br>
             Une peine d'emprisonnement ferme n'est pas toujours synonyme d'incarcération. En effet, il est possible, sous certaines conditions, d'éviter le passage en prison.<br><br>
             Depuis mars 2020, les peines d'emprisonnement ferme inférieures ou égales à 1 an peuvent être aménagées à la barre, directement par la juridiction de jugement, sous la forme d'une détention à domicile sous surveillance électronique, d'une semi-liberté ou du placement à l'extérieur (article 132-25 du Code pénal). Cet aménagement ab initio évite la convocation devant le Juge d'application des peines (JAP).<br><br>
-            <div style="text-align:center"><strong>AMÉNAGEMENT PEINES COURTES</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>AMÉNAGEMENT PEINES COURTES</strong></div><br>
             Si la juridiction de jugement n'a pas prononcé un mandat de dépôt différé et qu'elle n'a pas fait droit à l'aménagement de peine à la barre, il est toujours possible de le solliciter lors de la mise à exécution de la peine devant le JAP avec toujours le plafond d'une peine d'emprisonnement ferme d'un maximum de 1 an (article 723-15 du CPP).<br><br>
             Concernant les personnes déjà incarcérées pour une courte peine (2 ans maximum ou il reste deux ans à exécuter), il est toujours possible de solliciter l'exécution de la peine sous le régime de la détention à domicile sous surveillance électronique, de la semi-liberté ou encore du placement à l'extérieur (art. 723 et s. du CPP).<br><br>
-            <div style="text-align:center"><strong>AMÉNAGEMENT PEINES LONGUES</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>AMÉNAGEMENT PEINES LONGUES</strong></div><br>
             Pour les peines d'emprisonnement ferme au-delà de 2 années, il est possible d'aménager le temps de la peine en mettant en œuvre les mécanismes traditionnels de la libération conditionnelle (art. 729 et s. du CPP) ou de la libération conditionnelle de fin de peine pour les peines de plus de 5 ans (article 730-1 du CPP).<br><br>
             Pour les peines inférieures à 5 ans, il est également possible d'aménager sous le régime de la libération sous contrainte (article 720 du CPP).
           `
         },
         extradition: {
           icon: 'shield',
-          title: 'Extradition & Mandat d\'arrêt européen ou international',
+          title: 'Extradition & Mandat d\'arrêt Européen ou International',
           detail: `À compléter.`
         }
       },
       victimes: {
         plainte: {
           icon: 'heart',
-          title: 'Dépôt de plainte',
+          title: 'Dépôt de Plainte',
           detail: `
             Le dépôt de plainte est une démarche qui n'est en réalité ni simple ni naturelle. En effet, pour de nombreuses victimes il est extrêmement difficile de pousser les portes d'un commissariat tant cela est perçu comme une épreuve supplémentaire : difficultés à raconter les faits subis, peur d'être jugée, peur des représailles, emprise de la part de l'agresseur, comportement récalcitrant des policiers…<br><br>
             À titre d'exemple, chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte.<br><br>
@@ -329,7 +357,7 @@
         },
         violences: {
           icon: 'heart',
-          title: 'Victime violences conjugales',
+          title: 'Victime Violences Conjugales',
           detail: `
             Les violences conjugales ne sont ni marginales ni lointaines. Elles traversent toutes les familles et les milieux sociaux y compris ceux que l'on pense protégés. Chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte. En cause : la difficulté de franchir les portes d'un commissariat, souvent vécue comme une épreuve supplémentaire.<br><br>
             La différence aujourd'hui ne réside pas seulement dans la prise de conscience. C'est également la capacité à agir au bon moment et au bon endroit. Les victimes de violences conjugales ne doivent pas porter seules le poids des démarches.<br><br>
@@ -356,7 +384,7 @@
       famille: {
         violences: {
           icon: 'users',
-          title: 'Violences conjugales',
+          title: 'Violences Conjugales',
           detail: `
             Les violences conjugales ne sont ni marginales ni lointaines. Elles traversent toutes les familles et les milieux sociaux y compris ceux que l'on pense protégés. Chaque année, plus de 270.000 personnes, en majorité des femmes — plus de 80% — sont victimes de violences conjugales. Parmi elles, seules 19% trouvent la force de porter plainte.<br><br>
             Lorsqu'un conjoint, concubin ou partenaire est victime de violences conjugales, il est essentiel d'agir <strong>urgemment</strong> tant pour la santé ou la vie de la personne menacée que pour l'équilibre des enfants. Les violences sont constituées qu'il s'agisse de <strong>violences physiques</strong>, <strong>psychologiques</strong> (harcèlement, pressions morales, insultes, propos dégradants) ou <strong>sexuelles</strong>.<br><br>
@@ -366,7 +394,7 @@
         },
         divorce: {
           icon: 'users',
-          title: 'Divorces – Divorces internationaux',
+          title: 'Divorces – Divorces Internationaux',
           detail: `
             Le Cabinet Quentin Rapaud intervient régulièrement dans des dossiers de <strong>divorces internationaux</strong> d'expatriés étrangers vivant en France ou de français expatriés à l'étranger.<br><br>
             Ces dossiers complexes nécessitent l'application de <strong>conventions internationales</strong> et impliquent des enjeux humains et financiers très importants. Le Cabinet a pour habitude de s'entourer des meilleurs professionnels (notaires, cabinets d'avocats étrangers, enquêteurs privés, médiateurs, psychologues) pour obtenir la solution la plus appropriée.<br><br>
@@ -377,7 +405,7 @@
         },
         mutuel: {
           icon: 'users',
-          title: 'Divorce par consentement mutuel',
+          title: 'Divorce par Consentement Mutuel',
           detail: `
             Le <strong>divorce par consentement mutuel</strong> présente l'avantage de la célérité puisque c'est une procédure sans audience devant juge. Il suffit de négocier entre les époux et leur conseil respectif les conséquences du divorce afin de trouver un <strong>accord</strong> qui est retranscrit dans une convention de divorce.<br><br>
             Il présente également l'avantage <strong>d'une plus grande liberté</strong> dans les modalités d'exercice de l'autorité parentale, la résidence des enfants et les droits de garde de chacun des parents. En effet, l'accord des époux sur ces points autorise une <strong>plus grande souplesse</strong> qu'on ne retrouverait pas nécessairement dans le cadre d'un divorce contentieux.<br><br>
@@ -387,7 +415,7 @@
         },
         separation: {
           icon: 'users',
-          title: 'Séparation hors mariage',
+          title: 'Séparation Hors Mariage',
           detail: `
             La <strong>séparation d'un couple non marié</strong> suppose principalement de se prononcer sur la résidence des enfants, le droit de visite et d'hébergement et la pension alimentaire après avoir saisi le juge par requête. Cependant, en cas <strong>d'urgence</strong> dûment justifiée, le Cabinet Quentin Rapaud peut initier une <strong>procédure accélérée</strong>.<br><br>
             Eu égard à l'importance des enjeux et des réalités humaines qu'ils représentent, les procès en matière familiale sont empreints d'émotions fortes et peuvent s'avérer souvent violents. Il s'agit d'une <strong>véritable bataille tant juridique que physique et psychologique</strong>.<br><br>
@@ -397,14 +425,14 @@
         },
         mineurs: {
           icon: 'users',
-          title: 'Droit des mineurs – Assistance éducative',
+          title: 'Droit des Mineurs – Assistance Educative',
           detail: `À compléter.`
         }
       },
       medical: {
         medecin: {
           icon: 'activity',
-          title: 'Mise en contact médecin conseil',
+          title: 'Mise en Contact Médecin Conseil',
           detail: `
             Le Cabinet Quentin Rapaud assiste et défend les victimes <strong>d'erreurs médicales</strong> et <strong>d'accidents médicaux</strong> tout au long du processus d'indemnisation. Nous vous conseillons sur la procédure la plus adaptée, vous assistons à toutes les étapes de la <strong>procédure qu'elle soit amiable ou judiciaire</strong>.<br><br>
             En matière de responsabilité médicale, il est fortement recommandé de travailler avec <strong>des médecins conseils</strong> pour étudier l'ensemble du dossier médical et participer à la caractérisation de la faute.<br><br>
@@ -413,16 +441,16 @@
         },
         refere: {
           icon: 'activity',
-          title: 'Référé expertise médicale',
+          title: 'Référé Expertise Médicale',
           detail: `
             À défaut d'accord amiable, il est nécessaire d'effectuer dans un premier temps <strong>un référé médical</strong> pour obtenir la désignation d'un expert qui se prononcera sur l'existence d'une faute médicale. Si ce dernier reconnaît la faute médicale, alors il est possible d'initier une procédure au fond pour solliciter les dommages et intérêts correspondant aux préjudices subis.
           `
         },
         faute: {
           icon: 'activity',
-          title: 'Erreur – Faute médicale',
+          title: 'Erreur – Faute Médicale',
           detail: `
-            <div style="text-align:center"><strong>VICTIME D'UNE ERREUR MÉDICALE ?</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>VICTIME D'UNE ERREUR MÉDICALE ?</strong></div><br>
             En principe, la <strong>responsabilité médicale</strong> nécessite que la victime <strong>démontre une faute</strong> de la part du praticien ou de l'établissement de santé :<br><br>
             — Défaut d'information ;<br>
             — Erreur de diagnostic ;<br>
@@ -435,9 +463,9 @@
         },
         accident: {
           icon: 'activity',
-          title: 'Accident médical',
+          title: 'Accident Médical',
           detail: `
-            <div style="text-align:center"><strong>L'INDEMNISATION EN L'ABSENCE DE FAUTE MÉDICALE</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>L'INDEMNISATION EN L'ABSENCE DE FAUTE MÉDICALE</strong></div><br>
             En parallèle du régime principal de responsabilité pour faute des professionnels, la loi a prévu des hypothèses dans lesquelles les victimes peuvent être indemnisées en l'absence de faute :<br><br>
             — <strong>Les infections nosocomiales</strong> : il s'agit d'infections contractées à la suite d'une prise en charge médicale dans un établissement de santé — public ou privé, non présente avant l'hospitalisation. En fonction du pourcentage de trouble fonctionnel, l'indemnisation est prise en charge par l'assureur de l'établissement de santé (inférieur ou égal à 25%), ou par la solidarité nationale à travers l'ONIAM (supérieur à 25% ou décès du patient).<br><br>
             — <strong>Les affections iatrogènes</strong> : il s'agit d'infections contractées à la suite d'un traitement ou de soins médicaux. Pour être indemnisables, les dommages doivent être supérieurs à un seuil de gravité. L'indemnisation incombe à l'ONIAM.<br><br>
@@ -446,12 +474,12 @@
         },
         infections: {
           icon: 'activity',
-          title: 'Infections iatrogènes et nosocomiales',
+          title: 'Infections Iatrogènes et Nosocomiales',
           detail: `
-            <div style="text-align:center"><strong>LES INFECTIONS NOSOCOMIALES</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>LES INFECTIONS NOSOCOMIALES</strong></div><br>
             Il s'agit d'infections contractées à la suite d'une prise en charge médicale dans un établissement de santé — public ou privé — non présentes avant l'hospitalisation.<br><br>
             En fonction du pourcentage de trouble fonctionnel, l'indemnisation est prise en charge par l'assureur de l'établissement de santé (inférieur ou égal à 25%), ou par la solidarité nationale à travers l'<strong>ONIAM</strong> (supérieur à 25% ou décès du patient).<br><br>
-            <div style="text-align:center"><strong>LES AFFECTIONS IATROGÈNES</strong></div><br>
+            <div style="text-align:center; font-size:1.25rem;"><strong>LES AFFECTIONS IATROGÈNES</strong></div><br>
             Il s'agit d'infections contractées à la suite d'un traitement ou de soins médicaux. Ces infections peuvent être dues à divers facteurs, notamment les erreurs médicales, la négligence ou les infections nosocomiales.<br><br>
             Pour être indemnisables, les dommages liés à une affection iatrogène doivent être supérieurs à un seuil de gravité dont les critères sont les suivants :<br><br>
             — un taux de déficit fonctionnel permanent supérieur à 24% ;<br>
@@ -484,6 +512,7 @@
 
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
 
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
@@ -507,16 +536,30 @@
 
         overlay.style.opacity          = '0';
         panel.style.transform          = 'scale(0.3)';
-        pageWrapper.style.transform    = '';  // ← vide
-        pageWrapper.style.opacity      = '';  // ← vide
-        pageWrapper.style.borderRadius = '';  // ← vide
-        pageWrapper.style.filter       = '';  // ← vide
-        document.body.style.overflow   = '';
+        pageWrapper.style.transform    = ''; 
+        pageWrapper.style.opacity      = '';  
+        pageWrapper.style.borderRadius = ''; 
+        pageWrapper.style.filter       = ''; 
+      
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
 
         setTimeout(() => overlay.classList.add('hidden'), 450);
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+    //ouvrir le modal directement pour les urgences 
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const card = params.get('modal');
+      const item = params.get('item');
+      if (card && item) {
+        // Petit délai pour laisser feather remplacer les icônes d'abord
+        setTimeout(() => openModal(card, item), 100);
+      }
+    });
   </script>
 
 </body>

@@ -8,7 +8,6 @@
     <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
 
-
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -27,9 +26,7 @@
       transform: translateX(-50%);
     }
     @media (max-width: 767px) {
-      .timeline-line {
-        left: 1.5rem;
-      }
+      .timeline-line { left: 1.5rem; }
     }
     .timeline-dot {
       position: absolute;
@@ -46,9 +43,7 @@
       z-index: 2;
     }
     @media (max-width: 767px) {
-      .timeline-dot {
-        left: 1.5rem;
-      }
+      .timeline-dot { left: 1.5rem; }
     }
     .timeline-card {
       transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -63,11 +58,103 @@
       border-color: #1e3a8a;
       border-radius: 0.75rem;
     }
+
+    /* ── Press link preview card ── */
+    .press-preview {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      text-decoration: none;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+      background: #f8fafc;
+      margin-top: 0.75rem;
+    }
+    .press-preview:hover {
+      box-shadow: 0 6px 20px rgba(30,58,138,0.12);
+      transform: translateY(-1px);
+    }
+    .press-preview-thumb {
+      width: 72px;
+      min-width: 72px;
+      background: #1e3a8a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 3px;
+      padding: 8px 6px;
+    }
+    .press-preview-thumb .source-initial {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: white;
+      letter-spacing: 0.05em;
+    }
+    .press-preview-source-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      line-height: 1.1;
+    }
+    .press-preview-body {
+      flex: 1;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      min-width: 0;
+    }
+    .press-preview-body span {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .press-preview-body p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: #1e293b;
+      line-height: 1.25;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .press-preview-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      color: #cbd5e1;
+      flex-shrink: 0;
+      transition: color 0.2s;
+    }
+    .press-preview:hover .press-preview-arrow { color: #f59e0b; }
   </style>
 </head>
 <body class="font-sans bg-gray-50 min-h-screen flex flex-col">
 
-    <!-- LOADER -->
     <div id="page-loader" aria-hidden="true">
         <div class="loader-monogram">QR</div>
         <div class="loader-name">Quentin Rapaud</div>
@@ -87,21 +174,11 @@
             <p class="text-slate-500 max-w-xl leading-relaxed">
             Maître Quentin Rapaud intervient sur de nombreux dossiers médiatiques, complexes et sensibles devant les tribunaux correctionnels et les cours d'assises dans toute la France.
             </p>
-
-            <!-- Filtres -->
             <div class="flex flex-wrap gap-2 mt-8">
-            <button type="button" onclick="filterNews('all')" class="filter-btn active px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
-                Toutes
-            </button>
-            <button type="button" onclick="filterNews('presse')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
-                Presse
-            </button>
-            <button type="button" onclick="filterNews('resultat')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
-                Résultats
-            </button>
-            <button type="button" onclick="filterNews('dossier')" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">
-                Dossiers
-            </button>
+            <button type="button" onclick="filterNews('all', event)" class="filter-btn active px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">Toutes</button>
+            <button type="button" onclick="filterNews('presse', event)" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">Presse</button>
+            <button type="button" onclick="filterNews('resultat', event)" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">Résultats</button>
+            <button type="button" onclick="filterNews('dossier', event)" class="filter-btn px-4 py-1.5 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">Dossiers</button>
             </div>
         </div>
         </section>
@@ -109,198 +186,640 @@
         <!-- Timeline -->
         <section class="container mx-auto px-4 py-16">
         <div class="relative max-w-4xl mx-auto" id="timeline-container">
-
-            <!-- Ligne verticale -->
             <div class="timeline-line hidden md:block"></div>
-
-            <!-- Ligne mobile -->
             <div class="md:hidden absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-blue-900 to-transparent"></div>
-
-            <!-- Items -->
             <div id="news-list" class="flex flex-col gap-0">
 
-            <!-- 2026 -->
-            <div class="year-marker relative flex items-center justify-center my-8">
-                <div class="hidden md:block absolute inset-0 flex items-center">
-                <div class="w-full border-t border-slate-200"></div>
-                </div>
-                <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400 md:text-center" style="font-family:'Barlow Condensed',sans-serif;">2026</span>
-            </div>
 
-            <!-- Article 1 -->
-            <div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="presse">
-                <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
-                <!-- Gauche desktop -->
-                <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
-                    <div class="flex items-center gap-2 mb-3 md:justify-end">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Défense pénale</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-2" style="font-family:'Barlow',sans-serif;">12 février 2026 · Le Parisien</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet représente le conducteur dans cette affaire à fort retentissement médiatique.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">
-                    Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i>
-                    </a>
-                </div>
-                </div>
-                <!-- Point central desktop -->
-                <div class="hidden md:block relative w-0 flex-shrink-0">
-                <div class="timeline-dot"></div>
-                </div>
-                <!-- Droite desktop (vide) -->
-                <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-                <!-- Mobile card -->
-                <div class="md:hidden flex-1">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                    <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Défense pénale</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-1">12 février 2026 · Le Parisien</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</h3>
-                    <p class="text-slate-500 text-sm">Le Cabinet représente le conducteur dans cette affaire à fort retentissement médiatique.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════ 2026 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400 md:text-center" style="font-family:'Barlow Condensed',sans-serif;">2026</span>
+</div>
 
-            <!-- Article 2 (droite) -->
-            <div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
-                <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
-                <!-- Gauche desktop (vide) -->
-                <div class="hidden md:block md:w-1/2 md:pr-12"></div>
-                <!-- Point -->
-                <div class="hidden md:block relative w-0 flex-shrink-0">
-                <div class="timeline-dot"></div>
-                </div>
-                <!-- Droite desktop -->
-                <div class="hidden md:block md:w-1/2 md:pl-12">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                    <div class="flex items-center gap-2 mb-3">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-2">28 janvier 2026 · Le Monde</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Acquittement en cour d'assises : six ans ferme en première instance annulés</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Un accusé de faits criminels condamné à six années d'emprisonnement en première instance a été totalement acquitté en appel.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-                <!-- Mobile -->
-                <div class="md:hidden flex-1">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                    <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-1">28 janvier 2026 · Le Monde</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Acquittement en cour d'assises : six ans ferme annulés</h3>
-                    <p class="text-slate-500 text-sm">Un accusé de faits criminels condamné à six années d'emprisonnement en première instance a été totalement acquitté en appel.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-            </div>
+<!-- 12.02.2026 · Contrôle police – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="presse">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Défense pénale</span></div>
+      <p class="text-xs text-slate-400 mb-2">12 février 2026 · Le Parisien</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet représente le conducteur dans cette affaire à fort retentissement médiatique.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Défense pénale</span></div>
+      <p class="text-xs text-slate-400 mb-1">12 février 2026 · Le Parisien</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</h3>
+      <p class="text-slate-500 text-sm">Le Cabinet représente le conducteur dans cette affaire à fort retentissement médiatique.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+</div>
 
-            <!-- Article 3 (gauche) -->
-            <div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="dossier">
-                <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
-                <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
-                    <div class="flex items-center gap-2 mb-3 md:justify-end">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-2">15 janvier 2026 · Le Figaro</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Refus d'obtempérer à Paris : le cabinet intervient en défense</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet Quentin Rapaud assiste le prévenu dans cette procédure correctionnelle en urgence.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-                <div class="hidden md:block relative w-0 flex-shrink-0">
-                <div class="timeline-dot"></div>
-                </div>
-                <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-                <div class="md:hidden flex-1">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                    <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-1">15 janvier 2026 · Le Figaro</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Refus d'obtempérer à Paris : le cabinet intervient en défense</h3>
-                    <p class="text-slate-500 text-sm">Le Cabinet Quentin Rapaud assiste le prévenu dans cette procédure correctionnelle en urgence.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-            </div>
+<!-- 28.01.2026 · Acquittement assises – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">28 janvier 2026 · Le Monde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Acquittement en cour d'assises : six ans ferme en première instance annulés</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Un accusé de faits criminels condamné à six années d'emprisonnement en première instance a été totalement acquitté en appel.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">28 janvier 2026 · Le Monde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Acquittement en cour d'assises : six ans ferme annulés</h3>
+      <p class="text-slate-500 text-sm">Accusé condamné à six ans en première instance, totalement acquitté en appel.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+</div>
 
-            <!-- 2025 -->
-            <div class="year-marker relative flex items-center justify-center my-8">
-                <div class="hidden md:block absolute inset-0 flex items-center">
-                <div class="w-full border-t border-slate-200"></div>
-                </div>
-                <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2025</span>
-            </div>
+<!-- 15.01.2026 · Refus obtempérer – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="dossier">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-2">15 janvier 2026 · Le Figaro</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Refus d'obtempérer à Paris : le cabinet intervient en défense</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet Quentin Rapaud assiste le prévenu dans cette procédure correctionnelle en urgence.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-1">15 janvier 2026 · Le Figaro</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Refus d'obtempérer à Paris : le cabinet intervient en défense</h3>
+      <p class="text-slate-500 text-sm">Le Cabinet assiste le prévenu dans cette procédure correctionnelle en urgence.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+</div>
 
-            <!-- Article 4 (droite) -->
-            <div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="presse">
-                <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
-                <div class="hidden md:block md:w-1/2 md:pr-12"></div>
-                <div class="hidden md:block relative w-0 flex-shrink-0">
-                <div class="timeline-dot"></div>
-                </div>
-                <div class="hidden md:block md:w-1/2 md:pl-12">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
-                    <div class="flex items-center gap-2 mb-3">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Presse</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-2">20 décembre 2025 · France Inter</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Divorce international : enjeux de compétence juridictionnelle</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Maître Quentin Rapaud est intervenu sur France Inter au sujet des enjeux des divorces internationaux en matière de compétence.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-                <div class="md:hidden flex-1">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                    <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Presse</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-1">20 décembre 2025 · France Inter</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Divorce international : enjeux de compétence juridictionnelle</h3>
-                    <p class="text-slate-500 text-sm">Maître Quentin Rapaud est intervenu sur France Inter au sujet des enjeux des divorces internationaux.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-            </div>
 
-            <!-- Article 5 (gauche) -->
-            <div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
-                <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
-                <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
-                    <div class="flex items-center gap-2 mb-3 md:justify-end">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-2">5 janvier 2025 · Le Monde</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Erreur médicale : obtenir réparation intégrale devant le tribunal</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Le cabinet a obtenu l'indemnisation intégrale d'une victime d'erreur médicale après expertise judiciaire contradictoire.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-                <div class="hidden md:block relative w-0 flex-shrink-0">
-                <div class="timeline-dot"></div>
-                </div>
-                <div class="hidden md:block md:w-1/2 md:pl-12"></div>
-                <div class="md:hidden flex-1">
-                <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
-                    <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span>
-                    </div>
-                    <p class="text-xs text-slate-400 mb-1">5 janvier 2025 · Le Monde</p>
-                    <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Erreur médicale : obtenir réparation intégrale</h3>
-                    <p class="text-slate-500 text-sm">Le cabinet a obtenu l'indemnisation intégrale d'une victime d'erreur médicale après expertise judiciaire.</p>
-                    <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
-                </div>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════ 2025 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2025</span>
+</div>
 
-            </div>
+<!-- 20.12.2025 · Divorce international – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="presse">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Presse</span></div>
+      <p class="text-xs text-slate-400 mb-2">20 décembre 2025 · France Inter</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Divorce international : enjeux de compétence juridictionnelle</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Maître Quentin Rapaud est intervenu sur France Inter au sujet des enjeux des divorces internationaux en matière de compétence.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-blue-600 px-2 py-0.5 bg-blue-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Presse</span></div>
+      <p class="text-xs text-slate-400 mb-1">20 décembre 2025 · France Inter</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Divorce international : enjeux de compétence juridictionnelle</h3>
+      <p class="text-slate-500 text-sm">Maître Quentin Rapaud intervient sur France Inter sur les divorces internationaux.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- 05.01.2025 · Erreur médicale – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">5 janvier 2025 · Le Monde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Erreur médicale : obtenir réparation intégrale devant le tribunal</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le cabinet a obtenu l'indemnisation intégrale d'une victime d'erreur médicale après expertise judiciaire contradictoire.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-4 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">5 janvier 2025 · Le Monde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Erreur médicale : obtenir réparation intégrale</h3>
+      <p class="text-slate-500 text-sm">Indemnisation intégrale obtenue pour une victime d'erreur médicale après expertise judiciaire.</p>
+      <a href="#" class="inline-flex items-center gap-1 mt-3 text-blue-900 text-sm font-semibold hover:text-amber-500 transition-colors">Lire <i data-feather="arrow-right" class="w-3.5 h-3.5"></i></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ 2023 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2023</span>
+</div>
+
+<!-- 14.03.2023 · Thionville tirs fusil – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">14 mars 2023 · Tribunal de Thionville</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Tirs au fusil lors d'un réveillon : l'auteur condamné à 6 ans</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet défend un couple victime de tirs au fusil de chasse lors d'un réveillon de Noël. L'auteur est condamné à 6 ans d'emprisonnement et à verser des dommages et intérêts importants.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">14 mars 2023 · Tribunal de Thionville</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Tirs au fusil lors d'un réveillon : 6 ans ferme</h3>
+      <p class="text-slate-500 text-sm">Couple victime de tirs au fusil de chasse. L'auteur condamné à 6 ans et dommages et intérêts.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 27.02.2023 · Rixe – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">27 février 2023</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Rixe intercommunautaire : peine très clémente obtenue</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet défend un individu accusé de violences lors d'une rixe entre communautés à la fin d'un marché et obtient une peine très clémente.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">27 février 2023</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Rixe intercommunautaire : peine très clémente</h3>
+      <p class="text-slate-500 text-sm">Peine très clémente obtenue pour violences lors d'une rixe intercommunautaire en fin de marché.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 07.02.2023 · Violences conjugales Paris – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">7 février 2023 · Tribunal de Paris</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Violences conjugales : peine mesurée et casier préservé</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Tribunal prononce une peine très mesurée et fait droit à l'exclusion de la mention au casier judiciaire, sensible au contexte et à la reconnaissance des faits par le prévenu.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">7 février 2023 · Tribunal de Paris</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Violences conjugales : peine mesurée et casier préservé</h3>
+      <p class="text-slate-500 text-sm">Peine très mesurée et exclusion de la mention au casier judiciaire obtenus devant le Tribunal de Paris.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 30.01.2023 · Passage à tabac Nanterre – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">30 janvier 2023 · Tribunal de Nanterre</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Passage à tabac avec séquelles : réparation intégrale obtenue pour la victime</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet intervient en partie civile pour un jeune homme victime d'un passage à tabac avec séquelles importantes. L'auteur est reconnu coupable et responsable de l'intégralité des dommages.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">30 janvier 2023 · Tribunal de Nanterre</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Passage à tabac : réparation intégrale pour la victime</h3>
+      <p class="text-slate-500 text-sm">Réparation intégrale obtenue pour un jeune homme victime d'un passage à tabac avec séquelles importantes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 05–10.01.2023 · Relaxe blanchiment OCRGDF – DROITE + vignette presse -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">5–10 janvier 2023</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Démantèlement réseau OCRGDF : relaxe totale obtenue pour blanchiment de centaines de milliers d'euros</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Plusieurs prévenus condamnés à 2 à 6 ans pour blanchiment issus du trafic de stupéfiants. Le Cabinet obtient la relaxe complète de son client.</p>
+      <a href="https://www.leparisien.fr/faits-divers/blanchiment-dargent-2-a-6-ans-de-prison-pour-les-banquiers-occultes-du-trafic-de-drogue-13-01-2023-MPLQKVHMJBGSPCLIGNGFVE3UW4.php" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb"><div class="source-initial">LP</div><div class="press-preview-source-label">Le Parisien</div></div>
+        <div class="press-preview-body"><span>Le Parisien · 13 janvier 2023</span><p>Blanchiment : 2 à 6 ans de prison pour les banquiers occultes du trafic de drogue</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">5–10 janvier 2023</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Démantèlement OCRGDF : relaxe totale pour blanchiment</h3>
+      <p class="text-slate-500 text-sm">Plusieurs prévenus condamnés à 2–6 ans. Le Cabinet obtient la relaxe complète de son client.</p>
+      <a href="https://www.leparisien.fr/faits-divers/blanchiment-dargent-2-a-6-ans-de-prison-pour-les-banquiers-occultes-du-trafic-de-drogue-13-01-2023-MPLQKVHMJBGSPCLIGNGFVE3UW4.php" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb"><div class="source-initial">LP</div><div class="press-preview-source-label">Le Parisien</div></div>
+        <div class="press-preview-body"><span>Le Parisien · 13 jan. 2023</span><p>Blanchiment : 2 à 6 ans pour les banquiers occultes du trafic de drogue</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ 2022 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2022</span>
+</div>
+
+<!-- 19–23.09.2022 · Gourou Zeus – GAUCHE + 3 vignettes presse -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="dossier">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-2">19–23 septembre 2022 · Cour d'assises de la Gironde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Affaire Zeus : le gourou de Gujan-Mestras condamné à 18 ans aux assises de la Gironde</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet intervient aux côtés de Me Georges Parastatis. L'accusé est reconnu coupable de viols incestueux et d'abus de faiblesse par appartenance à une secte, et condamné à 18 ans de réclusion criminelle.</p>
+      <a href="https://www.sudouest.fr/justice/bordeaux-le-proces-du-gourou-de-gujan-mestras-surnomme-zeus-debute-ce-lundi-12316036.php" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#c0392b;"><div class="source-initial">SO</div><div class="press-preview-source-label">Sud Ouest</div></div>
+        <div class="press-preview-body"><span>Sud Ouest</span><p>Le procès du gourou de Gujan-Mestras surnommé Zeus débute ce lundi</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://www.francebleu.fr/infos/faits-divers-justice/affaire-zeus-le-gourou-de-gujan-mestras-diminue-son-proces-aux-assises-renvoye-1632133818" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#0066cc;"><div class="source-initial">FB</div><div class="press-preview-source-label">France Bleu</div></div>
+        <div class="press-preview-body"><span>France Bleu</span><p>Affaire Zeus : le gourou de Gujan-Mestras, son procès aux assises renvoyé</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://www.lemonde.fr/societe/article/2021/09/19/la-chute-du-gourou-zeus-de-l-olympe-aux-assises-de-la-gironde_6095232_3224.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#1a1a2e;"><div class="source-initial">LM</div><div class="press-preview-source-label">Le Monde</div></div>
+        <div class="press-preview-body"><span>Le Monde</span><p>La chute du gourou Zeus : de l'Olympe aux assises de la Gironde</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-1">19–23 sept. 2022 · Assises de la Gironde</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Affaire Zeus : le gourou condamné à 18 ans aux assises</h3>
+      <p class="text-slate-500 text-sm">Viols incestueux et abus de faiblesse par appartenance à une secte. 18 ans de réclusion criminelle.</p>
+      <a href="https://www.sudouest.fr/justice/bordeaux-le-proces-du-gourou-de-gujan-mestras-surnomme-zeus-debute-ce-lundi-12316036.php" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#c0392b;"><div class="source-initial">SO</div><div class="press-preview-source-label">Sud Ouest</div></div>
+        <div class="press-preview-body"><span>Sud Ouest</span><p>Le procès du gourou Zeus débute ce lundi</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://www.francebleu.fr/infos/faits-divers-justice/affaire-zeus-le-gourou-de-gujan-mestras-diminue-son-proces-aux-assises-renvoye-1632133818" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#0066cc;"><div class="source-initial">FB</div><div class="press-preview-source-label">France Bleu</div></div>
+        <div class="press-preview-body"><span>France Bleu</span><p>Affaire Zeus : procès aux assises renvoyé</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://www.lemonde.fr/societe/article/2021/09/19/la-chute-du-gourou-zeus-de-l-olympe-aux-assises-de-la-gironde_6095232_3224.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#1a1a2e;"><div class="source-initial">LM</div><div class="press-preview-source-label">Le Monde</div></div>
+        <div class="press-preview-body"><span>Le Monde</span><p>La chute du gourou Zeus, de l'Olympe aux assises</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 13.07.2022 · Andelys bracelet – DROITE + vignette presse -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">13 juillet 2022 · Les Andelys</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Règlement de comptes aux Andelys : bracelet électronique obtenu face aux réquisitions de 36 mois ferme</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Malgré des réquisitions de 36 mois avec mandat de dépôt à l'audience, le Cabinet obtient un aménagement ab initio (bracelet électronique) pour l'auteur des coups de pied de biche.</p>
+      <a href="https://actu.fr/normandie/les-andelys_27016/les-andelys-trois-complices-se-vengent-a-coups-de-pied-de-biche_50725875.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#d97706;"><div class="source-initial">AC</div><div class="press-preview-source-label">Actu.fr</div></div>
+        <div class="press-preview-body"><span>Actu.fr Normandie</span><p>Les Andelys : trois complices se vengent à coups de pied de biche</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">13 juillet 2022 · Les Andelys</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Andelys : bracelet électronique face à 36 mois requis</h3>
+      <p class="text-slate-500 text-sm">Aménagement ab initio obtenu malgré les réquisitions de 36 mois avec mandat de dépôt.</p>
+      <a href="https://actu.fr/normandie/les-andelys_27016/les-andelys-trois-complices-se-vengent-a-coups-de-pied-de-biche_50725875.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#d97706;"><div class="source-initial">AC</div><div class="press-preview-source-label">Actu.fr</div></div>
+        <div class="press-preview-body"><span>Actu.fr Normandie</span><p>Les Andelys : trois complices se vengent à coups de pied de biche</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 03.06.2022 · Suspension médicale peine – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">3 juin 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Condamné à perpétuité atteint d'un cancer : suspension médicale de peine obtenue</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Après un combat acharné, le Cabinet obtient la suspension médicale de peine d'un condamné à perpétuité souffrant d'un cancer, en démontrant que son pronostic vital était en jeu.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">3 juin 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Perpétuité et cancer : suspension médicale de peine obtenue</h3>
+      <p class="text-slate-500 text-sm">Suspension médicale de peine obtenue pour un condamné à perpétuité dont le pronostic vital était engagé.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 26.05.2022 · Vols téléphones transports – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">26 mai 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Vols de téléphones dans les transports : détention provisoire évitée malgré de lourds casiers</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Malgré de lourds casiers judiciaires, une absence totale de garanties de représentation et des réquisitions de placement en détention provisoire, le Cabinet convainc le Tribunal d'opter pour le contrôle judiciaire.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">26 mai 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Vols de téléphones : détention évitée malgré de lourds casiers</h3>
+      <p class="text-slate-500 text-sm">Contrôle judiciaire obtenu malgré de lourds casiers et l'absence totale de garanties de représentation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 19 avr.–20 juin 2022 · Andelys pied de biche (3 audiences) – GAUCHE + 2 vignettes presse -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="dossier">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-2">19 avril – 20 juin 2022 · Les Andelys</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Règlement de comptes aux Andelys : enfoncement crânien, détention écartée à trois reprises</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Un adolescent blessé par balle, une victime avec fracture de la boîte crânienne (soins intensifs, 12 agrafes). Le Cabinet défend l'auteur des coups de pied de biche et obtient à trois reprises l'écartement de la détention provisoire face aux demandes réitérées du Parquet et de la victime.</p>
+      <a href="https://www.paris-normandie.fr/id301617/article/2022-04-28/reglement-de-compte-au-pied-de-biche-aux-andelys-enfoncement-cranien-pour-la" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#0f4c81;"><div class="source-initial">PN</div><div class="press-preview-source-label">Paris Normandie</div></div>
+        <div class="press-preview-body"><span>Paris Normandie · 28 avril 2022</span><p>Règlement de compte au pied de biche aux Andelys : enfoncement crânien</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://actu.fr/normandie/les-andelys_27016/les-andelys-trois-complices-se-vengent-a-coups-de-pied-de-biche_50725875.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#d97706;"><div class="source-initial">AC</div><div class="press-preview-source-label">Actu.fr</div></div>
+        <div class="press-preview-body"><span>Actu.fr Normandie</span><p>Les Andelys : trois complices se vengent à coups de pied de biche</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-slate-600 px-2 py-0.5 bg-slate-100 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Dossier</span></div>
+      <p class="text-xs text-slate-400 mb-1">19 avr. – 20 juin 2022 · Les Andelys</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Andelys : enfoncement crânien, détention évitée 3 fois</h3>
+      <p class="text-slate-500 text-sm">Fracture crânienne, soins intensifs. Détention provisoire écartée à trois reprises face aux demandes du Parquet et de la victime.</p>
+      <a href="https://www.paris-normandie.fr/id301617/article/2022-04-28/reglement-de-compte-au-pied-de-biche-aux-andelys-enfoncement-cranien-pour-la" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#0f4c81;"><div class="source-initial">PN</div><div class="press-preview-source-label">Paris Normandie</div></div>
+        <div class="press-preview-body"><span>Paris Normandie</span><p>Règlement de compte au pied de biche, enfoncement crânien</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+      <a href="https://actu.fr/normandie/les-andelys_27016/les-andelys-trois-complices-se-vengent-a-coups-de-pied-de-biche_50725875.html" target="_blank" rel="noopener" class="press-preview">
+        <div class="press-preview-thumb" style="background:#d97706;"><div class="source-initial">AC</div><div class="press-preview-source-label">Actu.fr</div></div>
+        <div class="press-preview-body"><span>Actu.fr</span><p>Trois complices se vengent à coups de pied de biche</p></div>
+        <div class="press-preview-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 16.03.2022 · Viols mineur remise en liberté – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">16 mars 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Viols sur mineur de 15 ans : remise en liberté sous contrôle judiciaire en cours d'instruction</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Dans un dossier de viols sur mineur et viols incestueux, Quentin Rapaud et Georges Parastatis obtiennent la remise en liberté après plusieurs mois de détention provisoire. L'instruction se poursuit.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">16 mars 2022</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Viols sur mineur : remise en liberté en cours d'instruction</h3>
+      <p class="text-slate-500 text-sm">Remise en liberté obtenue après plusieurs mois de détention provisoire. Contrôle judiciaire en cours d'instruction.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 06.01.2022 · Réunification familiale Nantes – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">6 janvier 2022 · Tribunal administratif de Nantes</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Réfugié politique : réunification familiale obtenue après annulation du refus ministériel</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet obtient l'annulation de la décision du Ministre de l'Intérieur refusant la réunification familiale à un réfugié politique ayant obtenu l'asile, ainsi que le remboursement des frais de procédure.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">6 janv. 2022 · T.A. de Nantes</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Réfugié politique : réunification familiale obtenue</h3>
+      <p class="text-slate-500 text-sm">Annulation du refus ministériel de réunification familiale et remboursement des frais obtenus.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ 2021 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2021</span>
+</div>
+
+<!-- 19.11.2021 · Violences conjugales – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">19 novembre 2021</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Violences conjugales graves : mandat de dépôt écarté</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet accompagne l'auteur dans la reconnaissance des faits et l'expression de ses excuses à la barre. Sensible à ce positionnement et à la plaidoirie, le Tribunal n'a pas prononcé de mandat de dépôt.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">19 novembre 2021</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Violences conjugales graves : mandat de dépôt écarté</h3>
+      <p class="text-slate-500 text-sm">Mandat de dépôt écarté grâce à la reconnaissance des faits et aux excuses de l'auteur à la barre.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 20.07.2021 · Immigration bande organisée – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">20 juillet 2021</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">8 mois de détention provisoire : remise en liberté dans un dossier d'immigration irrégulière en bande organisée</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Le Cabinet obtient la remise en liberté du client mis en examen pour aide à l'entrée et au séjour irrégulier en bande organisée, faux documents et usage de faux, après 8 mois de détention provisoire.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">20 juillet 2021</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">8 mois de détention : remise en liberté pour séjour irrégulier en bande organisée</h3>
+      <p class="text-slate-500 text-sm">Remise en liberté obtenue après 8 mois dans un dossier d'immigration irrégulière et faux documents.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 08.07.2021 · Viol mineur Reims – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">8 juillet 2021 · Chambre de l'instruction de Reims</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Accusé de viol sur mineur : remise en liberté immédiate après 8 mois de détention provisoire</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Devant la chambre de l'instruction de Reims, Quentin Rapaud démontre que son client ne peut être l'auteur du viol et obtient sa remise en liberté immédiate après plus de 8 mois de détention provisoire.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">8 juil. 2021 · Reims</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Accusé de viol sur mineur : remise en liberté immédiate</h3>
+      <p class="text-slate-500 text-sm">Après 8 mois de détention, remise en liberté immédiate obtenue : le client ne pouvait être l'auteur du viol.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 17–20.06.2021 · C.A. Nancy viols incestueux – GAUCHE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12 md:text-right">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm inline-block w-full text-left">
+      <div class="flex items-center gap-2 mb-3 md:justify-end"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">17–20 juin 2021 · Cour d'appel de Nancy</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Viols incestueux sur mineurs : peine réduite en appel, conséquences significatives sur l'aménagement</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Condamné à 15 ans de réclusion en première instance, le Cabinet obtient une diminution de peine en appel aux côtés de Mes Parastatis et Roth, avec des conséquences significatives pour l'aménagement de peine.</p>
+    </div>
+  </div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12"></div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">17–20 juin 2021 · C.A. Nancy</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Viols incestueux : peine réduite en appel</h3>
+      <p class="text-slate-500 text-sm">15 ans en première instance, peine réduite en appel avec conséquences significatives sur l'aménagement.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════ 2020 ═══════════════════════════════════════ -->
+<div class="year-marker relative flex items-center justify-center my-8">
+  <div class="hidden md:block absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+  <span class="relative bg-gray-50 px-4 text-xs font-bold uppercase tracking-widest text-slate-400" style="font-family:'Barlow Condensed',sans-serif;">2020</span>
+</div>
+
+<!-- 14.12.2020 · Vol téléphones lieux touristiques – DROITE -->
+<div class="news-item timeline-item relative flex md:items-center gap-6 md:gap-0 pb-12" data-category="resultat">
+  <div class="md:hidden w-3 h-3 rounded-full bg-amber-400 border-2 border-white shadow-sm flex-shrink-0 mt-1 ml-4" style="box-shadow:0 0 0 3px rgba(245,158,11,0.2)"></div>
+  <div class="hidden md:block md:w-1/2 md:pr-12"></div>
+  <div class="hidden md:block relative w-0 flex-shrink-0"><div class="timeline-dot"></div></div>
+  <div class="hidden md:block md:w-1/2 md:pl-12">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-6 shadow-sm">
+      <div class="flex items-center gap-2 mb-3"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-2">14 décembre 2020</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-3" style="font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.02em;">Vol en bande organisée dans les lieux touristiques parisiens : seul prévenu libre et sans interdiction du territoire</h3>
+      <p class="text-slate-500 text-sm leading-relaxed">Lors d'une audience correctionnelle spéciale sur plusieurs jours, le Cabinet obtient pour son client — seul parmi les prévenus — une décision clémente lui permettant de sortir de prison dans les jours suivant l'audience, et d'être le seul à ne pas subir d'interdiction du territoire français.</p>
+    </div>
+  </div>
+  <div class="md:hidden flex-1">
+    <div class="timeline-card bg-white rounded-2xl border border-slate-100 p-5 shadow-sm">
+      <div class="flex items-center gap-2 mb-2"><span class="text-xs font-semibold uppercase tracking-wider text-amber-600 px-2 py-0.5 bg-amber-50 rounded-full" style="font-family:'Barlow Condensed',sans-serif;">Résultat</span></div>
+      <p class="text-xs text-slate-400 mb-1">14 décembre 2020</p>
+      <h3 class="font-bold text-slate-800 leading-snug mb-2" style="font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; text-transform:uppercase;">Vol en bande organisée à Paris : seul prévenu libre sans interdiction du territoire</h3>
+      <p class="text-slate-500 text-sm">Seul prévenu à obtenir une décision clémente et à ne pas être condamné à une interdiction du territoire français.</p>
+    </div>
+  </div>
+</div>
+
+
+            </div><!-- /news-list -->
         </div>
         </section>
 
@@ -310,38 +829,30 @@
 
     <script>
         window.addEventListener("DOMContentLoaded", () => {
-        if (window.feather) feather.replace();
+          if (window.feather) feather.replace();
         });
 
-        function filterNews(category) {
-        // Update active button
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        function filterNews(category, evt) {
+          document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+          if (evt && evt.target) evt.target.classList.add('active');
 
-        // Filter items
-        document.querySelectorAll('.news-item').forEach(item => {
-            if (category === 'all' || item.dataset.category === category) {
-            item.style.display = 'flex';
-            } else {
-            item.style.display = 'none';
-            }
-        });
+          document.querySelectorAll('.news-item').forEach(item => {
+            item.style.display = (category === 'all' || item.dataset.category === category) ? 'flex' : 'none';
+          });
 
-        // Hide/show year markers if all items in a year are hidden
-        document.querySelectorAll('.year-marker').forEach(marker => {
+          document.querySelectorAll('.year-marker').forEach(marker => {
             let next = marker.nextElementSibling;
             let hasVisible = false;
             while (next && !next.classList.contains('year-marker')) {
-            if (next.classList.contains('news-item') && next.style.display !== 'none') {
-                hasVisible = true;
-                break;
-            }
-            next = next.nextElementSibling;
+              if (next.classList.contains('news-item') && next.style.display !== 'none') {
+                hasVisible = true; break;
+              }
+              next = next.nextElementSibling;
             }
             marker.style.display = hasVisible ? 'flex' : 'none';
-        });
+          });
 
-        if (window.feather) feather.replace();
+          if (window.feather) feather.replace();
         }
     </script>
 

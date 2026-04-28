@@ -343,62 +343,7 @@
         <!-- Viewport -->
         <div class="overflow-hidden" id="actuViewport">
           <div id="actuTrack" style="display:flex; transition: transform 0.5s cubic-bezier(0.77,0,0.18,1);">
-
-            <!-- Carte 1 -->
-            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
-              <p class="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3"
-                style="font-family:'Barlow Condensed',sans-serif;">Défense pénale</p>
-              <p class="text-slate-700 mb-3" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em;">Contrôle de police vire au drame : l'avocat du conducteur s'exprime</p>
-              <p class="text-slate-700 leading-relaxed text-sm">
-                "Cuius acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater."
-              </p>
-              <p class="mt-4 text-xs text-slate-400" style="font-family:'Barlow',sans-serif;">12 février 2026</p>
-            </div>
-
-            <!-- Carte 2 -->
-            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
-              <p class="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3"
-                style="font-family:'Barlow Condensed',sans-serif;">Faits divers</p>
-              <p class="text-slate-700 mb-3" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em;">Contrôle mortel à Paris</p>
-              <p class="text-slate-700 leading-relaxed text-sm">
-                "Enim eis appellentur Assyria praesens Graecis in opibus amittunt hominum construxit firmas et quae veteres conditoris hominum quae amittunt multis diutius."
-              </p>
-              <p class="mt-4 text-xs text-slate-400" style="font-family:'Barlow',sans-serif;">28 janvier 2026</p>
-            </div>
-
-            <!-- Carte 3 -->
-            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
-              <p class="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3"
-                style="font-family:'Barlow Condensed',sans-serif;">Procédure</p>
-              <p class="text-slate-700 mb-3" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em;">Refus d'obtempérer à Paris</p>
-              <p class="text-slate-700 leading-relaxed text-sm">
-                "Acerbitati uxor grave accesserat incentivum, germanitate Augusti turgida supra modum, quam Hannibaliano regi fratris filio antehac Constantinus iunxerat pater, Megaera quaedam mortalis."
-              </p>
-              <p class="mt-4 text-xs text-slate-400" style="font-family:'Barlow',sans-serif;">15 janvier 2026</p>
-            </div>
-
-            <!-- Carte 4 -->
-            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
-              <p class="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3"
-                style="font-family:'Barlow Condensed',sans-serif;">Famille</p>
-              <p class="text-slate-700 mb-3" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em;">Divorce international : enjeux de compétence</p>
-              <p class="text-slate-700 leading-relaxed text-sm">
-                "Lorsque les époux résident dans des États différents, la détermination de la juridiction compétente devient un enjeu stratégique majeur."
-              </p>
-              <p class="mt-4 text-xs text-slate-400" style="font-family:'Barlow',sans-serif;">5 janvier 2026</p>
-            </div>
-
-            <!-- Carte 5 -->
-            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
-              <p class="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-3"
-                style="font-family:'Barlow Condensed',sans-serif;">Médical</p>
-              <p class="text-slate-700 mb-3" style="font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em;">Erreur médicale : obtenir réparation</p>
-              <p class="text-slate-700 leading-relaxed text-sm">
-                "La procédure d'indemnisation des victimes d'erreur médicale requiert une expertise rigoureuse et un accompagnement à chaque stade du référé."
-              </p>
-              <p class="mt-4 text-xs text-slate-400" style="font-family:'Barlow',sans-serif;">20 décembre 2025</p>
-            </div>
-
+            
           </div>
         </div>
 
@@ -739,137 +684,125 @@
       }
     }
 
-
-
-
-
+    // ACTUALITES
     (function () {
-            const track    = document.getElementById('actuTrack');
-            const viewport = document.getElementById('actuViewport');
-            const prev     = document.getElementById('actuPrev');
-            const next     = document.getElementById('actuNext');
-            const dotsEl   = document.getElementById('actuDots');
-            const cards    = track.children;
-            let cur = 0;
-
-            function vis() {
-              const w = viewport.offsetWidth;
-              if (w < 560) return 1;
-              if (w < 900) return 2;
-              return 3;
-            }
-            function maxIdx() { return cards.length - vis(); }
-
-            function buildDots() {
-              dotsEl.innerHTML = '';
-              for (let i = 0; i <= maxIdx(); i++) {
-                const b = document.createElement('button');
-                b.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background .3s,transform .3s;';
-                b.style.background = i === cur ? '#334155' : '#cbd5e1';
-                b.style.transform = i === cur ? 'scale(1.35)' : 'scale(1)';
-                b.addEventListener('click', () => go(i));
-                dotsEl.appendChild(b);
-              }
-            }
-
-            function go(i) {
-              cur = Math.max(0, Math.min(i, maxIdx()));
-              // Recalculate card width dynamically
-              const cardEl = cards[0];
-              const gap = 24;
-              track.style.transform = `translateX(-${cur * (cardEl.offsetWidth + gap)}px)`;
-              // Resize all cards to fill viewport correctly
-              const v = vis();
-              const totalGap = gap * (v - 1);
-              const cardW = (viewport.offsetWidth - totalGap) / v;
-              Array.from(cards).forEach(c => c.style.width = cardW + 'px');
-              // Update buttons
-              prev.disabled = cur === 0;
-              next.disabled = cur >= maxIdx();
-              // Update dots
-              Array.from(dotsEl.children).forEach((d, j) => {
-                d.style.background = j === cur ? '#334155' : '#cbd5e1';
-                d.style.transform = j === cur ? 'scale(1.35)' : 'scale(1)';
-              });
-            }
-
-            function init() {
-              // Set card widths
-              const v = vis();
-              const gap = 24;
-              const cardW = (viewport.offsetWidth - gap * (v - 1)) / v;
-              Array.from(cards).forEach(c => c.style.width = cardW + 'px');
-              buildDots();
-              go(0);
-              if (window.feather) feather.replace();
-            }
-
-            prev.addEventListener('click', () => go(cur - 1));
-            next.addEventListener('click', () => go(cur + 1));
-            window.addEventListener('resize', () => { buildDots(); go(Math.min(cur, maxIdx())); });
-
-            // Wait for layout
-            if (document.readyState === 'loading') {
-              document.addEventListener('DOMContentLoaded', init);
-            } else {
-              setTimeout(init, 0);
-            }
-          })();
-
-
-
-
-
-
-
-
-
-    const slides = document.querySelectorAll('.testimonial-slide');
-      const dotsContainer = document.getElementById('dots');
-      const progressFill = document.getElementById('progress-fill');
-      const INTERVAL = 5000;
-      let current = 0, timer = null, progressTimer = null, progressStart = null;
-
-      
-      slides.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.className = `w-1.5 h-1.5 rounded-full cursor-pointer transition-all ${i === 0 ? 'bg-slate-700 scale-125' : 'bg-slate-300'}`;
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
-      });
-
-      
-      function goTo(index) {
-        slides[current].classList.remove('active');
-        dotsContainer.children[current].className = 'w-1.5 h-1.5 rounded-full cursor-pointer transition-all bg-slate-300';
-        current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dotsContainer.children[current].className = 'w-1.5 h-1.5 rounded-full cursor-pointer transition-all bg-slate-700 scale-125';
-        resetProgress();
-      }
-
-      function resetProgress() {
-        clearInterval(timer);
-        cancelAnimationFrame(progressTimer);
-        progressFill.style.width = '0%';
-        progressStart = performance.now();
-        animateProgress();
-        timer = setInterval(() => goTo(current + 1), INTERVAL);
-      }
-
-      function animateProgress() {
-        progressTimer = requestAnimationFrame(function tick(now) {
-          const pct = Math.min(((now - progressStart) / INTERVAL) * 100, 100);
-          progressFill.style.width = pct + '%';
-          if (pct < 100) progressTimer = requestAnimationFrame(tick);
+      const BADGE_STYLE = {
+        resultat: 'color:#b45309;background:#fef3c7',
+        dossier:  'color:#475569;background:#f1f5f9',
+        presse:   'color:#1d4ed8;background:#eff6ff'
+      };
+      const BADGE_LABEL = { resultat: 'Résultat', dossier: 'Dossier', presse: 'Presse' };
+    
+      fetch('actualites.json')
+        .then(r => r.json())
+        .then(data => {
+          // Trier par date décroissante, prendre les 5 premiers
+          data.sort((a, b) => b.dateSort.localeCompare(a.dateSort));
+          const top5 = data.slice(0, 5);
+    
+          document.getElementById('actuTrack').innerHTML = top5.map(a => `
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-soft p-7 flex-shrink-0" style="margin-right:1.5rem;">
+              <div style="margin-bottom:.6rem">
+                <span style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .65rem;border-radius:999px;font-family:'Barlow Condensed',sans-serif;${BADGE_STYLE[a.categorie]}">${BADGE_LABEL[a.categorie]}</span>
+              </div>
+              <p style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;line-height:1.3;text-transform:uppercase;letter-spacing:.03em;color:#1e293b;margin-bottom:.6rem">${a.titre}</p>
+              <p style="font-size:.875rem;line-height:1.6;color:#64748b">${a.texte.replace(/<[^>]+>/g, '').substring(0, 160)}…</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:1rem">
+                <span style="font-size:.7rem;color:#94a3b8">${a.date}</span>
+                <a href="actualites.html" style="font-size:.75rem;font-weight:600;color:#1e3a8a;text-decoration:none">Lire →</a>
+              </div>
+            </div>`).join('');
+    
+          initCarousel();
         });
-      }
 
-      document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
-      document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
+        function initCarousel() {
+          const track    = document.getElementById('actuTrack');
+          const viewport = document.getElementById('actuViewport');
+          const prev     = document.getElementById('actuPrev');
+          const next     = document.getElementById('actuNext');
+          const dotsEl   = document.getElementById('actuDots');
+          const cards    = track.children;
+          let cur = 0;
+      
+          const vis     = () => viewport.offsetWidth < 560 ? 1 : viewport.offsetWidth < 900 ? 2 : 3;
+          const maxIdx  = () => cards.length - vis();
+          const cardW   = () => (viewport.offsetWidth - 24 * (vis() - 1)) / vis();
+      
+          function resize() {
+            const w = cardW();
+            Array.from(cards).forEach(c => c.style.width = w + 'px');
+          }
+      
+          function buildDots() {
+            dotsEl.innerHTML = '';
+            for (let i = 0; i <= maxIdx(); i++) {
+              const b = document.createElement('button');
+              b.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;transition:background .3s,transform .3s;';
+              b.addEventListener('click', () => go(i));
+              dotsEl.appendChild(b);
+            }
+            updateDots();
+          }
+      
+          function updateDots() {
+            Array.from(dotsEl.children).forEach((d, i) => {
+              d.style.background = i === cur ? '#334155' : '#cbd5e1';
+              d.style.transform  = i === cur ? 'scale(1.35)' : 'scale(1)';
+            });
+          }
+      
+          function go(i) {
+            cur = Math.max(0, Math.min(i, maxIdx()));
+            resize();
+            track.style.transform = `translateX(-${cur * (cards[0].offsetWidth + 24)}px)`;
+            prev.disabled = cur === 0;
+            next.disabled = cur >= maxIdx();
+            updateDots();
+          }
+      
+          prev.addEventListener('click', () => go(cur - 1));
+          next.addEventListener('click', () => go(cur + 1));
+          window.addEventListener('resize', () => { buildDots(); go(Math.min(cur, maxIdx())); });
+      
+          resize();
+          buildDots();
+          go(0);
+        }
+    })();
 
-      goTo(0);
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dotsContainer.children[current].className = 'w-1.5 h-1.5 rounded-full cursor-pointer transition-all bg-slate-300';
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dotsContainer.children[current].className = 'w-1.5 h-1.5 rounded-full cursor-pointer transition-all bg-slate-700 scale-125';
       resetProgress();
+    }
+
+    function resetProgress() {
+      clearInterval(timer);
+      cancelAnimationFrame(progressTimer);
+      progressFill.style.width = '0%';
+      progressStart = performance.now();
+      animateProgress();
+      timer = setInterval(() => goTo(current + 1), INTERVAL);
+    }
+
+    function animateProgress() {
+      progressTimer = requestAnimationFrame(function tick(now) {
+        const pct = Math.min(((now - progressStart) / INTERVAL) * 100, 100);
+        progressFill.style.width = pct + '%';
+        if (pct < 100) progressTimer = requestAnimationFrame(tick);
+      });
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('next-btn').addEventListener('click', () => goTo(current + 1));
+
+    goTo(0);
+    resetProgress();
   </script>
 </body>
 </html>

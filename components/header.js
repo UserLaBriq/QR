@@ -64,13 +64,13 @@ class CustomHeader extends HTMLElement {
                         <a href="expertise.html#penal" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense Pénale
                         </a>
-                        <a href="expertise.html#instruction" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                        <a href="expertise.html#famille-international" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="users" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Famille & International
                         </a>
-                        <a href="expertise.html#assises" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                        <a href="expertise.html#corporel" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="activity" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Corporel & Victimes
                         </a>
-                        <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
+                        <a href="expertise.html#medical" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="plus-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité Médicale
                         </a>
                         <a href="expertise.html?modal=penal&item=gardeavue" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">

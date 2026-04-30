@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Cabinet Quentin Rapaud, avocat pénaliste au Barreau de Paris depuis 2015. Défense pénale, droit de la famille, responsabilité médicale. 51 rue de Maubeuge, Paris 9e.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.quentinrapaud-avocat.com/index.html">
+  <link rel="canonical" href="https://www.quentinrapaud-avocat.com/">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.quentinrapaud-avocat.com/index.html">
+  <meta property="og:url" content="https://www.quentinrapaud-avocat.com/">
   <meta property="og:title" content="Quentin Rapaud – Avocat pénaliste au Barreau de Paris">
   <meta property="og:description" content="Cabinet indépendant dédié à la défense pénale, au droit de la famille et à la responsabilité médicale. Réactivité, stratégie, engagement.">
   <meta property="og:image" content="https://www.quentinrapaud-avocat.com/img/og-cover.jpg">
@@ -81,7 +81,10 @@
     "openingHours": "Mo-Fr 09:00-19:00",
     "priceRange": "€€",
     "knowsAbout": ["Défense pénale", "Droit de la famille", "Responsabilité médicale", "Violences conjugales", "Extradition", "Garde à vue", "Cour d'Assises"],
-    "areaServed": "France",
+    "areaServed": [
+      {"@type": "City", "name": "Paris"},
+      {"@type": "State", "name": "Île-de-France"}
+    ],
     "founder": {
       "@type": "Person",
       "name": "Quentin Rapaud",
@@ -145,21 +148,21 @@
           <div class="mt-8 grid gap-3 sm:grid-cols-2 md:justify-end md:max-w-fit md:ml-auto">
 
             <!-- Bouton 1 -->
-            <a href="expertise.html"
+            <a href="expertise.html#penal"
               class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
               Défense Pénale
             </a>
 
             <!-- Bouton 2 -->
-            <a href="expertise.html"
+            <a href="expertise.html#famille-international"
               class="border border-white/30 hover:border-white/60 text-white px-6 py-3 rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
               Famille · International
             </a>
 
             <!-- Bouton 3 -->
-            <a href="expertise.html"
+            <a href="expertise.html#medical"
               class="sm:col-span-2 sm:justify-self-center
-                    border border-white/30 hover:border-white/60 text-white px-6 py-3 
+                    border border-white/30 hover:border-white/60 text-white px-6 py-3
                     rounded-xl font-semibold text-center transition bg-white/5 hover:bg-white/10">
               Corporel · Médical
             </a>

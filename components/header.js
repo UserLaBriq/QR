@@ -9,15 +9,15 @@ class CustomHeader extends HTMLElement {
             </a>
 
             <nav class="hidden md:flex items-center gap-8" id="desktop-nav">
-              <a href="index.html" class="nav-link text-slate-700 hover:text-blue-900">Cabinet</a>
+              <a href="index.html" class="nav-link nav-page text-slate-700 hover:text-blue-900" data-page="index.html">Cabinet</a>
 
               <button id="expertise-trigger"
-                class="nav-link flex items-center gap-1 text-slate-700 hover:text-blue-900 bg-transparent border-none cursor-pointer text-base">
+                class="nav-link nav-page flex items-center gap-1 text-slate-700 hover:text-blue-900 bg-transparent border-none cursor-pointer text-base p-0" data-page="expertise.html">
                 Expertise
                 <i data-feather="chevron-down" class="w-4 h-4" id="expertise-chevron" style="transition: transform 0.3s ease;"></i>
               </button>
 
-              <a href="actualites.html" class="nav-link text-slate-700 hover:text-blue-900">Actualités</a>
+              <a href="actualites.html" class="nav-link nav-page text-slate-700 hover:text-blue-900" data-page="actualites.html">Actualités</a>
 
               <a href="tel:+33681669806" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
@@ -45,8 +45,8 @@ class CustomHeader extends HTMLElement {
 
           <!-- MENU MOBILE -->
           <div id="mobile-menu" class="md:hidden hidden overflow-hidden"
-            style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s cubic-bezier(0.22,1,0.36,1);">
-            <div class="overflow-hidden">
+            style="grid-template-rows:0fr; transition:grid-template-rows .35s cubic-bezier(0.22,1,0.36,1);">
+            <div class="overflow-hidden" style="min-height:0">
               <div class="flex flex-col space-y-1 pt-2 pb-4">
                 <a href="index.html" class="text-slate-700 hover:text-blue-900 py-2">Cabinet</a>
 
@@ -58,8 +58,8 @@ class CustomHeader extends HTMLElement {
                     <i data-feather="chevron-down" class="w-4 h-4" id="mobile-expertise-chevron" style="transition: transform 0.3s ease;"></i>
                   </button>
                   <div id="mobile-expertise-panel"
-                    style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease;">
-                    <div class="overflow-hidden">
+                    style="display:grid; grid-template-rows:0fr; transition:grid-template-rows .35s ease; overflow:hidden;">
+                    <div class="overflow-hidden" style="min-height:0">
                       <div class="pl-3 border-l-2 border-blue-900/20 ml-1 mb-2 flex flex-col gap-1 mt-1">
                         <a href="expertise.html#penal" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="shield" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Défense Pénale
@@ -73,7 +73,6 @@ class CustomHeader extends HTMLElement {
                         <a href="expertise.html#famille" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="plus-circle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Responsabilité Médicale
                         </a>
-
                         <a href="expertise.html?modal=penal&item=gardeavue" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="lock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Garde à Vue
                         </a>
@@ -86,15 +85,12 @@ class CustomHeader extends HTMLElement {
                         <a href="expertise.html?modal=penal&item=violences" class="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-900 py-1.5">
                           <i data-feather="alert-triangle" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i>Violences Conjugales
                         </a>
-                        
-
                         <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5 mt-1">
                           <i data-feather="calendar" class="w-3.5 h-3.5 flex-shrink-0"></i>Prendre RDV
                         </a>
                         <a href="contact.html" class="flex items-center gap-2 text-sm font-semibold text-amber-600 hover:text-amber-700 py-1.5">
                           <i data-feather="message-square" class="w-3.5 h-3.5 flex-shrink-0"></i>Exposer ma situation
                         </a>
-                        
                       </div>
                     </div>
                   </div>
@@ -115,12 +111,8 @@ class CustomHeader extends HTMLElement {
 
         <!-- MEGA MENU DESKTOP -->
         <div id="mega-menu" class="absolute left-0 right-0 z-40 hidden" style="top:100%;">
-          <div id="mega-backdrop"
-            style="position:fixed; inset:0; background:rgba(15,23,42,0.45); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:-1; opacity:0; transition:opacity .3s ease; pointer-events:none;">
-          </div>
-
           <div id="mega-panel" style="
-            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(28, 43, 79, 0.98) 100%);
+            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(28,43,79,0.98) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -128,76 +120,63 @@ class CustomHeader extends HTMLElement {
             opacity: 0;
             transition: transform .35s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;">
             <div class="container mx-auto px-4 py-10">
-              <div class="grid grid-cols-1 md:grid-cols-[2fr_2fr_2fr] gap-10 ">
+              <div class="grid grid-cols-1 md:grid-cols-[2fr_2fr_2fr] gap-10">
 
                 <div class="flex flex-col gap-4">
-                    <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
-                      style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
-                      Domaines d'intervention
-                    </p>
-                    <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense Pénale</span>
-                    </a>
-                    <a href="expertise.html#famille&international" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Familles & International</span>
-                    </a>
-                    
-                    <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel & Victimes</span>
-                    </a>
-                    <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
-                      <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
-                      <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité Médicale</span>
-                    </a>
+                  <p class="text-xs uppercase tracking-widest text-white/40 mb-5" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Domaines d'intervention</p>
+                  <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 transition-colors">
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense Pénale</span>
+                  </a>
+                  <a href="expertise.html#famille-international" class="group flex items-center gap-3 py-3 transition-colors">
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Familles & International</span>
+                  </a>
+                  <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 transition-colors">
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel & Victimes</span>
+                  </a>
+                  <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 transition-colors">
+                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité Médicale</span>
+                  </a>
                 </div>
 
                 <div class="flex flex-col gap-4">
-                  <p class="text-xs uppercase tracking-widest text-white/40 mb-5"
-                    style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
-                    Urgences
-                  </p>
-                  <a href="expertise.html?modal=penal&item=gardeavue" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <p class="text-xs uppercase tracking-widest text-white/40 mb-5" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Urgences</p>
+                  <a href="expertise.html?modal=penal&item=gardeavue" class="group flex items-center gap-3 py-3 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à Vue</span>
                   </a>
-                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution Immédiate</span>
                   </a>
-                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences Pénales</span>
                   </a>
-                  <a href="expertise.html?modal=penal&item=violences" class="group flex items-center gap-3 py-3 hover:border-amber-300/50 transition-colors">
+                  <a href="expertise.html?modal=penal&item=violences" class="group flex items-center gap-3 py-3 transition-colors">
                     <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences Conjugales</span>
                   </a>
                 </div>
 
                 <div class="flex flex-col gap-4">
-                  <p class="text-xs uppercase tracking-widest text-white/40 mb-1 pl-4"
-                    style="font-family:'Barlow Condensed',sans-serif; font-weight:800;">
-                    Contact
-                  </p>
-                  <a href="contact.html"
-                    class="group flex items-center gap-4 p-4 rounded-2xl hover:border-amber-300/60 transition-colors">
+                  <p class="text-xs uppercase tracking-widest text-white/40 mb-1 pl-4" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Contact</p>
+                  <a href="contact.html" class="group flex items-center gap-4 p-4 rounded-2xl transition-colors">
                     <div class="w-9 h-9 rounded-xl bg-amber-300/20 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-300/30 transition-colors">
                       <i data-feather="calendar" class="w-5 h-5 text-amber-200"></i>
                     </div>
                     <p class="text-white/70 text-sm">Rendez-vous</p>
                   </a>
-                  <a href="contact.html"
-                    class="group flex items-center gap-4 p-4 rounded-2xl hover:border-white/20 transition-colors">
+                  <a href="contact.html" class="group flex items-center gap-4 p-4 rounded-2xl transition-colors">
                     <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
                       <i data-feather="message-square" class="w-5 h-5 text-white/70"></i>
                     </div>
                     <p class="text-white/70 text-sm">Exposer ma situation</p>
                   </a>
-                  <a href="actualites.html"
-                    class="group flex items-center gap-4 p-4 rounded-2xl hover:border-white/20 transition-colors">
+                  <a href="actualites.html" class="group flex items-center gap-4 p-4 rounded-2xl transition-colors">
                     <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-white/15 transition-colors">
                       <i data-feather="rss" class="w-5 h-5 text-white/70"></i>
                     </div>
@@ -212,21 +191,31 @@ class CustomHeader extends HTMLElement {
       </header>
     `;
 
-    // ── Active link ──
-    const path = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-    this.querySelectorAll("nav a.nav-link").forEach(a => {
-      const href = (a.getAttribute("href") || "").toLowerCase();
-      if (href === path) a.classList.add("text-blue-900", "font-bold");
+    // ── Active link — fonctionne pour toutes les pages ──
+    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase().split('?')[0].split('#')[0];
+    this.querySelectorAll('.nav-page').forEach(el => {
+      const page = (el.dataset.page || '').toLowerCase();
+      if (page === path) {
+        el.classList.add('text-blue-900', 'font-bold');
+        el.classList.remove('text-slate-700');
+      }
     });
 
     // ── Mobile menu burger ──
-    const btn  = this.querySelector("#mobile-menu-button");
-    const mobileMenu = this.querySelector("#mobile-menu");
+    const btn        = this.querySelector('#mobile-menu-button');
+    const mobileMenu = this.querySelector('#mobile-menu');
     let menuOpen = false;
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener('click', () => {
       menuOpen = !menuOpen;
-      mobileMenu.style.gridTemplateRows = menuOpen ? "1fr" : "0fr";
+      if (menuOpen) {
+        mobileMenu.style.display = 'grid';
+        mobileMenu.offsetHeight;
+        mobileMenu.style.gridTemplateRows = '1fr';
+      } else {
+        mobileMenu.style.gridTemplateRows = '0fr';
+        setTimeout(() => { if (!menuOpen) mobileMenu.style.display = 'none'; }, 360);
+      }
       btn.innerHTML = menuOpen
         ? `<i data-feather="x" class="w-6 h-6 text-slate-900"></i>`
         : `<i data-feather="menu" class="w-6 h-6 text-slate-900"></i>`;
@@ -234,74 +223,58 @@ class CustomHeader extends HTMLElement {
     });
 
     // ── Mobile expertise accordion ──
-    const mobileTrigger = this.querySelector("#mobile-expertise-trigger");
-    const mobilePanel   = this.querySelector("#mobile-expertise-panel");
+    const mobileTrigger = this.querySelector('#mobile-expertise-trigger');
+    const mobilePanel   = this.querySelector('#mobile-expertise-panel');
     let mobileOpen = false;
-    mobileTrigger.addEventListener("click", () => {
+    mobileTrigger.addEventListener('click', () => {
       mobileOpen = !mobileOpen;
-      mobilePanel.style.gridTemplateRows = mobileOpen ? "1fr" : "0fr";
-      if (mobileChevronEl) mobileChevronEl.style.transform = mobileOpen ? "rotate(180deg)" : "rotate(0deg)";
+      mobilePanel.style.gridTemplateRows = mobileOpen ? '1fr' : '0fr';
+      const mChev = this.querySelector('#mobile-expertise-chevron');
+      if (mChev) mChev.style.transform = mobileOpen ? 'rotate(180deg)' : 'rotate(0deg)';
     });
 
     // ── Desktop mega menu ──
-    const trigger  = this.querySelector("#expertise-trigger");
-    const megaMenu = this.querySelector("#mega-menu");
-    const panel    = this.querySelector("#mega-panel");
+    const trigger  = this.querySelector('#expertise-trigger');
+    const megaMenu = this.querySelector('#mega-menu');
+    const panel    = this.querySelector('#mega-panel');
     let isOpen = false;
 
-    let chevronEl = null;
-
-    let backdrop = document.getElementById("mega-backdrop-global");
+    let backdrop = document.getElementById('mega-backdrop-global');
     if (!backdrop) {
-      backdrop = document.createElement("div");
-      backdrop.id = "mega-backdrop-global";
-      backdrop.style.cssText = `
-        position: fixed;
-        inset: 0;
-        background: rgba(15,23,42,0.45);
-        backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px);
-        z-index: 40;
-        opacity: 0;
-        transition: opacity .3s ease;
-        pointer-events: none;
-      `;
+      backdrop = document.createElement('div');
+      backdrop.id = 'mega-backdrop-global';
+      backdrop.style.cssText = `position:fixed;inset:0;background:rgba(15,23,42,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:40;opacity:0;transition:opacity .3s ease;pointer-events:none;`;
       document.body.appendChild(backdrop);
     }
-    
+
     function openMega() {
       isOpen = true;
-      megaMenu.classList.remove("hidden");
+      megaMenu.classList.remove('hidden');
       megaMenu.offsetHeight;
-      panel.style.transform        = "translateY(0)";
-      panel.style.opacity          = "1";
-      backdrop.style.opacity       = "1";
-      backdrop.style.pointerEvents = "auto";
-      if (chevronEl) chevronEl.style.transform = "rotate(180deg)";
+      panel.style.transform        = 'translateY(0)';
+      panel.style.opacity          = '1';
+      backdrop.style.opacity       = '1';
+      backdrop.style.pointerEvents = 'auto';
+      const chev = document.querySelector('#expertise-chevron');
+      if (chev) chev.style.transform = 'rotate(180deg)';
     }
 
     function closeMega() {
       isOpen = false;
-      panel.style.transform        = "translateY(-12px)";
-      panel.style.opacity          = "0";
-      backdrop.style.opacity       = "0";
-      backdrop.style.pointerEvents = "none";
-      if (chevronEl) chevronEl.style.transform = "rotate(0deg)";
-      setTimeout(() => { if (!isOpen) megaMenu.classList.add("hidden"); }, 350);
+      panel.style.transform        = 'translateY(-12px)';
+      panel.style.opacity          = '0';
+      backdrop.style.opacity       = '0';
+      backdrop.style.pointerEvents = 'none';
+      const chev = document.querySelector('#expertise-chevron');
+      if (chev) chev.style.transform = 'rotate(0deg)';
+      setTimeout(() => { if (!isOpen) megaMenu.classList.add('hidden'); }, 350);
     }
 
-    trigger.addEventListener("click", () => isOpen ? closeMega() : openMega());
-    backdrop.addEventListener("click", closeMega);
-    document.addEventListener("keydown", e => { if (e.key === "Escape" && isOpen) closeMega(); });
+    trigger.addEventListener('click', () => isOpen ? closeMega() : openMega());
+    backdrop.addEventListener('click', closeMega);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeMega(); });
 
-    // feather.replace() EN DERNIER — et on sélectionne les chevrons APRÈS
     if (window.feather) feather.replace();
-    chevronEl = this.querySelector("#expertise-chevron");
-    if (chevronEl) chevronEl.style.transition = "transform 0.3s ease";
-
-    // Idem pour mobile
-    const mobileChevronEl = this.querySelector("#mobile-expertise-chevron");
-    if (mobileChevronEl) mobileChevronEl.style.transition = "transform 0.3s ease";
   }
 }
-customElements.define("custom-header", CustomHeader);
+customElements.define('custom-header', CustomHeader);

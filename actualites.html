@@ -16,14 +16,18 @@
   <meta property="og:site_name" content="Cabinet Quentin Rapaud — Avocat">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://www.quentinrapaud-avocat.com/img/og-cover.jpg">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://www.quentinrapaud-avocat.com/"},{"@type":"ListItem","position":2,"name":"Actualités","item":"https://www.quentinrapaud-avocat.com/actualites.html"}]}
+  </script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"Actualités — Cabinet Quentin Rapaud","url":"https://www.quentinrapaud-avocat.com/actualites.html","mainEntity":{"@type":"LegalService","name":"Cabinet Quentin Rapaud","url":"https://www.quentinrapaud-avocat.com/","address":{"@type":"PostalAddress","addressLocality":"Paris","addressCountry":"FR"},"knowsAbout":["Droit pénal","Défense pénale","Cour d'assises","Droit des étrangers","Droit de la famille"]}}</script>
   <link rel="icon" type="image/x-icon" href="ico/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
+  <link rel="stylesheet" href="style.tailwind.css">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <script defer src="components/header.js"></script>
   <script defer src="components/footer.js"></script>
   <script defer src="script.js"></script>
@@ -42,7 +46,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      padding: 0 0 2.5rem 3rem; /* gauche : espace dot mobile */
+      padding: 0 0 2.5rem 3rem;
     }
     @media (min-width: 768px) {
       .tl-row { padding: 0 0 2.5rem 0; }
@@ -133,7 +137,6 @@
   <custom-header class="block"></custom-header>
 
   <main class="flex-1">
-    <!-- Hero -->
     <section class="bg-white border-b border-slate-100 py-14">
       <div class="container mx-auto px-4">
         <p class="text-xs uppercase tracking-widest text-slate-400 mb-3" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Cabinet Quentin Rapaud</p>
@@ -148,7 +151,6 @@
       </div>
     </section>
 
-    <!-- Timeline -->
     <section class="container mx-auto px-4 py-16">
       <div class="tl-wrap">
         <div class="tl-line"></div>
@@ -178,11 +180,14 @@
         <div class="pp-arrow">${ARROW}</div>
       </a>`).join('');
 
+    // CORRECTION 1 : badges multi-catégories ("dossier presse" → 2 pastilles)
+    const badges = a.categorie.split(' ')
+      .map(c => `<span style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .65rem;border-radius:999px;font-family:'Barlow Condensed',sans-serif;${BADGE_STYLE[c]||''}">${BADGE_LABEL[c]||c}</span>`)
+      .join('');
+
     return `<div class="tl-card">
       ${img}
-      <div style="margin-bottom:.6rem">
-        <span style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:.2rem .65rem;border-radius:999px;font-family:'Barlow Condensed',sans-serif;${BADGE_STYLE[a.categorie]}">${BADGE_LABEL[a.categorie]}</span>
-      </div>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.6rem">${badges}</div>
       <p style="font-size:.7rem;color:#94a3b8;margin-bottom:.35rem">${a.date}${jur}</p>
       <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:#1e293b;line-height:1.25;margin-bottom:.6rem">${a.titre}</h3>
       <p class="body">${a.texte}</p>
@@ -212,7 +217,8 @@
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     evt?.target?.classList.add('active');
     document.querySelectorAll('.tl-row').forEach(r => {
-      r.style.display = (cat === 'all' || r.dataset.cat === cat) ? 'flex' : 'none';
+      // CORRECTION 2 : split pour supporter les catégories multiples
+      r.style.display = (cat === 'all' || r.dataset.cat.split(' ').includes(cat)) ? 'flex' : 'none';
     });
     document.querySelectorAll('.year-marker').forEach(m => {
       let n = m.nextElementSibling, has = false;

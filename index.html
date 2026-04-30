@@ -3,33 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quentin Rapaud - Avocat au Barreau de Paris</title>
+  <meta name="description" content="Cabinet Quentin Rapaud, avocat pénaliste au Barreau de Paris depuis 2015. Défense pénale, droit de la famille, responsabilité médicale. 51 rue de Maubeuge, Paris 9e.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.quentinrapaud-avocat.com/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.quentinrapaud-avocat.com/index.html">
+  <meta property="og:title" content="Quentin Rapaud – Avocat pénaliste au Barreau de Paris">
+  <meta property="og:description" content="Cabinet indépendant dédié à la défense pénale, au droit de la famille et à la responsabilité médicale. Réactivité, stratégie, engagement.">
+  <meta property="og:image" content="https://www.quentinrapaud-avocat.com/img/og-cover.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Cabinet Quentin Rapaud — Avocat">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.quentinrapaud-avocat.com/img/og-cover.jpg">
+  <title>Quentin Rapaud – Avocat pénaliste au Barreau de Paris</title>
 
   <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
 
+  <link rel="stylesheet" href="style.tailwind.css" />
   <link rel="stylesheet" href="style.css" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 
-  <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
   <script defer src="components/header.js"></script>
   <script defer src="components/footer.js"></script>
   <script defer src="script.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          boxShadow: {
-            soft: "0 10px 30px rgba(2, 6, 23, 0.08)"
-          }
-        }
-      }
-    }
-  </script>
 
   <style>
       .acc-body {
@@ -54,6 +56,40 @@
       .testimonial-slide.active { display: block; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Cabinet Quentin Rapaud",
+    "url": "https://www.quentinrapaud-avocat.com",
+    "logo": "https://www.quentinrapaud-avocat.com/ico/favicon-32x32.png",
+    "image": "https://www.quentinrapaud-avocat.com/img/og-cover.jpg",
+    "telephone": "+33681669806",
+    "email": "qr.cabinet@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "51 rue de Maubeuge",
+      "addressLocality": "Paris",
+      "postalCode": "75009",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.8793,
+      "longitude": 2.3483
+    },
+    "openingHours": "Mo-Fr 09:00-19:00",
+    "priceRange": "€€",
+    "knowsAbout": ["Défense pénale", "Droit de la famille", "Responsabilité médicale", "Violences conjugales", "Extradition", "Garde à vue", "Cour d'Assises"],
+    "areaServed": "France",
+    "founder": {
+      "@type": "Person",
+      "name": "Quentin Rapaud",
+      "jobTitle": "Avocat au Barreau de Paris",
+      "worksFor": {"@type": "LegalService", "name": "Cabinet Quentin Rapaud"}
+    }
+  }
+  </script>
 </head>
 
 <body class="font-sans bg-gray-50 min-h-screen flex flex-col">
@@ -81,7 +117,7 @@
       <div class="absolute inset-0">
         <img
           src="https://userlabriq.github.io/QR/qp_banner.png"
-          alt="Cabinet Quentin Rapaud"
+          alt="Maître Quentin Rapaud, avocat pénaliste au Barreau de Paris"
           class="w-full h-full object-cover"
           style="object-position: 20% center;"
         />
@@ -771,6 +807,21 @@
         }
     })();
 
+    // Initialisation carousel témoignages
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dotsContainer = document.getElementById('dots');
+    const progressFill = document.getElementById('progress-fill');
+    let current = 0;
+    const INTERVAL = 5000;
+    let timer, progressStart, progressTimer;
+
+    slides.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.className = 'w-1.5 h-1.5 rounded-full cursor-pointer transition-all ' + (i === 0 ? 'bg-slate-700' : 'bg-slate-300');
+      b.setAttribute('aria-label', 'Témoignage ' + (i + 1));
+      b.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(b);
+    });
 
     function goTo(index) {
       slides[current].classList.remove('active');

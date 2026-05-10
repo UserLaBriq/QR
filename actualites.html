@@ -211,6 +211,9 @@
         idx++;
       }
       document.getElementById('tl-list').innerHTML = html;
+    })
+    .catch(() => {
+      document.getElementById('tl-list').innerHTML = '<p class="text-center py-12 text-slate-400">Impossible de charger les actualités.</p>';
     });
 
   function tlFilter(cat, evt) {

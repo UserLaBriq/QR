@@ -58,6 +58,5 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
-console.log("%cSite officiel publié par Julien — UserLaBriq © 2026", 
+console.log("%cSite conçu et réalisé par Julien Anstett — heliosdigital.org © 2026",
 "color:#1e3a8a;font-size:14px;font-weight:bold;");
-console.log("Repo officiel : https://github.com/UserLaBriq/QR");

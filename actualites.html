@@ -211,25 +211,26 @@
         idx++;
       }
       document.getElementById('tl-list').innerHTML = html;
-    })
-    .catch(() => {
-      document.getElementById('tl-list').innerHTML = '<p class="text-center py-12 text-slate-400">Impossible de charger les actualités.</p>';
     });
 
   function tlFilter(cat, evt) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     evt?.target?.classList.add('active');
-    document.querySelectorAll('.tl-row').forEach(r => {
-      // CORRECTION 2 : split pour supporter les catégories multiples
-      r.style.display = (cat === 'all' || r.dataset.cat.split(' ').includes(cat)) ? 'flex' : 'none';
-    });
     document.querySelectorAll('.year-marker').forEach(m => {
-      let n = m.nextElementSibling, has = false;
+      let n = m.nextElementSibling, visible = [];
       while (n && !n.classList.contains('year-marker')) {
-        if (n.classList.contains('tl-row') && n.style.display !== 'none') { has = true; break; }
+        if (n.classList.contains('tl-row')) {
+          const show = cat === 'all' || n.dataset.cat.split(' ').includes(cat);
+          n.style.display = show ? 'flex' : 'none';
+          if (show) visible.push(n);
+        }
         n = n.nextElementSibling;
       }
-      m.style.display = has ? 'flex' : 'none';
+      visible.forEach((r, i) => {
+        r.classList.toggle('left',  i % 2 === 0);
+        r.classList.toggle('right', i % 2 !== 0);
+      });
+      m.style.display = visible.length > 0 ? 'flex' : 'none';
     });
   }
   </script>

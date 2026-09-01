@@ -48,7 +48,7 @@ class CustomFooter extends HTMLElement {
           <div class="h-px bg-white/10 my-6"></div>
 
           <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-xs text-white/40">© ${new Date().getFullYear()} Quentin Rapaud — Tous droits réservés. · Site par <a href="https://heliosdigital.org" target="_blank" rel="noopener" class="hover:text-white/70 transition-colors">heliosdigital.org</a></p>
+            <p class="text-xs text-white/40">© ${new Date().getFullYear()} Quentin Rapaud — Tous droits réservés. · Site par <a href="https://elioraone.com" target="_blank" rel="noopener" class="hover:text-white/70 transition-colors">heliosdigital.org</a></p>
             <div class="flex items-center gap-6">
               <a href="mentions-legales.html" class="text-xs text-white/40 hover:text-white/80 transition-colors">Mentions légales</a>
               <a href="politique-confidentialite.html" class="text-xs text-white/40 hover:text-white/80 transition-colors">Politique de confidentialité</a>

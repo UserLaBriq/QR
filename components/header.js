@@ -19,6 +19,8 @@ class CustomHeader extends HTMLElement {
 
               <a href="actualites.html" class="nav-link nav-page text-slate-700 hover:text-blue-900" data-page="actualites.html">Actualités</a>
 
+              <a href="articles.html" class="nav-link nav-page text-slate-700 hover:text-blue-900" data-page="articles.html">Articles</a>
+
               <a href="tel:+33681669806" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
                 06 81 66 98 06
@@ -97,6 +99,7 @@ class CustomHeader extends HTMLElement {
                 </div>
 
                 <a href="actualites.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
+                <a href="articles.html" class="text-slate-700 hover:text-blue-900 py-2">Articles</a>
                 <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
                   <i data-feather="phone" class="w-4 h-4"></i>
                   06 81 66 98 06

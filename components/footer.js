@@ -11,7 +11,7 @@ class CustomFooter extends HTMLElement {
               </a>
               <p class="text-white/60 text-sm mb-4">Avocat au Barreau de Paris</p>
               <p class="text-white/60 text-sm leading-relaxed">
-                51 rue de Maubeuge<br>75009 Paris
+                131 Boulevard de Malesherbes,<br>75017 Paris, France
               </p>
             </div>
 

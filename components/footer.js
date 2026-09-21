@@ -30,7 +30,7 @@ class CustomFooter extends HTMLElement {
               <div class="space-y-3">
                 <div class="flex items-center gap-2">
                   <i data-feather="phone" class="w-4 h-4 text-amber-300/70 flex-shrink-0"></i>
-                  <a href="tel:+33681669806" class="text-white/70 hover:text-white text-sm transition-colors">06 81 66 98 06</a>
+                  <a href="tel:+33681669806" onclick="if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-11035532990/XvppCLXVuYAdEL69k44p'});}" class="text-white/70 hover:text-white text-sm transition-colors">06 81 66 98 06</a>
                 </div>
                 <div class="flex items-center gap-2">
                   <i data-feather="mail" class="w-4 h-4 text-amber-300/70 flex-shrink-0"></i>

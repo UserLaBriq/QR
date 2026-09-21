@@ -21,7 +21,7 @@ class CustomHeader extends HTMLElement {
 
               <a href="articles.html" class="nav-link nav-page text-slate-700 hover:text-blue-900" data-page="articles.html">Articles</a>
 
-              <a href="tel:+33681669806" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
+              <a href="tel:+33681669806" onclick="if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-11035532990/XvppCLXVuYAdEL69k44p'});}" class="hidden lg:inline-flex items-center gap-2 text-blue-900 font-semibold">
                 <i data-feather="phone" class="w-4 h-4"></i>
                 06 81 66 98 06
               </a>
@@ -34,7 +34,7 @@ class CustomHeader extends HTMLElement {
             </nav>
 
             <div class="md:hidden flex items-center gap-4">
-              <a href="tel:+33681669806"
+              <a href="tel:+33681669806" onclick="if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-11035532990/XvppCLXVuYAdEL69k44p'});}"
                 class="inline-flex items-center gap-10 text-blue-900 font-semibold py-2 ml-auto lg:hidden">
                 <i data-feather="phone" class="w-5 h-5"></i>
               </a>
@@ -100,7 +100,7 @@ class CustomHeader extends HTMLElement {
 
                 <a href="actualites.html" class="text-slate-700 hover:text-blue-900 py-2">Actualités</a>
                 <a href="articles.html" class="text-slate-700 hover:text-blue-900 py-2">Articles</a>
-                <a href="tel:+33681669806" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
+                <a href="tel:+33681669806" onclick="if(typeof gtag==='function'){gtag('event','conversion',{'send_to':'AW-11035532990/XvppCLXVuYAdEL69k44p'});}" class="inline-flex items-center gap-2 text-blue-900 font-semibold py-2">
                   <i data-feather="phone" class="w-4 h-4"></i>
                   06 81 66 98 06
                 </a>

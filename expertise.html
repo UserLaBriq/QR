@@ -65,6 +65,7 @@
     <script defer src="components/header.js"></script>
     <script defer src="components/footer.js"></script>
     <script defer src="script.js"></script>
+  <script>document.documentElement.classList.add('qr-js');</script>
   <style>
     .modal-content {
       max-height: 90vh;
@@ -74,6 +75,107 @@
     #page-wrapper {
       transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .45s ease, border-radius .45s ease, filter .45s ease;
       transform-origin: center top;
+    }
+
+    /* ============================================================
+       ANIMATIONS — page expertise (sobre, premium)
+       ============================================================ */
+    :root { --qr-ease: cubic-bezier(0.22, 1, 0.36, 1); --qr-smooth: cubic-bezier(0.33, 0, 0.2, 1); --qr-navy: #1e3a8a; --qr-gold: #f59e0b; }
+
+    /* Apparition au scroll (uniquement si JS actif, sinon tout reste visible) */
+    .qr-js .qr-reveal {
+      opacity: 0;
+      translate: 0 28px;
+      transition: opacity .8s var(--qr-ease), translate .8s var(--qr-ease);
+      transition-delay: var(--qr-delay, 0ms);
+    }
+    .qr-js .qr-reveal.is-visible { opacity: 1; translate: 0 0; }
+
+    /* Titre de page : la barre se dessine */
+    .qr-title-bar { width: 0; transition: width 1s var(--qr-ease) .25s; }
+    .qr-title-bar.is-visible { width: 5rem; }
+    .qr-js h1.qr-reveal { translate: 0 18px; }
+
+    /* Cartes */
+    .expertise-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform .9s var(--qr-smooth), box-shadow .9s var(--qr-smooth), border-color .9s ease;
+    }
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(15, 23, 42, .08);
+      box-shadow: 0 24px 50px -20px rgba(15, 23, 42, .28), 0 10px 26px -12px rgba(15, 23, 42, .12);
+    }
+    /* la révélation ne doit pas écraser les transitions de survol */
+    .qr-js .expertise-card.qr-reveal {
+      transition: opacity .8s var(--qr-ease), translate .8s var(--qr-ease),
+                  transform .9s var(--qr-smooth), box-shadow .9s var(--qr-smooth), border-color .9s ease;
+      transition-delay: var(--qr-delay, 0ms), var(--qr-delay, 0ms), 0ms, 0ms, 0ms;
+    }
+    /* halo discret qui suit la souris */
+    .expertise-card::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(30, 58, 138, .07), transparent 60%);
+      transition: opacity .9s ease;
+    }
+    .expertise-card:hover::before { opacity: 1; }
+    .expertise-card > * { position: relative; z-index: 1; }
+
+    /* Pastille d'icône : se remplit de bleu nuit au survol */
+    .qr-icon { transition: background-color .8s ease, transform .9s var(--qr-smooth), box-shadow .8s ease; }
+    .qr-icon svg { transition: color .8s ease, transform .9s var(--qr-smooth); }
+    .expertise-card:hover .qr-icon { background-color: var(--qr-navy); transform: rotate(-8deg) scale(1.08); box-shadow: 0 8px 18px -6px rgba(30, 58, 138, .55); }
+    .expertise-card:hover .qr-icon svg { color: #fff; transform: rotate(8deg); }
+
+    /* Lignes de sous-catégories */
+    .expertise-card li button {
+      position: relative;
+      border-radius: 10px;
+      margin-left: -10px; padding-left: 10px; padding-right: 10px; width: calc(100% + 10px);
+      background-image: linear-gradient(90deg, rgba(245, 158, 11, .22), rgba(245, 158, 11, .06));
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 0% 100%;
+      transition: transform .35s var(--qr-ease), background-size .6s var(--qr-ease);
+    }
+    /* Petit point jaune : repère de liste, il s'étire en pastille au survol */
+    .expertise-card li button::before {
+      content: ""; flex-shrink: 0; width: 6px; height: 6px; border-radius: 6px;
+      background: var(--qr-gold);
+      transition: width .5s var(--qr-smooth);
+    }
+    .expertise-card li button:hover::before { width: 16px; }
+    .expertise-card li button:hover { transform: translateX(6px); background-size: 100% 100%; }
+    .expertise-card li button:hover svg { transform: scale(1.22); }
+    .expertise-card li button svg { transition: transform .5s var(--qr-smooth), color .3s ease; }
+    .expertise-card li button:focus-visible { outline: 2px solid var(--qr-navy); outline-offset: 2px; }
+    .expertise-card li button:active { transform: translateX(6px) scale(.985); }
+
+    /* Section "Notre approche" */
+    .qr-approach { position: relative; overflow: hidden; isolation: isolate; background-image: linear-gradient(135deg, #1e3a8a 0%, #172554 100%); }
+    .qr-approach::before {
+      content: ""; position: absolute; z-index: -1; width: 520px; height: 520px; right: -140px; top: -180px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 158, 11, .22), transparent 65%);
+    }
+    .qr-approach::after {
+      content: ""; position: absolute; z-index: -1; width: 420px; height: 420px; left: -120px; bottom: -200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(147, 197, 253, .18), transparent 65%);
+    }
+    .qr-approach .qr-pillar { transition: transform .5s var(--qr-ease); }
+    .qr-approach .qr-pillar:hover { transform: translateY(-6px); }
+    .qr-approach .qr-pillar > div:first-child { transition: background-color .4s ease, transform .6s var(--qr-ease), box-shadow .4s ease; }
+    .qr-approach .qr-pillar:hover > div:first-child { background-color: rgba(245, 158, 11, .9); transform: scale(1.1) rotate(-6deg); box-shadow: 0 10px 24px -8px rgba(245, 158, 11, .6); }
+
+    #modal-actions a { transition: transform .35s var(--qr-ease), background-color .25s ease, color .25s ease, box-shadow .35s ease; }
+    #modal-actions a:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -10px rgba(30, 58, 138, .6); }
+
+    /* Accessibilité : on coupe les animations si l'utilisateur le demande */
+    @media (prefers-reduced-motion: reduce) {
+      .qr-js .qr-reveal { opacity: 1; translate: 0 0; transition: none; }
+      .qr-title-bar { width: 5rem; transition: none; }
+      .expertise-card, .expertise-card *, .expertise-card li button::before, .qr-approach::before, .qr-approach::after { transition: none !important; animation: none !important; }
+      .expertise-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -114,15 +216,15 @@
               Cabinet indépendant dédié à la défense de personnes morales ou physiques françaises et étrangères, il intervient essentiellement devant les Cours d'assises et tribunaux correctionnels sur l'ensemble du territoire.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('penal','gardeavue')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Garde à vue & Enquête</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','miseeexamen')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Examen & Détention Provisoire</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','assises')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Tribunal Correctionnel & Cour d'Assises</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Justice Pénale des Mineurs</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','casier')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Effacement casier Judiciaire & Antécédents Judiciaires</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','cyber')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Cyber Harcèlement & E-réputation</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','amenagement')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Aménagement de Peine</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('penal','extradition')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Extradition & Mandat d'arrêt Européen ou International</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','gardeavue')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Garde à vue & Enquête</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','miseeexamen')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Examen & Détention Provisoire</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','assises')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Tribunal Correctionnel & Cour d'Assises</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Justice Pénale des Mineurs</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','casier')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Effacement casier Judiciaire & Antécédents Judiciaires</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','cyber')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Cyber Harcèlement & E-réputation</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','amenagement')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Aménagement de Peine</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('penal','extradition')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Extradition & Mandat d'arrêt Européen ou International</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -138,9 +240,9 @@
               Le cabinet assiste les victimes d'infraction dans leur combat judiciaire lors de la plainte ou de la constitution de partie civile et jusqu'au terme de la procédure d'indemnisation par la CIVI.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('victimes','plainte')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Dépôt de Plainte</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('victimes','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Victime Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('victimes','civi')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">CIVI & SARVI</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','plainte')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Dépôt de Plainte</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Victime Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('victimes','civi')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">CIVI & SARVI</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -156,11 +258,11 @@
               Le Cabinet Quentin Rapaud intervient dans les dossiers internationaux de divorce et d'enlèvements d'enfant. Il apporte un soutien juridique solide et surtout une stratégie adaptée pour défendre les intérêts de la famille.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('famille','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','divorce')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorces – Divorces Internationaux</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','mutuel')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorce par Consentement Mutuel</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','separation')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Séparation Hors Mariage</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('famille','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Droit des Mineurs – Assistance Educative</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','violences')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Violences Conjugales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','divorce')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorces – Divorces Internationaux</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mutuel')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Divorce par Consentement Mutuel</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','separation')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Séparation Hors Mariage</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('famille','mineurs')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Droit des Mineurs – Assistance Educative</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -176,11 +278,11 @@
               Le Cabinet Quentin Rapaud assiste les victimes d'erreurs médicales tout au long de la procédure judiciaire du référé pour obtenir la désignation d'un expert, puis à la phase d'expertise, jusqu'à l'indemnisation intégrale des préjudices.
             </p>
             <ul class="flex flex-col gap-1">
-              <li><button onclick="openModal('medical','medecin')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Contact Médecin Conseil</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','refere')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Référé Expertise Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','faute')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Erreur – Faute Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','accident')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Accident Médical</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
-              <li><button onclick="openModal('medical','infections')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Infections Iatrogènes et Nosocomiales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','medecin')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Mise en Contact Médecin Conseil</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','refere')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Référé Expertise Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','faute')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Erreur – Faute Médicale</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','accident')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Accident Médical</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
+              <li><button onclick="openModal('medical','infections')" class="w-full flex items-center gap-3 py-2 text-left group bg-transparent border-none cursor-pointer"><span class="text-slate-600 text-sm group-hover:text-blue-900 transition-colors">Infections Iatrogènes et Nosocomiales</span><i data-feather="chevron-right" class="w-3.5 h-3.5 text-slate-300 group-hover:text-blue-900 ml-auto flex-shrink-0 transition-colors"></i></button></li>
             </ul>
           </div>
 
@@ -188,7 +290,7 @@
       </section>
 
       <!-- Approach Section -->
-      <section class="bg-blue-900 text-white p-12 rounded-3xl mb-20">
+      <section class="qr-approach bg-blue-900 text-white p-12 rounded-3xl mb-20">
         <div class="max-w-4xl mx-auto text-center">
           <h2 class="text-3xl font-bold mb-6">Notre approche</h2>
           <p class="text-xl mb-8 opacity-90">
@@ -241,7 +343,7 @@
         transform: scale(0.3);
         opacity: 0;
         transition: transform .45s cubic-bezier(0.22,1,0.36,1), opacity .3s ease;
-        
+
         background: rgba(255,255,255,0.78);
         backdrop-filter: blur(28px) saturate(200%);
         -webkit-backdrop-filter: blur(28px) saturate(200%);
@@ -264,7 +366,7 @@
           </button>
         </div>
         <div id="modal-detail" class="text-justify text-slate-700 leading-relaxed text-sm mb-8"></div>
-          <div class="flex justify-center">
+          <div id="modal-actions" class="flex flex-wrap items-center justify-center gap-3">
             <a href="contact.html" class="inline-flex items-center gap-2 bg-blue-900 hover:bg-blue-950 text-white px-6 py-3 rounded-xl font-semibold transition">
               Prendre contact
               <i data-feather="arrow-right" class="w-4 h-4"></i>
@@ -281,7 +383,7 @@
       const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
 
       if ((atTop && e.deltaY < 0) || (atBottom && e.deltaY > 0)) return;
-      
+
       e.stopPropagation();
       e.preventDefault();
       el.scrollTop += e.deltaY;
@@ -558,15 +660,58 @@
       }
     };
 
+    // Plaquettes PDF/PNG téléchargeables par sujet — un ou plusieurs fichiers selon les thèmes couverts par la modale
+    const brochureData = {
+      penal: {
+        gardeavue: [
+          { file: 'garde-a-vue.png', label: 'Garde à vue' },
+          { file: 'audition-libre.png', label: 'Audition libre' }
+        ],
+        assises: [
+          { file: 'audience-correctionnelle.png', label: 'Audience correctionnelle' },
+          { file: 'cour-assises.png', label: "Cour d'assises" }
+        ],
+        amenagement: [
+          { file: 'amenagement-de-peine.png', label: 'Aménagement de peine' }
+        ],
+        mineurs: [
+          { file: 'justice-penale-mineurs.png', label: 'Justice pénale des mineurs' }
+        ]
+      }
+    };
+
     const pageWrapper = document.getElementById('page-wrapper');
 
     function openModal(cardKey, itemKey) {
       const data = modalData[cardKey]?.[itemKey];
-      if (!data || !data.detail || data.detail.trim() === 'À compléter.') return;
+      if (!data) return;
+
+      const isPlaceholder = !data.detail || data.detail.trim() === 'À compléter.';
 
       document.getElementById('modal-title').textContent = data.title;
       document.getElementById('modal-icon').innerHTML = `<i data-feather="${data.icon}" class="text-blue-900 w-6 h-6"></i>`;
-      document.getElementById('modal-detail').innerHTML = data.detail;
+      document.getElementById('modal-detail').innerHTML = isPlaceholder
+        ? `<p class="text-center text-slate-500">Cette fiche est en cours de rédaction. N'hésitez pas à nous contacter directement pour échanger sur votre situation.</p>`
+        : data.detail;
+
+      // URL mise à jour dès l'ouverture (lien partageable) sans empiler l'historique
+      const openUrl = new URL(window.location.href);
+      openUrl.searchParams.set('modal', cardKey);
+      openUrl.searchParams.set('item', itemKey);
+      try { history.replaceState(null, '', openUrl); } catch (e) {}
+
+      // Boutons de téléchargement de plaquette, propres au sujet ouvert
+      const actions = document.getElementById('modal-actions');
+      actions.querySelectorAll('.brochure-btn').forEach(el => el.remove());
+      const brochures = brochureData[cardKey]?.[itemKey] || [];
+      brochures.forEach(b => {
+        const a = document.createElement('a');
+        a.href = 'plaquettes/' + b.file;
+        a.setAttribute('download', '');
+        a.className = 'brochure-btn inline-flex items-center gap-2 border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-6 py-3 rounded-xl font-semibold transition';
+        a.innerHTML = `<i data-feather="download" class="w-4 h-4"></i> Plaquette ${b.label}`;
+        actions.appendChild(a);
+      });
 
       const overlay = document.getElementById('modal-overlay');
       const panel   = document.getElementById('modal-panel');
@@ -601,21 +746,27 @@
 
         overlay.style.opacity          = '0';
         panel.style.transform          = 'scale(0.3)';
-        pageWrapper.style.transform    = ''; 
-        pageWrapper.style.opacity      = '';  
-        pageWrapper.style.borderRadius = ''; 
-        pageWrapper.style.filter       = ''; 
-      
+        pageWrapper.style.transform    = '';
+        pageWrapper.style.opacity      = '';
+        pageWrapper.style.borderRadius = '';
+        pageWrapper.style.filter       = '';
+
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
 
         setTimeout(() => overlay.classList.add('hidden'), 450);
+
+        // On retire ?modal=…&item=… de l'URL
+        const closeUrl = new URL(window.location.href);
+        closeUrl.searchParams.delete('modal');
+        closeUrl.searchParams.delete('item');
+        try { history.replaceState(null, '', closeUrl); } catch (e) {}
     }
 
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 
-    //ouvrir le modal directement pour les urgences 
+    //ouvrir le modal directement pour les urgences
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
       const card = params.get('modal');
@@ -625,6 +776,58 @@
         setTimeout(() => openModal(card, item), 100);
       }
     });
+  </script>
+
+  <script>
+    // Animations de la page expertise
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const q = (sel) => Array.from(document.querySelectorAll(sel));
+
+        // Éléments à révéler, avec un décalage progressif
+        const title = document.querySelector('main h1');
+        const bar = title && title.nextElementSibling;
+        if (bar) bar.classList.add('qr-title-bar');
+        if (title) title.classList.add('qr-reveal');
+
+        q('.expertise-card').forEach((card, i) => {
+          card.classList.add('qr-reveal');
+          card.style.setProperty('--qr-delay', (i % 2) * 120 + 'ms');
+          const iconWrap = card.querySelector('.rounded-full');
+          if (iconWrap) iconWrap.classList.add('qr-icon');
+          card.addEventListener('pointermove', (e) => {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+            card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+          });
+        });
+
+        const approach = document.querySelector('.qr-approach');
+        if (approach) {
+          const inner = approach.firstElementChild;
+          Array.from(inner.children).forEach(el => { if (!el.classList.contains('grid')) el.classList.add('qr-reveal'); });
+          const pillars = approach.querySelectorAll('.grid > div');
+          pillars.forEach((p, i) => { p.classList.add('qr-pillar', 'qr-reveal'); p.style.setProperty('--qr-delay', (i * 140) + 'ms'); });
+        }
+
+        const targets = q('.qr-reveal').concat(bar ? [bar] : []);
+        if (!('IntersectionObserver' in window) || reduce) {
+          targets.forEach(el => el.classList.add('is-visible'));
+          return;
+        }
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(en => {
+            if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(el => io.observe(el));
+
+        // Filet de sécurité : rien ne reste invisible
+        setTimeout(() => targets.forEach(el => el.classList.add('is-visible')), 4000);
+      });
+    })();
   </script>
 
 </body>

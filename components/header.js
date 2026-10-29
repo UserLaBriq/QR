@@ -1,5 +1,27 @@
 class CustomHeader extends HTMLElement {
   connectedCallback() {
+    // Points du mega-menu — petit point jaune qui s'étire en pastille au survol (comme la page Expertise)
+    if (!document.getElementById('qr-dot-pulse-style')) {
+      const dotStyle = document.createElement('style');
+      dotStyle.id = 'qr-dot-pulse-style';
+      dotStyle.textContent = `
+        span.nav-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 6px;
+          background-color: #f59e0b;
+          transition: width .5s cubic-bezier(0.33, 0, 0.2, 1);
+        }
+        .group:hover span.nav-dot {
+          width: 16px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          span.nav-dot { transition: none; }
+        }
+      `;
+      document.head.appendChild(dotStyle);
+    }
+
     this.innerHTML = `
       <header class="bg-white/85 backdrop-blur border-b sticky top-0 z-50">
         <div class="container mx-auto px-4">
@@ -128,19 +150,19 @@ class CustomHeader extends HTMLElement {
                 <div class="flex flex-col gap-4">
                   <p class="text-xs uppercase tracking-widest text-white/40 mb-5" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Domaines d'intervention</p>
                   <a href="expertise.html#penal" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Défense Pénale</span>
                   </a>
                   <a href="expertise.html#famille-international" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Familles & International</span>
                   </a>
                   <a href="expertise.html#corporel" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Corporel & Victimes</span>
                   </a>
                   <a href="expertise.html#medical" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Responsabilité Médicale</span>
                   </a>
                 </div>
@@ -148,19 +170,19 @@ class CustomHeader extends HTMLElement {
                 <div class="flex flex-col gap-4">
                   <p class="text-xs uppercase tracking-widest text-white/40 mb-5" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;">Urgences</p>
                   <a href="expertise.html?modal=penal&item=gardeavue" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Garde à Vue</span>
                   </a>
                   <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Comparution Immédiate</span>
                   </a>
                   <a href="expertise.html?modal=penal&item=assises" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Audiences Pénales</span>
                   </a>
                   <a href="expertise.html?modal=penal&item=violences" class="group flex items-center gap-3 py-3 transition-colors">
-                    <span class="h-1 w-2 rounded-full bg-amber-300 flex-shrink-0"></span>
+                    <span class="h-1 w-2 rounded-full nav-dot flex-shrink-0"></span>
                     <span class="text-white/80 group-hover:text-white text-sm font-medium transition-colors">Violences Conjugales</span>
                   </a>
                 </div>
@@ -272,6 +294,45 @@ class CustomHeader extends HTMLElement {
       if (chev) chev.style.transform = 'rotate(0deg)';
       setTimeout(() => { if (!isOpen) megaMenu.classList.add('hidden'); }, 350);
     }
+
+    // ── Liens du menu : ne pas laisser le menu / le filtre gris ouverts quand on reste sur la même page ──
+    const samePage = (url) => url.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '')
+      || (url.pathname.endsWith('/expertise.html') && location.pathname.endsWith('/expertise.html'));
+
+    const handleMenuLink = (e, closeMenu) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      let url;
+      try { url = new URL(link.getAttribute('href'), location.href); } catch (_) { return; }
+      if (url.origin !== location.origin || !samePage(url)) return; // autre page : navigation normale
+
+      const modal = url.searchParams.get('modal');
+      const item  = url.searchParams.get('item');
+
+      // Lien vers un modal alors qu'on est déjà sur la page : on l'ouvre sans recharger
+      if (modal && item && typeof window.openModal === 'function') {
+        e.preventDefault();
+        closeMenu();
+        setTimeout(() => window.openModal(modal, item), 150);
+        return;
+      }
+
+      // Lien vers une ancre de la page : on ferme le menu et on défile en douceur
+      if (url.hash && url.hash.length > 1) {
+        const target = document.querySelector(url.hash);
+        if (target) {
+          e.preventDefault();
+          closeMenu();
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            try { history.replaceState(null, '', url.pathname + url.hash); } catch (_) {}
+          }, 150);
+        }
+      }
+    };
+
+    megaMenu.addEventListener('click', (e) => handleMenuLink(e, closeMega));
+    mobileMenu.addEventListener('click', (e) => handleMenuLink(e, () => { if (menuOpen) btn.click(); }));
 
     trigger.addEventListener('click', () => isOpen ? closeMega() : openMega());
     backdrop.addEventListener('click', closeMega);

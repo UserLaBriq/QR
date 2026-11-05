@@ -1,19 +1,21 @@
 class CustomHeader extends HTMLElement {
   connectedCallback() {
-    // Points du mega-menu — petit point jaune qui s'étire en pastille au survol (comme la page Expertise)
+    // Points du mega-menu — point jaune vif qui s'étire en pastille au survol (comme la page Expertise)
     if (!document.getElementById('qr-dot-pulse-style')) {
       const dotStyle = document.createElement('style');
       dotStyle.id = 'qr-dot-pulse-style';
       dotStyle.textContent = `
         span.nav-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 6px;
-          background-color: #f59e0b;
-          transition: width .5s cubic-bezier(0.33, 0, 0.2, 1);
+          width: 8px;
+          height: 8px;
+          border-radius: 8px;
+          background-color: #ffc400;
+          box-shadow: 0 0 8px rgba(255, 196, 0, .65);
+          transition: width .55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow .4s ease;
         }
         .group:hover span.nav-dot {
-          width: 16px;
+          width: 22px;
+          box-shadow: 0 0 16px 3px rgba(255, 196, 0, .9);
         }
         @media (prefers-reduced-motion: reduce) {
           span.nav-dot { transition: none; }
@@ -268,7 +270,7 @@ class CustomHeader extends HTMLElement {
     if (!backdrop) {
       backdrop = document.createElement('div');
       backdrop.id = 'mega-backdrop-global';
-      backdrop.style.cssText = `position:fixed;inset:0;background:rgba(15,23,42,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:40;opacity:0;transition:opacity .3s ease;pointer-events:none;`;
+      backdrop.style.cssText = `position:fixed;inset:0;background:rgba(15,23,42,0.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:40;opacity:0;visibility:hidden;transition:opacity .3s ease;pointer-events:none;`;
       document.body.appendChild(backdrop);
     }
 
@@ -278,6 +280,7 @@ class CustomHeader extends HTMLElement {
       megaMenu.offsetHeight;
       panel.style.transform        = 'translateY(0)';
       panel.style.opacity          = '1';
+      backdrop.style.visibility    = 'visible';
       backdrop.style.opacity       = '1';
       backdrop.style.pointerEvents = 'auto';
       const chev = document.querySelector('#expertise-chevron');
@@ -292,7 +295,7 @@ class CustomHeader extends HTMLElement {
       backdrop.style.pointerEvents = 'none';
       const chev = document.querySelector('#expertise-chevron');
       if (chev) chev.style.transform = 'rotate(0deg)';
-      setTimeout(() => { if (!isOpen) megaMenu.classList.add('hidden'); }, 350);
+      setTimeout(() => { if (!isOpen) { megaMenu.classList.add('hidden'); backdrop.style.visibility = 'hidden'; } }, 350);
     }
 
     // ── Liens du menu : ne pas laisser le menu / le filtre gris ouverts quand on reste sur la même page ──

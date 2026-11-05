@@ -62,6 +62,34 @@
       .testimonial-slide { display: none; animation: fadeIn 0.4s ease; }
       .testimonial-slide.active { display: block; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  
+      :root { --qr-yellow: #ffc400; }
+
+      /* fonds, barres, boutons */
+      .bg-amber-300, .bg-amber-400 { background-color: var(--qr-yellow); }
+      .hover\:bg-amber-200:hover   { background-color: #ffd433; }
+      .hover\:bg-amber-300:hover   { background-color: var(--qr-yellow); }
+
+      /* petits points : lueur */
+      .rounded-full.bg-amber-300 { box-shadow: 0 0 8px rgba(255, 196, 0, .7); }
+
+      /* textes sur fond sombre */
+      .text-amber-300\/80, .hover\:text-amber-300:hover { color: var(--qr-yellow); }
+
+      /* étoiles des témoignages */
+      .text-amber-400 { color: var(--qr-yellow); }
+
+      /* petits titres "Le cabinet" / "Témoignages clients" : pastille jaune lisible sur fond clair */
+      .text-amber-500 { color: #0f172a; background: var(--qr-yellow); display: inline-block; padding: .2rem .65rem; border-radius: .25rem; }
+
+      /* "Nous intervenons" : le titre de la ligne ouverte passe en jaune */
+      .accordion-item.acc-open > button { color: var(--qr-yellow); }
+
+      /* boutons jaunes : léger soulèvement au survol */
+      a.bg-amber-300 { transition: background-color .25s ease, transform .3s ease, box-shadow .3s ease; }
+      a.bg-amber-300:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(255, 196, 0, .9); }
+  
+  
   </style>
   <script type="application/ld+json">
   {

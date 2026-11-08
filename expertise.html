@@ -816,7 +816,7 @@
       const brochures = brochureData[cardKey]?.[itemKey] || [];
       brochures.forEach(b => {
         const a = document.createElement('a');
-        a.href = 'plaquettes/' + b.file;
+        a.href = 'img/plaquettes/' + b.file;
         a.setAttribute('download', '');
         a.className = 'brochure-btn inline-flex items-center gap-2 border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white px-6 py-3 rounded-xl font-semibold transition';
         a.innerHTML = `<i data-feather="download" class="w-4 h-4"></i> Plaquette ${b.label}`;

@@ -17,6 +17,9 @@ class CustomHeader extends HTMLElement {
           width: 22px;
           box-shadow: 0 0 16px 3px rgba(255, 196, 0, .9);
         }
+        @media (max-width: 767px) {
+          #mega-menu, #mega-backdrop-global { display: none !important; }
+        }
         @media (prefers-reduced-motion: reduce) {
           span.nav-dot { transition: none; }
         }
@@ -341,7 +344,9 @@ class CustomHeader extends HTMLElement {
     backdrop.addEventListener('click', closeMega);
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen) closeMega(); });
 
-    if (window.feather) feather.replace();
+    const renderIcons = () => { if (window.feather) feather.replace(); };
+    renderIcons();
+    window.addEventListener('load', renderIcons);
   }
 }
 customElements.define('custom-header', CustomHeader);
